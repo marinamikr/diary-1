@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		413421BC1E45A8EF009DE583 /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413421BB1E45A8EF009DE583 /* EditController.swift */; };
+		413421C01E479472009DE583 /* ShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413421BF1E479472009DE583 /* ShowController.swift */; };
 		41D305EC1E40A07A004031DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D305EB1E40A07A004031DA /* AppDelegate.swift */; };
 		41D305EE1E40A07A004031DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D305ED1E40A07A004031DA /* ViewController.swift */; };
 		41D305F11E40A07A004031DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D305EF1E40A07A004031DA /* Main.storyboard */; };
@@ -14,6 +16,8 @@
 		41D305F61E40A07A004031DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D305F41E40A07A004031DA /* LaunchScreen.storyboard */; };
 		41D306011E40A07A004031DA /* CalenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D306001E40A07A004031DA /* CalenderTests.swift */; };
 		41D3060C1E40A07A004031DA /* CalenderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3060B1E40A07A004031DA /* CalenderUITests.swift */; };
+		41D3061A1E40A141004031DA /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D306191E40A141004031DA /* DateManager.swift */; };
+		41D3061C1E40A1E8004031DA /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3061B1E40A1E8004031DA /* CalendarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		413421BB1E45A8EF009DE583 /* EditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
+		413421BF1E479472009DE583 /* ShowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowController.swift; sourceTree = "<group>"; };
 		41D305E81E40A07A004031DA /* Calender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D305EB1E40A07A004031DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41D305ED1E40A07A004031DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +53,8 @@
 		41D306071E40A07A004031DA /* CalenderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalenderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D3060B1E40A07A004031DA /* CalenderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderUITests.swift; sourceTree = "<group>"; };
 		41D3060D1E40A07A004031DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41D306191E40A141004031DA /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		41D3061B1E40A1E8004031DA /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,10 @@
 			children = (
 				41D305EB1E40A07A004031DA /* AppDelegate.swift */,
 				41D305ED1E40A07A004031DA /* ViewController.swift */,
+				41D306191E40A141004031DA /* DateManager.swift */,
+				41D3061B1E40A1E8004031DA /* CalendarCell.swift */,
+				413421BB1E45A8EF009DE583 /* EditController.swift */,
+				413421BF1E479472009DE583 /* ShowController.swift */,
 				41D305EF1E40A07A004031DA /* Main.storyboard */,
 				41D305F21E40A07A004031DA /* Assets.xcassets */,
 				41D305F41E40A07A004031DA /* LaunchScreen.storyboard */,
@@ -193,6 +205,7 @@
 				TargetAttributes = {
 					41D305E71E40A07A004031DA = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2D2C5YC62B;
 					};
 					41D305FB1E40A07A004031DA = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -256,8 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				413421BC1E45A8EF009DE583 /* EditController.swift in Sources */,
 				41D305EE1E40A07A004031DA /* ViewController.swift in Sources */,
+				413421C01E479472009DE583 /* ShowController.swift in Sources */,
+				41D3061A1E40A141004031DA /* DateManager.swift in Sources */,
 				41D305EC1E40A07A004031DA /* AppDelegate.swift in Sources */,
+				41D3061C1E40A1E8004031DA /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,10 +416,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Calender/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = litech.Calender;
+				PRODUCT_BUNDLE_IDENTIFIER = hazuki.Calender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -410,10 +430,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Calender/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = litech.Calender;
+				PRODUCT_BUNDLE_IDENTIFIER = hazuki.Calender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -482,6 +505,7 @@
 				41D306121E40A07A004031DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41D306131E40A07A004031DA /* Build configuration list for PBXNativeTarget "CalenderTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +514,7 @@
 				41D306151E40A07A004031DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41D306161E40A07A004031DA /* Build configuration list for PBXNativeTarget "CalenderUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +523,7 @@
 				41D306181E40A07A004031DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
