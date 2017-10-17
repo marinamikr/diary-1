@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>706545453322-2ei150rgmj7e0c82uf98jsbm55tfn3l0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.706545453322-2ei150rgmj7e0c82uf98jsbm55tfn3l0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBSIJtoxZ4UvrxLxpBHv5Qsofwd1mwFHwE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>706545453322</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>hazuki.Calender</string>
+	<key>PROJECT_ID</key>
+	<string>calender-4a2d3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>calender-4a2d3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:706545453322:ios:b739e97bc4ae13ff</string>
+	<key>DATABASE_URL</key>
+	<string>https://calender-4a2d3.firebaseio.com</string>
+</dict>
+</plist>
