@@ -620,7 +620,7 @@ picture</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yMm-wu-oeB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="calender" image="カレンダー.png" id="Cfj-C4-fFI"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fLU-bD-ZRd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fLU-bD-ZRd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -639,7 +639,7 @@ picture</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cVX-zB-h6i" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="settings" image="set.png" id="afV-cj-KQD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FVd-ho-E6s">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FVd-ho-E6s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
