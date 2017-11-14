@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cCm-zs-b6H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cCm-zs-b6H">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -167,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="3765.5999999999999" y="355.7721139430285"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--Setting Controller-->
         <scene sceneID="vxJ-u1-9Be">
             <objects>
-                <viewController id="jWl-vu-nLa" customClass="SettingViewController" customModule="Calender" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jWl-vu-nLa" customClass="SettingController" customModule="Calender" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oCP-5d-Epn"/>
                         <viewControllerLayoutGuide type="bottom" id="9m4-cD-D3s"/>
@@ -222,12 +222,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="NEL-tj-vb2"/>
                     <connections>
-                        <outlet property="table" destination="7cD-9b-2hj" id="CRZ-PE-Szg"/>
+                        <outlet property="table" destination="7cD-9b-2hj" id="HUL-Dm-xcU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAs-6z-ixB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769.375" y="1174.6478873239437"/>
+            <point key="canvasLocation" x="3108" y="1174.3628185907048"/>
         </scene>
         <!--Edit Controller-->
         <scene sceneID="sUd-0O-Iha">
@@ -534,13 +534,13 @@ picture</string>
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VQy-mE-t7O">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="626"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DiC-6u-ABy">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="626"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZbP-wa-bjc">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="626"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
@@ -605,14 +605,14 @@ picture</string>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="yMm-wu-oeB" kind="relationship" relationship="viewControllers" id="Ovq-81-dc6"/>
-                        <segue destination="cVX-zB-h6i" kind="relationship" relationship="viewControllers" id="cRV-Aq-PCh"/>
-                        <segue destination="I6n-cb-lKr" kind="relationship" relationship="viewControllers" id="LPa-Xg-3Ch"/>
+                        <segue destination="yMm-wu-oeB" kind="relationship" relationship="viewControllers" id="VNZ-1c-ZDy"/>
+                        <segue destination="qpa-LL-cIS" kind="relationship" relationship="viewControllers" id="DK6-Yb-iPq"/>
+                        <segue destination="I6n-cb-lKr" kind="relationship" relationship="viewControllers" id="h3F-9s-UmG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8L-hU-7ID" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="356"/>
+            <point key="canvasLocation" x="1494" y="312"/>
         </scene>
         <!--calender-->
         <scene sceneID="xbZ-Pr-ct8">
@@ -621,7 +621,7 @@ picture</string>
                     <tabBarItem key="tabBarItem" title="calender" image="カレンダー.png" id="Cfj-C4-fFI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fLU-bD-ZRd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -632,25 +632,6 @@ picture</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="059-Rx-IgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2769.375" y="355.98591549295776"/>
-        </scene>
-        <!--settings-->
-        <scene sceneID="7Xe-wd-XEV">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cVX-zB-h6i" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="settings" image="set.png" id="afV-cj-KQD"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FVd-ho-E6s">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="jWl-vu-nLa" kind="relationship" relationship="rootViewController" id="14H-P5-qAa"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ge8-id-Etm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1771.875" y="1174.6478873239437"/>
         </scene>
         <!--Hensyuu Controller-->
         <scene sceneID="Q2D-wS-n7f">
@@ -788,13 +769,31 @@ picture</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mlh-pO-Tet" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Jbr-Ki-lCz"/>
             </objects>
-            <point key="canvasLocation" x="4636" y="1091"/>
+            <point key="canvasLocation" x="4975.1999999999998" y="1090.704647676162"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="XLE-AF-1IO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qpa-LL-cIS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="6nj-u1-HJ6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WJy-Ac-9jF">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jWl-vu-nLa" kind="relationship" relationship="rootViewController" id="3bL-FC-1nD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sTC-32-B5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2214" y="1174"/>
         </scene>
     </scenes>
     <resources>
         <image name="koooooo.png" width="500" height="375"/>
         <image name="modoruu.png" width="34" height="34"/>
-        <image name="set.png" width="38" height="38"/>
         <image name="ya.png" width="30" height="30"/>
         <image name="カレンダー.png" width="440" height="330"/>
         <image name="矢印.png" width="380" height="144"/>

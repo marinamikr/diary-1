@@ -48,6 +48,7 @@ class changeController: UIViewController, UICollectionViewDataSource,UICollectio
         
         SVProgressHUD.show()
         
+        /*
         // databaseから画像の名前を取得
         let ref = Database.database().reference().child("photo")
         ref.observe(DataEventType.value, with: { snapshot in
@@ -77,10 +78,12 @@ class changeController: UIViewController, UICollectionViewDataSource,UICollectio
         self.refreshControl.attributedTitle = NSAttributedString(string: "")
         self.refreshControl.addTarget(self, action: #selector(changeController.refresh), for: UIControlEvents.valueChanged)
         //self.getCollectionView.addSubview(refreshControl)
+        */
     }
     
     override func viewWillAppear(_ animated: Bool) {
         SVProgressHUD.show()
+        
         
         // databaseから画像の名前を取得
         let ref = Database.database().reference().child("photo")
@@ -133,11 +136,8 @@ class changeController: UIViewController, UICollectionViewDataSource,UICollectio
             print("画像きたよ")
             let storage = Storage.storage()
             let storageRef = storage.reference(forURL: "gs://calender-4a2d3.appspot.com")
-            
             //storageRefのかくにん
             print(storageRef)
-            
-            
             
             storageRef.child(name).getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
                 if (error != nil) {
@@ -148,6 +148,8 @@ class changeController: UIViewController, UICollectionViewDataSource,UICollectio
                     self.getCollectionView.reloadData()
                 }
             }
+            
+            
         }
     }
     

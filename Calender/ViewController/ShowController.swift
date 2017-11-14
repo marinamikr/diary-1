@@ -149,8 +149,6 @@ class ShowController: UIViewController {
                 print(metaData)
                 print(error)
                 
-                
-                
             })
         }
         

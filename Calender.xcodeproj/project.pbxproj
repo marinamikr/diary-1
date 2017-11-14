@@ -25,8 +25,6 @@
 		41122CC81F586C9B00DA3612 /* yellowのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CC61F586C9B00DA3612 /* yellowのコピー.png */; };
 		41122CCE1F5871F600DA3612 /* modoruu.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CCD1F5871F600DA3612 /* modoruu.png */; };
 		41122CD01F58749600DA3612 /* ya.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CCF1F58749600DA3612 /* ya.png */; };
-		41122CD21F5EA37000DA3612 /* koukann.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CD11F5EA37000DA3612 /* koukann.png */; };
-		41122CD61F5EBA0400DA3612 /* koooooo.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CD51F5EBA0400DA3612 /* koooooo.png */; };
 		41122CDA1F64602300DA3612 /* カレンダー.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CD91F64602300DA3612 /* カレンダー.png */; };
 		412342E31FB1BDE600712D00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E21FB1BDE600712D00 /* ViewController.swift */; };
 		412342E51FB1BE6D00712D00 /* ShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E41FB1BE6D00712D00 /* ShowController.swift */; };
@@ -91,8 +89,6 @@
 		41122CC61F586C9B00DA3612 /* yellowのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowのコピー.png"; sourceTree = SOURCE_ROOT; };
 		41122CCD1F5871F600DA3612 /* modoruu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modoruu.png; sourceTree = SOURCE_ROOT; };
 		41122CCF1F58749600DA3612 /* ya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ya.png; sourceTree = SOURCE_ROOT; };
-		41122CD11F5EA37000DA3612 /* koukann.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = koukann.png; path = ../../koukann.png; sourceTree = "<group>"; };
-		41122CD51F5EBA0400DA3612 /* koooooo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = koooooo.png; path = ../../koooooo.png; sourceTree = "<group>"; };
 		41122CD91F64602300DA3612 /* カレンダー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "カレンダー.png"; sourceTree = SOURCE_ROOT; };
 		412342E21FB1BDE600712D00 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ViewController/ViewController.swift; sourceTree = "<group>"; };
 		412342E41FB1BE6D00712D00 /* ShowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowController.swift; path = ViewController/ShowController.swift; sourceTree = "<group>"; };
@@ -177,8 +173,6 @@
 		410081201EF92B1500DBCA05 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				41122CD51F5EBA0400DA3612 /* koooooo.png */,
-				41122CD11F5EA37000DA3612 /* koukann.png */,
 				41122CCF1F58749600DA3612 /* ya.png */,
 				41122CC51F586C9B00DA3612 /* yellow.png */,
 				41122CC61F586C9B00DA3612 /* yellowのコピー.png */,
@@ -430,7 +424,6 @@
 				41122CC81F586C9B00DA3612 /* yellowのコピー.png in Resources */,
 				41122CBD1F5851C400DA3612 /* orange.png in Resources */,
 				41122CC31F58663200DA3612 /* red.png in Resources */,
-				41122CD61F5EBA0400DA3612 /* koooooo.png in Resources */,
 				41122CC41F58663200DA3612 /* redのコピー.png in Resources */,
 				41122CB91F5851C400DA3612 /* blue.png in Resources */,
 				41122CC71F586C9B00DA3612 /* yellow.png in Resources */,
@@ -440,7 +433,6 @@
 				41122CD01F58749600DA3612 /* ya.png in Resources */,
 				41122CBA1F5851C400DA3612 /* blueのコピー.png in Resources */,
 				412F00231F38D84400EB1CC4 /* set.png in Resources */,
-				41122CD21F5EA37000DA3612 /* koukann.png in Resources */,
 				418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */,
 				41122CBF1F5851C400DA3612 /* purple.png in Resources */,
 			);
@@ -484,13 +476,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CalenderUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		518BA0CAF910918D63B6331F /* [CP] Check Pods Manifest.lock */ = {
@@ -499,13 +494,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CalenderTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7253A64720BF5EDC8342B1D1 /* [CP] Copy Pods Resources */ = {
@@ -544,9 +542,24 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Calender/Pods-Calender-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -559,13 +572,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Calender-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D193C6038AF4934B3A4BE2EC /* [CP] Copy Pods Resources */ = {

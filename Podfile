@@ -2,7 +2,7 @@
 # platform :ios, '9.0'
 
 target 'Calender' do
-pod 'RealmSwift', '1.1.0'
+pod 'RealmSwift'
 pod 'SVProgressHUD'
 pod 'Firebase/Core'
 pod 'Firebase/Core'
