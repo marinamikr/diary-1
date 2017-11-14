@@ -49,20 +49,14 @@ class ShowController: UIViewController {
         }
         
         backButton.backgroundColor = colorManager.mainColor()[colorNum]
-        
-        
-        
-        let year = appDelegate.year //appDelegateの変数を操作
-        let month = appDelegate.month
-        let date = appDelegate.date
-        dateLabel.text = "\(year!),　\(month!),　\(date!)"//2017,4,3
+        dateLabel.text = "\(year),　\(month),　\(date)"//2017,4,3
         
         
         let realm = try! Realm()
         //realmから\(year!)\(month!)\(date!)で検索
-        if let diary = realm.objects(Diary.self).filter("date == \(year!)\(month!)\(date!)").last {
+        if let diary = realm.objects(Diary.self).filter("date == \(year)\(month)\(date)").last {
             label.text = diary.title
-            dateLabel.text = String("\(year!),　\(month!),　\(date!)")
+            dateLabel.text = String("\(year),　\(month),　\(date)")
             mainLabel.text = diary.main
             changeCheck = diary.changeCheck
             
@@ -78,7 +72,7 @@ class ShowController: UIViewController {
             userDefaults.set(diary.title, forKey: "title")
             let formatter: DateFormatter = DateFormatter()
             formatter.dateFormat = "yyyy, MM, dd"
-            userDefaults.set(String("\(year!), \(month!), \(date!)"), forKey: "date")
+            userDefaults.set(String("\(year), \(month), \(date)"), forKey: "date")
             userDefaults.set(diary.title, forKey: "main")
             
             
@@ -137,6 +131,27 @@ class ShowController: UIViewController {
         
         // databaseに名前を送信
         let ref = Database.database().reference()
+        
+        let data : Dictionary = ["title":label.text,"date":dateLabel.text,"main":mainLabel.text]
+        //key value形式の情報を送る
+        ref.child(uuid).setValue(data)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         ref.child("photo").childByAutoId().setValue(uuid)
         
         

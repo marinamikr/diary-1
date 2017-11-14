@@ -244,7 +244,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "ShowController" {
+        if segue.identifier == "EditController" {
             
             let showController:ShowController = segue.destination as! ShowController
             
