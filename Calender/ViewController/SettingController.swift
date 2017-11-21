@@ -226,12 +226,8 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
         tableView.reloadData()
         
         //        let cell = tableView.cellForRow(at:indexPath)
-        //
         //        if cell?.accessoryType == .checkmark {
-        //
-        //
-        //            cell?.accessoryType = .none
-        //
+        //cell?.accessoryType = .none
         //        }
     }
 }

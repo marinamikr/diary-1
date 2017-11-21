@@ -234,10 +234,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         date = formatter.string(from: cellDate)
         
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.year = year //appDelegateの変数を操作
-        appDelegate.month = month
-        appDelegate.date = date
-        
         
         performSegue(withIdentifier: "EditController", sender: self)
     }

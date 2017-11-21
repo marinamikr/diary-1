@@ -132,25 +132,9 @@ class ShowController: UIViewController {
         // databaseに名前を送信
         let ref = Database.database().reference()
         
-        let data : Dictionary = ["title":label.text,"date":dateLabel.text,"main":mainLabel.text]
-        //key value形式の情報を送る
-        ref.child(uuid).setValue(data)
+       
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         ref.child("photo").childByAutoId().setValue(uuid)
         
@@ -158,11 +142,19 @@ class ShowController: UIViewController {
         // strageに画像アップロード
         let storage = Storage.storage()
         let storageRef = storage.reference(forURL: "gs://calender-4a2d3.appspot.com")
-        if let data = UIImagePNGRepresentation(capturedImage!) {
+        
+        if let data = UIImagePNGRepresentation(picture.image!) {
             let riversRef = storageRef.child(uuid)
             riversRef.putData(data, metadata: nil, completion: { metaData, error in
                 print(metaData)
                 print(error)
+                print(metaData?.downloadURL())
+                
+                
+                let data : Dictionary = ["title":self.label.text,"date":self.dateLabel.text,"main":self.mainLabel.text,"downloadURL":metaData?.downloadURL()?.absoluteString]
+                //key value形式の情報を送る
+                ref.child(uuid).setValue(data)
+                
                 
             })
         }
@@ -185,22 +177,10 @@ class ShowController: UIViewController {
         print(realm)
         //
         //        if let diary = realm.objects(Diary.self).filter("date == \(year!)\(month!)\(date!)").last {
-        //
-        //
         //            diary.changeCheck = true
-        //
-        //
-        //
-        //
         //            try! realm.write {
         //                realm.add(diary, update: true)
-        //            }
-        //
-        //        }
-        //
-        //
-        
-        
+        //            }}
         //       if
         //        userDefaults.set( push, forKey: "PUSH")
         
