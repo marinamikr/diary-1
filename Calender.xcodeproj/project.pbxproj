@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0441E65F90F7049DBDAD0DF2 /* Pods_CalenderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE017672D86243A94992FC45 /* Pods_CalenderUITests.framework */; };
 		112DC6026536389E76F19364 /* Pods_CalenderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE907BF403B2205D7526925F /* Pods_CalenderTests.framework */; };
+		41050ADA1FC5919D00C0A051 /* CellTryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41050AD91FC5919D00C0A051 /* CellTryViewController.swift */; };
+		41050ADD1FC5933D00C0A051 /* akaisann.png in Resources */ = {isa = PBXBuildFile; fileRef = 41050ADB1FC5933D00C0A051 /* akaisann.png */; };
+		41050ADE1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41050ADC1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg */; };
+		41050AE21FCD70AD00C0A051 /* CustumTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41050AE01FCD70AD00C0A051 /* CustumTableCell.swift */; };
+		41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41050AE11FCD70AD00C0A051 /* CustumTableCell.xib */; };
 		41122CAE1F55781500DA3612 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41122CAD1F55781500DA3612 /* SVProgressHUD.framework */; };
 		41122CB01F557F9700DA3612 /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41122CAF1F557F9700DA3612 /* DeviceSize.swift */; };
 		41122CB91F5851C400DA3612 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CB11F5851C400DA3612 /* blue.png */; };
@@ -73,6 +78,11 @@
 /* Begin PBXFileReference section */
 		10497BCFCBE4761E2A90B92F /* Pods-CalenderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalenderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalenderTests/Pods-CalenderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		40BF2B74CF66677194A50F8B /* Pods-Calender.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calender.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calender/Pods-Calender.release.xcconfig"; sourceTree = "<group>"; };
+		41050AD91FC5919D00C0A051 /* CellTryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellTryViewController.swift; path = ViewController/CellTryViewController.swift; sourceTree = "<group>"; };
+		41050ADB1FC5933D00C0A051 /* akaisann.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = akaisann.png; path = ../../sozai/picture/akaisann.png; sourceTree = "<group>"; };
+		41050ADC1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = P0cSq5sf_400x400.jpg; path = ../../sozai/picture/P0cSq5sf_400x400.jpg; sourceTree = "<group>"; };
+		41050AE01FCD70AD00C0A051 /* CustumTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustumTableCell.swift; path = CustumCell/CustumTableCell.swift; sourceTree = "<group>"; };
+		41050AE11FCD70AD00C0A051 /* CustumTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustumTableCell.xib; path = CustumCell/CustumTableCell.xib; sourceTree = "<group>"; };
 		41122CAD1F55781500DA3612 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/Calender-aebsukpjxyvpawbohslyovxsnhle/Build/Products/Debug-iphonesimulator/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
 		41122CAF1F557F9700DA3612 /* DeviceSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
 		41122CB11F5851C400DA3612 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = SOURCE_ROOT; };
@@ -173,6 +183,8 @@
 		410081201EF92B1500DBCA05 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				41050ADB1FC5933D00C0A051 /* akaisann.png */,
+				41050ADC1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg */,
 				41122CCF1F58749600DA3612 /* ya.png */,
 				41122CC51F586C9B00DA3612 /* yellow.png */,
 				41122CC61F586C9B00DA3612 /* yellowのコピー.png */,
@@ -195,6 +207,15 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		41050ADF1FCD705300C0A051 /* CustumCell */ = {
+			isa = PBXGroup;
+			children = (
+				41050AE01FCD70AD00C0A051 /* CustumTableCell.swift */,
+				41050AE11FCD70AD00C0A051 /* CustumTableCell.xib */,
+			);
+			name = CustumCell;
+			sourceTree = "<group>";
+		};
 		412342E11FB1BDC400712D00 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +225,7 @@
 				412342EA1FB1BF5200712D00 /* HensyuuController.swift */,
 				412342EE1FB1BF9200712D00 /* SettingController.swift */,
 				412342F01FB1C08400712D00 /* ChangeController.swift */,
+				41050AD91FC5919D00C0A051 /* CellTryViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -242,6 +264,7 @@
 		41D305EA1E40A07A004031DA /* Calender */ = {
 			isa = PBXGroup;
 			children = (
+				41050ADF1FCD705300C0A051 /* CustumCell */,
 				412342F21FB1C1FB00712D00 /* Manager */,
 				412342E11FB1BDC400712D00 /* ViewController */,
 				410081201EF92B1500DBCA05 /* images */,
@@ -425,6 +448,7 @@
 				41122CBD1F5851C400DA3612 /* orange.png in Resources */,
 				41122CC31F58663200DA3612 /* red.png in Resources */,
 				41122CC41F58663200DA3612 /* redのコピー.png in Resources */,
+				41050ADD1FC5933D00C0A051 /* akaisann.png in Resources */,
 				41122CB91F5851C400DA3612 /* blue.png in Resources */,
 				41122CC71F586C9B00DA3612 /* yellow.png in Resources */,
 				41122CC01F5851C400DA3612 /* purpleのコピー.png in Resources */,
@@ -433,6 +457,8 @@
 				41122CD01F58749600DA3612 /* ya.png in Resources */,
 				41122CBA1F5851C400DA3612 /* blueのコピー.png in Resources */,
 				412F00231F38D84400EB1CC4 /* set.png in Resources */,
+				41050ADE1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg in Resources */,
+				41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */,
 				418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */,
 				41122CBF1F5851C400DA3612 /* purple.png in Resources */,
 			);
@@ -622,6 +648,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */,
+				41050ADA1FC5919D00C0A051 /* CellTryViewController.swift in Sources */,
 				412342F41FB1C24100712D00 /* DataManager.swift in Sources */,
 				412342E31FB1BDE600712D00 /* ViewController.swift in Sources */,
 				412342E51FB1BE6D00712D00 /* ShowController.swift in Sources */,
@@ -629,6 +656,7 @@
 				412342EB1FB1BF5200712D00 /* HensyuuController.swift in Sources */,
 				418BA12C1F1DEDFD0084413F /* CalendarCell.swift in Sources */,
 				4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */,
+				41050AE21FCD70AD00C0A051 /* CustumTableCell.swift in Sources */,
 				418BA16E1F36D8C20084413F /* CollectionChangeCell.swift in Sources */,
 				41122CB01F557F9700DA3612 /* DeviceSize.swift in Sources */,
 				412342E91FB1BF2700712D00 /* EditController.swift in Sources */,

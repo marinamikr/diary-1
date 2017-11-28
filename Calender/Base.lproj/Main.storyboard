@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cCm-zs-b6H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cCm-zs-b6H">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -335,6 +335,16 @@ picture</string>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7WW-T7-W20">
+                                <rect key="frame" x="39" y="482" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="aaaaa"/>
+                                <connections>
+                                    <action selector="oooo" destination="bWZ-Ye-kVo" eventType="touchUpInside" id="dYl-bi-bwO"/>
+                                    <segue destination="GFY-rD-uw8" kind="modal" id="qKS-lo-9aX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -354,6 +364,63 @@ picture</string>
                 <tapGestureRecognizer id="bn1-KJ-z2K"/>
             </objects>
             <point key="canvasLocation" x="5492" y="344.97751124437787"/>
+        </scene>
+        <!--Cell Try View Controller-->
+        <scene sceneID="CRk-mC-F23">
+            <objects>
+                <viewController id="GFY-rD-uw8" customClass="CellTryViewController" customModule="Calender" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1bm-Ld-Slg"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Sr-Kf-RYb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VTY-bs-ro6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6pr-Fa-F83">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CGl-Tg-0zl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nxy-ar-tUI">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="custumCell" id="l3x-1b-N1d">
+                                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l3x-1b-N1d" id="fgg-Q5-0R0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="GFY-rD-uw8" id="ZFz-Xi-pJC"/>
+                                                    <outlet property="delegate" destination="GFY-rD-uw8" id="FkT-4r-a6F"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6pr-Fa-F83" secondAttribute="trailing" id="C8S-Sv-BiY"/>
+                            <constraint firstItem="6pr-Fa-F83" firstAttribute="bottom" secondItem="4Sr-Kf-RYb" secondAttribute="top" id="FHd-88-Ov7"/>
+                            <constraint firstItem="6pr-Fa-F83" firstAttribute="leading" secondItem="VTY-bs-ro6" secondAttribute="leading" id="Xod-D2-2jD"/>
+                            <constraint firstItem="6pr-Fa-F83" firstAttribute="top" secondItem="VTY-bs-ro6" secondAttribute="top" id="x8D-PC-abB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="nxy-ar-tUI" id="8Yp-2f-qCD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Fb-M8-B5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6318" y="499"/>
         </scene>
         <!--Show Controller-->
         <scene sceneID="KFN-V4-enz">
@@ -660,7 +727,6 @@ picture</string>
                                 <state key="normal" title="delete"/>
                                 <connections>
                                     <action selector="delete" destination="fHm-jF-mwl" eventType="touchUpInside" id="MDc-AC-pQe"/>
-                                    <action selector="delete" destination="bWZ-Ye-kVo" eventType="touchUpInside" id="iZD-gO-Yvi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9t9-a7-w2y">
@@ -669,7 +735,6 @@ picture</string>
                                 <color key="backgroundColor" red="1" green="0.70588235290000001" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="add"/>
                                 <connections>
-                                    <action selector="add" destination="bWZ-Ye-kVo" eventType="touchUpInside" id="9vS-yx-bLC"/>
                                     <action selector="add" destination="fHm-jF-mwl" eventType="touchUpInside" id="pNB-p5-YCx"/>
                                 </connections>
                             </button>
@@ -686,8 +751,6 @@ picture</string>
                                 </state>
                                 <connections>
                                     <action selector="picture" destination="fHm-jF-mwl" eventType="touchUpInside" id="oMj-2i-5np"/>
-                                    <action selector="picture" destination="bWZ-Ye-kVo" eventType="touchUpInside" id="q6Q-fe-os6"/>
-                                    <action selector="tapScreen:" destination="bWZ-Ye-kVo" eventType="touchUpInside" id="6Pe-cA-7tX"/>
                                     <action selector="tapScreen:" destination="fHm-jF-mwl" eventType="touchUpInside" id="hQb-fm-SdL"/>
                                 </connections>
                             </button>

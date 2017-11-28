@@ -133,6 +133,9 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         self.view.endEditing(true)
     }
     
+    @IBAction func oooo() {
+    }
+    
     @IBAction func add() {
         
         //アラート
