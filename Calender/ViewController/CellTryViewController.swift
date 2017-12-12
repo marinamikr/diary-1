@@ -7,28 +7,71 @@
 //
 
 import UIKit
+import Firebase
 
-class CellTryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class CellTryViewController: UIViewController,UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
     
-    let konann = UIImage(named:"akaisann.png")
-    let shakemii = UIImage(named:"P0cSq5sf_400×400.jpg")
+    //let konann = UIImage(named:"akaisann.png")
+  //  let shakemii = UIImage(named:"P0cSq5sf_400×400.jpg")
     
- 
-    let image = ""
+    
+    var image = ""
     var ititle:String = ""
     var date:String = ""
     
-
+    var dateArray: [String] = Array()
+    var titleArray: [String] = Array()
+    var mainArray: [String] = Array()
+    var picArray: [UIImage] = Array()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        tableView.estimatedRowHeight = 10//セルの高さの見積もり
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         tableView.dataSource = self
-        tableView.delegate = self
         self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumCell")
+        
+        // databaseから画像の名前を取得
+        let ref = Database.database().reference().child("283D266E-95F6-4622-BDEB-B8E20BA754E5")
+        ref.observe(DataEventType.value, with: { snapshot in
+            
+            let postDict = snapshot.value as! [String : AnyObject]
+            var names: [String] = []
+            var count = 0
+            for (key, value) in postDict {
+                if (key == "date"){
+                    self.dateArray.append(value as! String)
+                }else if (key == "title"){
+                    self.titleArray.append(value as! String)
+                }else if (key == "downloadURL"){
+                    let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
+                    self.picArray.append(UIImage(data: loadedImageData as! Data)!)
+                    
+                    
+                    
+                }else if (key == "main"){
+                    self.mainArray.append(value as! String)
+                }
+                
+              
+
+            }
+            
+            print(self.dateArray)
+            print(self.mainArray)
+            print(self.titleArray)
+            print(self.picArray)
+            
+            self.tableView.reloadData()
+
+        })
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,7 +81,7 @@ class CellTryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     /// セルの個数を指定するデリゲートメソッド（必須）
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return dateArray.count
     }
     
     /// セルに値を設定するデータソースメソッド（必須）
@@ -49,21 +92,17 @@ class CellTryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         // セルに表示する値を設定する
         
-        custumCell.pic.image = UIImage(named: "akaisann.png")
-        custumCell.title.text = "schoolnow"
-        custumCell.date.text = "20171128"
-
-    
+        custumCell.imageView?.image = picArray[indexPath.row]
+        custumCell.title.text = titleArray[indexPath.row]
+        custumCell.date.text = dateArray[indexPath.row]
         
         
-         
+        
+        
+        
         
         return custumCell
     }
     
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
-    }
-   
 }
+

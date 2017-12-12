@@ -88,10 +88,15 @@ class changeController: UIViewController, UICollectionViewDataSource,UICollectio
         // databaseから画像の名前を取得
         let ref = Database.database().reference().child("photo")
         ref.observe(DataEventType.value, with: { snapshot in
+           
             let postDict = snapshot.value as! [String : AnyObject]
             var names: [String] = []
             var count = 0
             for (_, value) in postDict {
+              
+                
+                
+                
                 if let number = self.saveNumber.object(forKey: "SAVE") as? Int {
                     if count == number {
                         break
