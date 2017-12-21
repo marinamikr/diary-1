@@ -53,6 +53,8 @@ class ShowController: UIViewController {
         
         
         let realm = try! Realm()
+        
+        
         //realmから\(year!)\(month!)\(date!)で検索
         if let diary = realm.objects(Diary.self).filter("date == \(year)\(month)\(date)").last {
             label.text = diary.title

@@ -8,11 +8,14 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
+import RealmSwift
 
 class CellTryViewController: UIViewController,UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
+  
     
     //let konann = UIImage(named:"akaisann.png")
   //  let shakemii = UIImage(named:"P0cSq5sf_400×400.jpg")
@@ -27,16 +30,47 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     var mainArray: [String] = Array()
     var picArray: [UIImage] = Array()
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        SVProgressHUD.show()
+
+       
+
         
         tableView.estimatedRowHeight = 10//セルの高さの見積もり
         tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.dataSource = self
         self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumCell")
+        ChangeDiary()
         
+    }
+    
+    func MyDiary(){
+        let realm = try! Realm()
+
+        let results = realm.objects(Diary.self)
+        let array = Array(results)
+        
+        for i in 0 ..< array.count {
+        
+            dateArray.append(array[i].date as String)
+            titleArray.append(array[i].title)
+            picArray.append(array[i].photo )
+            mainArray.append(array[i].main)
+        
+        
+        }
+        
+        
+    }
+    
+    
+    func ChangeDiary(){
         // databaseから画像の名前を取得
         let ref = Database.database().reference().child("283D266E-95F6-4622-BDEB-B8E20BA754E5")
         ref.observe(DataEventType.value, with: { snapshot in
@@ -59,8 +93,8 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                     self.mainArray.append(value as! String)
                 }
                 
-              
-
+                
+                
             }
             
             print(self.dateArray)
@@ -68,12 +102,38 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
             print(self.titleArray)
             print(self.picArray)
             
+            SVProgressHUD.dismiss()
             self.tableView.reloadData()
-
+            
         })
         
+
     }
     
+    
+    @IBAction func testSegmentedControl(sender: UISegmentedControl) {
+        
+        
+        //セグメント番号で条件分岐させる
+        switch sender.selectedSegmentIndex {
+        case 0:
+            print("first")
+        case 1:
+            print("second")
+        default:
+            print("該当無し")
+        }
+    }
+    
+    @IBAction func segumentControllTap(_ sender: Any) {
+        switch (sender as AnyObject).selectedSegmentIndex {
+        case 0:
+            print("first")
+        case 1:
+            print("second")
+        default:
+            print("該当無し")
+        }    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
