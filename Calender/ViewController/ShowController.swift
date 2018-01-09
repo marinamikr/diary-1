@@ -49,16 +49,21 @@ class ShowController: UIViewController {
         }
         
         backButton.backgroundColor = colorManager.mainColor()[colorNum]
-        dateLabel.text = "\(year),　\(month),　\(date)"//2017,4,3
         
         
         let realm = try! Realm()
         
         
         //realmから\(year!)\(month!)\(date!)で検索
-        if let diary = realm.objects(Diary.self).filter("date == \(year)\(month)\(date)").last {
-            label.text = diary.title
-            dateLabel.text = String("\(year),　\(month),　\(date)")
+        let text = String(year) + "/" + String(month) + "/" + String(date)
+        print("@")
+        print(text)
+        
+        if let diary = realm.objects(Diary.self).filter("date == %@", text).last{
+            print("showshow")
+            
+        label.text = diary.title
+            dateLabel.text = diary.date
             mainLabel.text = diary.main
             changeCheck = diary.changeCheck
             

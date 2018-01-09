@@ -141,7 +141,7 @@ class HensyuuController: UIViewController,UIImagePickerControllerDelegate,UINavi
                                         //
                                         let component = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self.datepicker.date)
                                         
-                                        diary.date = Int("\(component.year!)\(component.month!)\(component.day!)")!
+                                        diary.date = String(component.year!)+"/"+String(component.month!)+"/"+String(component.day!)
                                         diary.iddate = String(describing: Date())
                                         
                                         diary.main = self.textView.text

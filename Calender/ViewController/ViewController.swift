@@ -201,8 +201,12 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             //変更点（2017/07/13）
             let realm = try! Realm()
             
-            if let diary = realm.objects(Diary.self).filter("date == \(year)\(month)\(date)").last {
-                
+            let text = String(year) + "/" + String(month) + "/" + String(date)
+
+            print("aaa")
+            print(text)
+            if let diary = realm.objects(Diary.self).filter("date == %@", text).last{
+                 print("bbb")
                 print(diary)
                 
                 if diary.photo != nil {

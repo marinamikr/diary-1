@@ -144,6 +144,8 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         alert.addAction(UIAlertAction(title: "got it",
                                       style: UIAlertActionStyle.default,
                                       handler: {action in
+                                        
+                                        print("hoge")
                                         //ボタンが押されたら
                                         
                                         // STEP.1 Realmを初期化
@@ -156,7 +158,18 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                                         //
                                         let component = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self.datepicker.date)
                                         
-                                        diary.date = Int("\(component.year!)\(component.month!)\(component.day!)")!
+                                        if component.day! <= 9{
+                                            diary.date = String(component.year!)+"/"+String(component.month!)+"/0" + String(component.day!)
+                                            
+
+                                        }else{
+                                            diary.date = String(component.year!)+"/"+String(component.month!)+"/" + String(component.day!)
+                                            
+
+                                        }
+                                        
+                                        print(diary.date)
+                                       
                                         diary.iddate = String(describing: Date())
                                         
                                         diary.main = self.textView.text

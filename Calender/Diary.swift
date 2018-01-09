@@ -12,7 +12,7 @@ import RealmSwift
 
 class Diary: Object {
     dynamic var iddate = ""
-    dynamic var date = 0
+    dynamic var date = ""
     dynamic var main = ""
     dynamic var title = ""
     dynamic var photo: Data? = nil

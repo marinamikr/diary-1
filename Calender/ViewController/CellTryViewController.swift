@@ -58,13 +58,15 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         
         for i in 0 ..< array.count {
         
-            dateArray.append(array[i].date as String)
+            dateArray.append(array[i].date)
             titleArray.append(array[i].title)
-            picArray.append(array[i].photo )
+            picArray.append(UIImage(data:array[i].photo! )!)
             mainArray.append(array[i].main)
         
         
         }
+        
+        self.tableView.reloadData()
         
         
     }
