@@ -11,305 +11,215 @@ import RealmSwift
 import Firebase
 
 
-extension UIColor {
-    class func lightBlue() -> UIColor {
-        return UIColor(red: 92.0 / 255, green: 192.0 / 255, blue: 210.0 / 255, alpha: 1.0)
-    }
-    
-    class func lightRed() -> UIColor {
-        return UIColor(red: 195.0 / 255, green: 123.0 / 255, blue: 175.0 / 255, alpha: 1.0)
-    }
-}
 
-class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+class ViewController: UIViewController{
+  
+    /*View関連の変数*/
+    @IBOutlet weak var headerPrevBtn: UIButton!//一月前に移動するボタン
+    @IBOutlet weak var headerNextBtn: UIButton!//一月後に移動するボタン
+    @IBOutlet weak var headerTitle: UILabel!    //表示している月を表示するボタン
+    @IBOutlet weak var calenderHeaderView: UIView! //CollectionViewのヘッダー
+    @IBOutlet weak var calenderCollectionView: UICollectionView!//CollectionView自体
+    @IBOutlet weak var nextlabel: UILabel!//一月後に移動するボタンのlabel
+    @IBOutlet weak var prelabel: UILabel!//一月前に移動するボタンのlabel
+    var calenderCell:CalendarCell = CalendarCell() //CollectionView内のcell
     
+    //日付を管理するManeger
     let dateManager = DateManager()
+    //色を管理するManeger
     let colorManager = ColorManeger()
-    let daysPerWeek: Int = 7
-    let cellMargin: CGFloat = 0
-    var selectedDate = Date()
-    var today: Date!
-    let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    
-    @IBOutlet weak var headerPrevBtn: UIButton!//①
-    @IBOutlet weak var headerNextBtn: UIButton!//②
-    @IBOutlet weak var headerTitle: UILabel!    //③
-    @IBOutlet weak var calenderHeaderView: UIView! //④
-    @IBOutlet weak var calenderCollectionView: UICollectionView!//⑤
-    @IBOutlet weak var nextlabel: UILabel!
-    @IBOutlet weak var prevlabel: UILabel!
-    
-    var calenderCell:CalendarCell = CalendarCell()
-    
-    var colorNum:Int = 0
-    
+    //NSUserDefaults
     var userDefaults:UserDefaults = UserDefaults.standard
     
-    var year:String = ""
-    var month:String = ""
-    var date:String = ""
+    //CollectionViewのExtentionで使用する変数
+    var cellMargin: CGFloat = 0
+    var daysPerWeek: Int = 7
+    var selectedDate:Date = Date()
     
-    //画面が消える時
-    override func viewDidDisappear(_ animated: Bool) {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // ナビバーの表示を切り替える
+        if let nv = navigationController {
+            nv.setNavigationBarHidden(true, animated: true)
+        }
+        
+        //collectionViewのdelegateの指定と、背景色の指定
+        calenderCollectionView.delegate = self
+        calenderCollectionView.dataSource = self
+        calenderCollectionView.backgroundColor = UIColor.white
+        
+        //ヘッダーの指定
+        headerTitle.text = dateManager.firstDateOfMonth.toMonthString()
+        prelabel.text = dateManager.firstDateOfMonth.monthAgoDate().toMonthString()
+        nextlabel.text = dateManager.firstDateOfMonth.monthLaterDate().toMonthString()
+        
+        //色の設置をする
+        setLayoutColor()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
+        calenderCollectionView.reloadData()
+        self.calenderCell.reloadInputViews()
+    }
+    
+   
+    //１ヶ月前に戻るボタンをタップした時の処理
+    @IBAction func tappedHeaderPrevBtn(_ sender: UIButton) {
+        
+        print("hoge")
+        //まず、DateManagerの情報を１ヶ月前に変更
+        dateManager.changePreMonth()
+        
+        //ヘッダーの更新
+        headerTitle.text = dateManager.firstDateOfMonth.toMonthString()
+        prelabel.text = dateManager.firstDateOfMonth.monthAgoDate().toMonthString()
+        nextlabel.text = dateManager.firstDateOfMonth.monthLaterDate().toMonthString()
+        
+        //変更点（2017/07/13）
+        //CollectionViewの更新
+        calenderCollectionView.reloadData()
+    }
+    
+    //１ヶ月後に移動するボタンをタップした時の処理
+    @IBAction func tappedHeaderNextBtn(_ sender: UIButton) {
+        //まず、DateManagerの情報を１ヶ月後に変更
+        dateManager.changeNextMonth()
+        
+        //ヘッダーの更新
+        headerTitle.text = dateManager.firstDateOfMonth.toMonthString()
+        prelabel.text = dateManager.firstDateOfMonth.monthAgoDate().toMonthString()
+        nextlabel.text = dateManager.firstDateOfMonth.monthLaterDate().toMonthString()
+        
+        //変更点（2017/07/13）
+        //CollectionViewの更新
+        calenderCollectionView.reloadData()
+    }
+    
+    
+    //レイアウトの色を指定する
+    func  setLayoutColor() {
+        
+        var colorNum = 0
+        
+        //NSUserDefaultsから、ユーザーの指定している色の情報を取得
         if let color = userDefaults.object(forKey: "COLOR") {
-            colorNum = color as! Int
+           colorNum = color as! Int
         }
         
         switch colorNum {
         case 0:
-            
             headerNextBtn.setImage(UIImage(named: "redのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "red.png"), for: .normal)
-            
-            
             calenderCollectionView.layer.borderColor = UIColor(red:1.0,green:0.894, blue:0.882, alpha:1.0).cgColor
-            
-            
-            
         case 1:
             headerNextBtn.setImage(UIImage(named: "矢印.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "矢印i.png"), for: .normal)
-            
             calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
         case 2:
             headerNextBtn.setImage(UIImage(named: "orangeのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "orange.png"), for: .normal)
-            
             calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
             
         case 3:
             headerNextBtn.setImage(UIImage(named: "yellowのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "yellow.png"), for: .normal)
-            
             calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
             
         case 4:
             headerNextBtn.setImage(UIImage(named: "greenのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "green.png"), for: .normal)
-            
             calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
             
         case 5:
             headerNextBtn.setImage(UIImage(named: "blueのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "blue.png"), for: .normal)
-            
             calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
             
         case 6:
             headerNextBtn.setImage(UIImage(named: "purpleのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "purple.png"), for: .normal)
-            
             calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
-            
             
         default:
             return
         }
         
         calenderHeaderView.backgroundColor = colorManager.mainColor()[colorNum]
-        // ナビバーの表示を切り替える
-        if let nv = navigationController {
-            nv.setNavigationBarHidden(true, animated: true)
-        }
-        
-        
-        calenderCollectionView.reloadData()
-        
-        
-        self.calenderCell.reloadInputViews()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        calenderHeaderView.backgroundColor = colorManager.mainColor()[colorNum]
-        calenderCollectionView.delegate = self
-        calenderCollectionView.dataSource = self
-        calenderCollectionView.backgroundColor = UIColor.white
-        
-        headerTitle.adjustsFontSizeToFitWidth = true
-        
-        headerTitle.text = changeHeaderTitle(selectedDate) //追記
-        
-        //ボタンに前後月を表示
-        let prevbackMonth = selectedDate.monthAgoDate()
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "M"
-        let prevbackMonthStr = formatter.string(from: prevbackMonth)
-        prevlabel.text = formatter.string(from: prevbackMonth)
-        
-        let nextMonth = selectedDate.monthLaterDate()
-        formatter.dateFormat = "M"
-        let nextMonthStr = formatter.string(from: nextMonth)
-        headerNextBtn.setTitle(nextMonthStr, for: UIControlState())
-        nextlabel.text = formatter.string(from: nextMonth)
-        
-        
-    }
+}
+
+
+extension ViewController :UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    
-    //1
+    //CollectionViewのSectionの数を指定する
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-    //2
+    
+    //CollectionViewのCell数を指定する
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Section毎にCellの総数を変える.
+        // Section毎にCellの総数を変える。
         if section == 0 {
+            //曜日を表すSectionでは、曜日の数=7を指定する
             return 7
-        } else {
-            return dateManager.numberOfItems//ここは月によって異なる(後ほど説明します)
+        } else if section == 1{
+            //日付を表すcellの個数は、DateManegerから取得
+            return dateManager.numberOfItems
+        }else{
+            return 0
         }
     }
-    //3
+    
+    //CollectionViewのCellを作成する
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        //カスタムCellを取得【CalendarCell型】
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarCell
-        //テキストカラー
+        
+        //テキストカラーの指定
         if (indexPath.row % 7 == 0) {
-            cell.textLabel.textColor = UIColor.lightRed()
+            cell.textLabel.textColor = UIColor.lightRed() //日曜日は赤
         } else if (indexPath.row % 7 == 6) {
-            cell.textLabel.textColor = UIColor.lightBlue()
+            cell.textLabel.textColor = UIColor.lightBlue()//土曜日は青
         } else {
-            cell.textLabel.textColor = UIColor.gray
+            cell.textLabel.textColor = UIColor.gray//他は灰色
         }
-        //テキスト配置
+        
+        
+        //テキストの文字を指定
         if indexPath.section == 0 {
-            cell.textLabel.text = weekArray[indexPath.row]
+            cell.textLabel.text = dateManager.weekArray[indexPath.row]
             cell.textLabel.textAlignment = .center
         } else {
+            //セルに表示する日付の情報を取得
             let cellDate  = dateManager.currentMonthOfDates[indexPath.row]
-            let formatter: DateFormatter = DateFormatter()
-            formatter.dateFormat = "yyyy"
-            let year = formatter.string(from: cellDate)
-            formatter.dateFormat = "MM"
-            let month = formatter.string(from: cellDate)
-            formatter.dateFormat = "dd"
-            let date = formatter.string(from: cellDate)
-            cell.textLabel.text = date
+            
+            //セルに日付を表示
+            cell.textLabel.text = cellDate.toDayString()
             cell.textLabel.textAlignment = .left
-            //月によって1日の場所は異なる(後ほど説明します)
-            
-            //変更点（2017/07/13）
-            cell.image.image = nil
-            
-            //変更点（2017/07/13）
+           
+            //Realmオブジェクトの取得
             let realm = try! Realm()
-            
-            let text = String(year) + "/" + String(month) + "/" + String(date)
-
-            print("aaa")
-            print(text)
-            if let diary = realm.objects(Diary.self).filter("date == %@", text).last{
-                 print("bbb")
-                print(diary)
-                
+            //Realmから、dateの情報が、Cellに表示する日付と一致するものを検索
+            if let diary = realm.objects(Diary.self).filter("date == %@", cellDate.toString()).last{
+                //もし、dateの情報が、Cellに表示する日付と一致するデータの中に、画像の情報が存在したら
                 if diary.photo != nil {
                     cell.image.image = UIImage(data: diary.photo as! Data)
-                    
-                    print(indexPath.row)
                 }
-                
             }
-            
         }
-        
-        
-        
-        
         
         return cell
     }
     
-    //collectionViewのセルを押した時
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellDate  = dateManager.currentMonthOfDates[indexPath.row]
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "yyyy"
-        year = formatter.string(from: cellDate)
-        formatter.dateFormat = "M"
-        month = formatter.string(from: cellDate)
-        formatter.dateFormat = "dd"
-        date = formatter.string(from: cellDate)
-        
-        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        performSegue(withIdentifier: "EditController", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "EditController" {
-            
-            let showController:ShowController = segue.destination as! ShowController
-            
-            // 変数:遷移先ViewController型 = segue.destinationViewController as 遷移先ViewController型
-            // segue.destinationViewController は遷移先のViewController
-            
-            showController.year = self.year
-            showController.month = self.month
-            showController.date = self.date
-        }
-        
-    }
-    
-    
-    
-    
-    //①タップ時
-    @IBAction func tappedHeaderPrevBtn(_ sender: UIButton) {
-        dateManager.prevMonth()
-        calenderCollectionView.reloadData()
-        headerTitle.text = changeHeaderTitle(dateManager.selectedDate)
-        print("a")
-        print(dateManager.selectedDate)
-        
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "M"
-        let prevbackMonthStr = formatter.string(from: dateManager.selectedDate.monthAgoDate())
-        headerPrevBtn.setTitle(prevbackMonthStr, for: UIControlState())
-        prevlabel.text = prevbackMonthStr
-        
-        formatter.dateFormat = "M"
-        let nextMonthStr = formatter.string(from: dateManager.selectedDate.monthLaterDate())
-        headerNextBtn.setTitle(nextMonthStr, for: UIControlState())
-        nextlabel.text = nextMonthStr
-        
-        //変更点（2017/07/13）
-        calenderCollectionView.reloadData()
-    }
-    
-    //②タップ時
-    @IBAction func tappedHeaderNextBtn(_ sender: UIButton) {
-        dateManager.nextMonth()
-        calenderCollectionView.reloadData()
-        headerTitle.text = changeHeaderTitle(dateManager.selectedDate)
-        
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "M"
-        let prevbackMonthStr = formatter.string(from: dateManager.selectedDate.monthAgoDate())
-        headerPrevBtn.setTitle(prevbackMonthStr, for: UIControlState())
-        prevlabel.text = prevbackMonthStr
-        
-        formatter.dateFormat = "M"
-        let nextMonthStr = formatter.string(from: dateManager.selectedDate.monthLaterDate())
-        headerNextBtn.setTitle(nextMonthStr, for: UIControlState())
-        nextlabel.text = nextMonthStr
-        
-        //変更点（2017/07/13）
-        calenderCollectionView.reloadData()
-    }
-    
-    
     //セルのサイズを設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
         
         let numberOfMargin: CGFloat = 8.0
         let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
@@ -320,7 +230,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         }
         
         return CGSize(width: width, height: height)
-        
     }
     
     //セルの垂直方向のマージンを設定
@@ -335,12 +244,24 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         return cellMargin
     }
     
-    //headerの月を変更
-    func changeHeaderTitle(_ date: Date) -> String {
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "yyyy\nM"
-        let selectMonth = formatter.string(from: date)
-        return selectMonth
+    
+    //collectionViewのセルを押した時
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //選ばれたCellの、日付の情報を取得し、selectedDateに代入
+        let cellDate  = dateManager.currentMonthOfDates[indexPath.row]
+        self.selectedDate = cellDate
+        //画面遷移
+        performSegue(withIdentifier: "EditController", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "EditController" {
+            //画面遷移前に、選ばれたCellの日付の情報をShowControllerに渡しておく
+            let showController:ShowController = segue.destination as! ShowController
+            showController.selectedDate = self.selectedDate
+            showController.selectedDateString = self.selectedDate.toString()
+        }
+        
+    }
 }

@@ -10,8 +10,6 @@
 		0441E65F90F7049DBDAD0DF2 /* Pods_CalenderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE017672D86243A94992FC45 /* Pods_CalenderUITests.framework */; };
 		112DC6026536389E76F19364 /* Pods_CalenderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE907BF403B2205D7526925F /* Pods_CalenderTests.framework */; };
 		41050ADA1FC5919D00C0A051 /* CellTryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41050AD91FC5919D00C0A051 /* CellTryViewController.swift */; };
-		41050ADD1FC5933D00C0A051 /* akaisann.png in Resources */ = {isa = PBXBuildFile; fileRef = 41050ADB1FC5933D00C0A051 /* akaisann.png */; };
-		41050ADE1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41050ADC1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg */; };
 		41050AE21FCD70AD00C0A051 /* CustumTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41050AE01FCD70AD00C0A051 /* CustumTableCell.swift */; };
 		41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41050AE11FCD70AD00C0A051 /* CustumTableCell.xib */; };
 		41122CAE1F55781500DA3612 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41122CAD1F55781500DA3612 /* SVProgressHUD.framework */; };
@@ -37,7 +35,7 @@
 		412342EB1FB1BF5200712D00 /* HensyuuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342EA1FB1BF5200712D00 /* HensyuuController.swift */; };
 		412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342EE1FB1BF9200712D00 /* SettingController.swift */; };
 		412342F11FB1C08400712D00 /* ChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F01FB1C08400712D00 /* ChangeController.swift */; };
-		412342F41FB1C24100712D00 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F31FB1C24100712D00 /* DataManager.swift */; };
+		412342F41FB1C24100712D00 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F31FB1C24100712D00 /* DateManager.swift */; };
 		412F00231F38D84400EB1CC4 /* set.png in Resources */ = {isa = PBXBuildFile; fileRef = 412F00221F38D84400EB1CC4 /* set.png */; };
 		4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182FD851F55728D000E750E /* PlaceHolderTextView.swift */; };
 		418BA12C1F1DEDFD0084413F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418BA12B1F1DEDFD0084413F /* CalendarCell.swift */; };
@@ -56,6 +54,7 @@
 		41D306011E40A07A004031DA /* CalenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D306001E40A07A004031DA /* CalenderTests.swift */; };
 		41D3060C1E40A07A004031DA /* CalenderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3060B1E40A07A004031DA /* CalenderUITests.swift */; };
 		662E44B77EDD770908F048C5 /* Pods_Calender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F1B0CF892EFC77E28F6CA2 /* Pods_Calender.framework */; };
+		AABAB3642005FD28004D2203 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABAB3632005FD28004D2203 /* Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +78,6 @@
 		10497BCFCBE4761E2A90B92F /* Pods-CalenderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalenderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalenderTests/Pods-CalenderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		40BF2B74CF66677194A50F8B /* Pods-Calender.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calender.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calender/Pods-Calender.release.xcconfig"; sourceTree = "<group>"; };
 		41050AD91FC5919D00C0A051 /* CellTryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellTryViewController.swift; path = ViewController/CellTryViewController.swift; sourceTree = "<group>"; };
-		41050ADB1FC5933D00C0A051 /* akaisann.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = akaisann.png; path = ../../sozai/picture/akaisann.png; sourceTree = "<group>"; };
-		41050ADC1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = P0cSq5sf_400x400.jpg; path = ../../sozai/picture/P0cSq5sf_400x400.jpg; sourceTree = "<group>"; };
 		41050AE01FCD70AD00C0A051 /* CustumTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustumTableCell.swift; path = CustumCell/CustumTableCell.swift; sourceTree = "<group>"; };
 		41050AE11FCD70AD00C0A051 /* CustumTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustumTableCell.xib; path = CustumCell/CustumTableCell.xib; sourceTree = "<group>"; };
 		41122CAD1F55781500DA3612 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/Calender-aebsukpjxyvpawbohslyovxsnhle/Build/Products/Debug-iphonesimulator/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
@@ -106,7 +103,7 @@
 		412342EA1FB1BF5200712D00 /* HensyuuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HensyuuController.swift; path = ViewController/HensyuuController.swift; sourceTree = "<group>"; };
 		412342EE1FB1BF9200712D00 /* SettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingController.swift; path = ViewController/SettingController.swift; sourceTree = "<group>"; };
 		412342F01FB1C08400712D00 /* ChangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeController.swift; path = ViewController/ChangeController.swift; sourceTree = "<group>"; };
-		412342F31FB1C24100712D00 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = Manager/DataManager.swift; sourceTree = "<group>"; };
+		412342F31FB1C24100712D00 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = Manager/DateManager.swift; sourceTree = "<group>"; };
 		412F00221F38D84400EB1CC4 /* set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set.png; sourceTree = "<group>"; };
 		4182FD851F55728D000E750E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		4182FD871F55760A000E750E /* Calender-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calender-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -133,6 +130,7 @@
 		41D3060D1E40A07A004031DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5370A4A5F59C17E94D2185D7 /* Pods-CalenderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalenderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalenderTests/Pods-CalenderTests.release.xcconfig"; sourceTree = "<group>"; };
 		624F444C1D9793F3949F1E5D /* Pods-Calender.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calender.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calender/Pods-Calender.debug.xcconfig"; sourceTree = "<group>"; };
+		AABAB3632005FD28004D2203 /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		BD39B833FED21B8A6B921758 /* Pods-CalenderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalenderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalenderUITests/Pods-CalenderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE017672D86243A94992FC45 /* Pods_CalenderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalenderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F1B0CF892EFC77E28F6CA2 /* Pods_Calender.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calender.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,8 +181,6 @@
 		410081201EF92B1500DBCA05 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				41050ADB1FC5933D00C0A051 /* akaisann.png */,
-				41050ADC1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg */,
 				41122CCF1F58749600DA3612 /* ya.png */,
 				41122CC51F586C9B00DA3612 /* yellow.png */,
 				41122CC61F586C9B00DA3612 /* yellowのコピー.png */,
@@ -234,7 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				41C70C5A1EEFF82F0020916A /* ColorManeger.swift */,
-				412342F31FB1C24100712D00 /* DataManager.swift */,
+				412342F31FB1C24100712D00 /* DateManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -264,6 +260,7 @@
 		41D305EA1E40A07A004031DA /* Calender */ = {
 			isa = PBXGroup;
 			children = (
+				AABAB3652005FD2E004D2203 /* Extention */,
 				41050ADF1FCD705300C0A051 /* CustumCell */,
 				412342F21FB1C1FB00712D00 /* Manager */,
 				412342E11FB1BDC400712D00 /* ViewController */,
@@ -302,6 +299,14 @@
 				41D3060D1E40A07A004031DA /* Info.plist */,
 			);
 			path = CalenderUITests;
+			sourceTree = "<group>";
+		};
+		AABAB3652005FD2E004D2203 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				AABAB3632005FD28004D2203 /* Extention.swift */,
+			);
+			name = Extention;
 			sourceTree = "<group>";
 		};
 		BF52A8E544730FCA12682A90 /* Pods */ = {
@@ -448,7 +453,6 @@
 				41122CBD1F5851C400DA3612 /* orange.png in Resources */,
 				41122CC31F58663200DA3612 /* red.png in Resources */,
 				41122CC41F58663200DA3612 /* redのコピー.png in Resources */,
-				41050ADD1FC5933D00C0A051 /* akaisann.png in Resources */,
 				41122CB91F5851C400DA3612 /* blue.png in Resources */,
 				41122CC71F586C9B00DA3612 /* yellow.png in Resources */,
 				41122CC01F5851C400DA3612 /* purpleのコピー.png in Resources */,
@@ -457,7 +461,6 @@
 				41122CD01F58749600DA3612 /* ya.png in Resources */,
 				41122CBA1F5851C400DA3612 /* blueのコピー.png in Resources */,
 				412F00231F38D84400EB1CC4 /* set.png in Resources */,
-				41050ADE1FC5933D00C0A051 /* P0cSq5sf_400x400.jpg in Resources */,
 				41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */,
 				418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */,
 				41122CBF1F5851C400DA3612 /* purple.png in Resources */,
@@ -649,7 +652,7 @@
 			files = (
 				412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */,
 				41050ADA1FC5919D00C0A051 /* CellTryViewController.swift in Sources */,
-				412342F41FB1C24100712D00 /* DataManager.swift in Sources */,
+				412342F41FB1C24100712D00 /* DateManager.swift in Sources */,
 				412342E31FB1BDE600712D00 /* ViewController.swift in Sources */,
 				412342E51FB1BE6D00712D00 /* ShowController.swift in Sources */,
 				41A706CB1E91F18900F43E9F /* Diary.swift in Sources */,
@@ -658,6 +661,7 @@
 				4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */,
 				41050AE21FCD70AD00C0A051 /* CustumTableCell.swift in Sources */,
 				418BA16E1F36D8C20084413F /* CollectionChangeCell.swift in Sources */,
+				AABAB3642005FD28004D2203 /* Extention.swift in Sources */,
 				41122CB01F557F9700DA3612 /* DeviceSize.swift in Sources */,
 				412342E91FB1BF2700712D00 /* EditController.swift in Sources */,
 				41C70C5B1EEFF82F0020916A /* ColorManeger.swift in Sources */,

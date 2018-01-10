@@ -15,13 +15,6 @@ import Firebase
 
 class ShowController: UIViewController {
     
-    var appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
-    let colorManager = ColorManeger()
-    var colorNum:Int = 0
-    var push:[Bool] = [false]
-    var userDefaults:UserDefaults = UserDefaults.standard
-    var changeCheck:Bool = false
-    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var mainLabel: UITextView!
@@ -30,45 +23,40 @@ class ShowController: UIViewController {
     @IBOutlet weak var edit: UILabel!
     @IBOutlet weak var changeButton:UIButton!
     @IBOutlet weak var eraserButton:UIButton!
-    
-    
     @IBOutlet var captureView:UIView!//変更点
     
+    
+    //選ばれた日付をStringに変換したもの
+    var selectedDateString : String = ""
+    //選ばれた日付
+    var selectedDate : Date = Date()
+    
+    //スクリーンショット
     var capturedImage : UIImage!
     
-    var year:String = ""
-    var month:String = ""
-    var date:String = ""
+    var appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+    let colorManager = ColorManeger()
+    var colorNum:Int = 0
+    var push:[Bool] = [false]
+    var userDefaults:UserDefaults = UserDefaults.standard
+    var changeCheck:Bool = false
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if userDefaults.object(forKey: "COLOR") != nil {
-            colorNum = userDefaults.object(forKey: "COLOR") as! Int
-        }
+        //日付を表示
+        dateLabel.text = selectedDateString
         
-        backButton.backgroundColor = colorManager.mainColor()[colorNum]
-        
-        
+        //Realmオブジェクトの取得
         let realm = try! Realm()
-        
-        
-        //realmから\(year!)\(month!)\(date!)で検索
-        let text = String(year) + "/" + String(month) + "/" + String(date)
-        print("@")
-        print(text)
-        
-        if let diary = realm.objects(Diary.self).filter("date == %@", text).last{
-            print("showshow")
+        //Realmから、dateの情報が、selectedDateStringと一致するものを検索
+        if let diary = realm.objects(Diary.self).filter("date == %@", self.selectedDateString).last{
             
-        label.text = diary.title
-            dateLabel.text = diary.date
+            
+            label.text = diary.title
             mainLabel.text = diary.main
             changeCheck = diary.changeCheck
             
-            
-            print(changeCheck)
             
             if let photo = diary.photo {
                 picture.image = UIImage(data: photo)
@@ -77,35 +65,36 @@ class ShowController: UIViewController {
             }
             
             userDefaults.set(diary.title, forKey: "title")
-            let formatter: DateFormatter = DateFormatter()
-            formatter.dateFormat = "yyyy, MM, dd"
-            userDefaults.set(String("\(year), \(month), \(date)"), forKey: "date")
+            userDefaults.set(selectedDateString, forKey: "date")
             userDefaults.set(diary.title, forKey: "main")
-            
             
         }
         
         if changeCheck == true {
             changeButton.isHidden = true
         }
-        
-        
-        setup()
+        takeScreenShot()
     }
     
-    //スクショとか
-    private func setup() {
-        capturedImage = getScreenShot() as UIImage
-        
+    //レイアウトの色を指定する
+    func  setLayoutColor() {
+        //NSUserDefaultsから、ユーザーの指定している色の情報を取得
+        if userDefaults.object(forKey: "COLOR") != nil {
+            colorNum = userDefaults.object(forKey: "COLOR") as! Int
+        }
+        //背景色の指定
+        backButton.backgroundColor = colorManager.mainColor()[colorNum]
+    }
+    
+    //スクショを撮影
+    private func takeScreenShot() {
+        self.capturedImage = getScreenShot()
     }
     
     private func getScreenShot() -> UIImage {
         let rect2 = CGRect(x:0,y:0,width:DeviceSize.screenWidth(),height:Int(self.view.frame.height-(self.navigationController?.navigationBar.frame.size.height)!))
         
         let rect = self.captureView.bounds//変更点
-        //        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-        //
-        
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
         let context: CGContext = UIGraphicsGetCurrentContext()!
         self.captureView.layer.render(in: context)//変更点
@@ -116,54 +105,37 @@ class ShowController: UIViewController {
     }
     
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //label.text =  appDelegate.ViewVal // Labelに値引き渡し用のプロパティから取得して設定する。
-        if userDefaults.object(forKey: "COLOR") != nil {
-            colorNum = userDefaults.object(forKey: "COLOR") as! Int
-        }
-    }
-    
     @IBAction func change() {
-        // 画像の名前(uuid)
         
+        // 端末の固有IDを取得
         let uuid = NSUUID().uuidString
         
-        // databaseに名前を送信
-        let ref = Database.database().reference()
-        
-       
-        
-
-        
-        ref.child("photo").childByAutoId().setValue(uuid)
-        
-        
-        // strageに画像アップロード
+        // strageの一番トップのReferenceを指定
         let storage = Storage.storage()
         let storageRef = storage.reference(forURL: "gs://calender-4a2d3.appspot.com")
         
-        if let data = UIImagePNGRepresentation(picture.image!) {
-            let riversRef = storageRef.child(uuid)
-            riversRef.putData(data, metadata: nil, completion: { metaData, error in
-                print(metaData)
-                print(error)
-                print(metaData?.downloadURL())
+        if let pic = picture.image{
+            
+            if let data = UIImagePNGRepresentation(pic) {
                 
+                // トップReferenceの一つ下の固有IDの枝を指定
+                let riversRef = storageRef.child(uuid)
                 
-                let data : Dictionary = ["title":self.label.text,"date":self.dateLabel.text,"main":self.mainLabel.text,"downloadURL":metaData?.downloadURL()?.absoluteString]
-                //key value形式の情報を送る
-                ref.child(uuid).setValue(data)
-                
-                
-            })
+                // strageに画像アップロード
+                riversRef.putData(data, metadata: nil, completion: { metaData, error in
+                    
+                    // FireBaseの一番トップのReferenceを指定
+                    let ref = Database.database().reference()
+                    
+                    //Firebaseに保存する情報の作成
+                    let data : Dictionary = ["title":self.label.text,"date":self.dateLabel.text,"main":self.mainLabel.text,"downloadURL":metaData?.downloadURL()?.absoluteString]
+                    
+                    //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
+                    ref.child(uuid).setValue(data)
+                    
+                    
+                })
+            }
         }
         
         if let number = userDefaults.object(forKey: "SAVE") as? Int {
@@ -172,32 +144,10 @@ class ShowController: UIViewController {
             userDefaults.set(1, forKey: "SAVE")
         }
         
-        
-        let year = appDelegate.year //appDelegateの変数を操作
-        let month = appDelegate.month
-        let date = appDelegate.date
-        
-        let realm = try! Realm()
-        
-        
-        
-        print(realm)
-        //
-        //        if let diary = realm.objects(Diary.self).filter("date == \(year!)\(month!)\(date!)").last {
-        //            diary.changeCheck = true
-        //            try! realm.write {
-        //                realm.add(diary, update: true)
-        //            }}
-        //       if
-        //        userDefaults.set( push, forKey: "PUSH")
-        
     }
     
     @IBAction func eraser(){
         let realm = try! Realm()
-        
-        
-        
     }
     
     
