@@ -17,9 +17,7 @@
 		412342E31FB1BDE600712D00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E21FB1BDE600712D00 /* ViewController.swift */; };
 		412342E51FB1BE6D00712D00 /* ShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E41FB1BE6D00712D00 /* ShowController.swift */; };
 		412342E91FB1BF2700712D00 /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E81FB1BF2700712D00 /* EditController.swift */; };
-		412342EB1FB1BF5200712D00 /* HensyuuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342EA1FB1BF5200712D00 /* HensyuuController.swift */; };
 		412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342EE1FB1BF9200712D00 /* SettingController.swift */; };
-		412342F11FB1C08400712D00 /* ChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F01FB1C08400712D00 /* ChangeController.swift */; };
 		412342F41FB1C24100712D00 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F31FB1C24100712D00 /* DateManager.swift */; };
 		4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182FD851F55728D000E750E /* PlaceHolderTextView.swift */; };
 		418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418BA1691F359D930084413F /* GoogleService-Info.plist */; };
@@ -53,11 +51,10 @@
 		AA8BB52C200DAB84006D8C29 /* blueのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB517200DAB84006D8C29 /* blueのコピー.png */; };
 		AA8BB52D200DAB84006D8C29 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB518200DAB84006D8C29 /* orange.png */; };
 		AA8BB52E200DAB84006D8C29 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB519200DAB84006D8C29 /* blue.png */; };
-		AA8BB530200DABCE006D8C29 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BB52F200DABCE006D8C29 /* CalendarCell.swift */; };
-		AA8BB533200DABF5006D8C29 /* CollectionChangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BB531200DABF5006D8C29 /* CollectionChangeCell.swift */; };
-		AA8BB534200DABF5006D8C29 /* CollectionChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB532200DABF5006D8C29 /* CollectionChangeCell.xib */; };
 		AA8BB536200DAC0A006D8C29 /* ColorManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BB535200DAC0A006D8C29 /* ColorManeger.swift */; };
 		AA8BB538200DAC1C006D8C29 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BB537200DAC1C006D8C29 /* Extention.swift */; };
+		AA8BB53D200DC765006D8C29 /* CalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BB53B200DC765006D8C29 /* CalendarCustomCell.swift */; };
+		AA8BB53E200DC765006D8C29 /* CalendarCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB53C200DC765006D8C29 /* CalendarCustomCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,9 +85,7 @@
 		412342E21FB1BDE600712D00 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ViewController/ViewController.swift; sourceTree = "<group>"; };
 		412342E41FB1BE6D00712D00 /* ShowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowController.swift; path = ViewController/ShowController.swift; sourceTree = "<group>"; };
 		412342E81FB1BF2700712D00 /* EditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditController.swift; path = ViewController/EditController.swift; sourceTree = "<group>"; };
-		412342EA1FB1BF5200712D00 /* HensyuuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HensyuuController.swift; path = ViewController/HensyuuController.swift; sourceTree = "<group>"; };
 		412342EE1FB1BF9200712D00 /* SettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingController.swift; path = ViewController/SettingController.swift; sourceTree = "<group>"; };
-		412342F01FB1C08400712D00 /* ChangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeController.swift; path = ViewController/ChangeController.swift; sourceTree = "<group>"; };
 		412342F31FB1C24100712D00 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = Manager/DateManager.swift; sourceTree = "<group>"; };
 		4182FD851F55728D000E750E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		4182FD871F55760A000E750E /* Calender-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calender-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -132,11 +127,10 @@
 		AA8BB517200DAB84006D8C29 /* blueのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueのコピー.png"; path = "images/blueのコピー.png"; sourceTree = "<group>"; };
 		AA8BB518200DAB84006D8C29 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orange.png; path = images/orange.png; sourceTree = "<group>"; };
 		AA8BB519200DAB84006D8C29 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue.png; path = images/blue.png; sourceTree = "<group>"; };
-		AA8BB52F200DABCE006D8C29 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = CustumCell/CalendarCell.swift; sourceTree = "<group>"; };
-		AA8BB531200DABF5006D8C29 /* CollectionChangeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionChangeCell.swift; path = CustumCell/CollectionChangeCell.swift; sourceTree = "<group>"; };
-		AA8BB532200DABF5006D8C29 /* CollectionChangeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionChangeCell.xib; path = CustumCell/CollectionChangeCell.xib; sourceTree = "<group>"; };
 		AA8BB535200DAC0A006D8C29 /* ColorManeger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorManeger.swift; path = Manager/ColorManeger.swift; sourceTree = "<group>"; };
 		AA8BB537200DAC1C006D8C29 /* Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extention.swift; path = Extention/Extention.swift; sourceTree = "<group>"; };
+		AA8BB53B200DC765006D8C29 /* CalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarCustomCell.swift; path = CustumCell/CalendarCustomCell.swift; sourceTree = "<group>"; };
+		AA8BB53C200DC765006D8C29 /* CalendarCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CalendarCustomCell.xib; path = CustumCell/CalendarCustomCell.xib; sourceTree = "<group>"; };
 		BD39B833FED21B8A6B921758 /* Pods-CalenderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalenderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalenderUITests/Pods-CalenderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE017672D86243A94992FC45 /* Pods_CalenderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalenderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F1B0CF892EFC77E28F6CA2 /* Pods_Calender.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calender.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,11 +209,10 @@
 		41050ADF1FCD705300C0A051 /* CustumCell */ = {
 			isa = PBXGroup;
 			children = (
-				AA8BB531200DABF5006D8C29 /* CollectionChangeCell.swift */,
-				AA8BB532200DABF5006D8C29 /* CollectionChangeCell.xib */,
-				AA8BB52F200DABCE006D8C29 /* CalendarCell.swift */,
 				41050AE01FCD70AD00C0A051 /* CustumTableCell.swift */,
 				41050AE11FCD70AD00C0A051 /* CustumTableCell.xib */,
+				AA8BB53B200DC765006D8C29 /* CalendarCustomCell.swift */,
+				AA8BB53C200DC765006D8C29 /* CalendarCustomCell.xib */,
 			);
 			name = CustumCell;
 			sourceTree = "<group>";
@@ -230,9 +223,7 @@
 				412342E21FB1BDE600712D00 /* ViewController.swift */,
 				412342E41FB1BE6D00712D00 /* ShowController.swift */,
 				412342E81FB1BF2700712D00 /* EditController.swift */,
-				412342EA1FB1BF5200712D00 /* HensyuuController.swift */,
 				412342EE1FB1BF9200712D00 /* SettingController.swift */,
-				412342F01FB1C08400712D00 /* ChangeController.swift */,
 				41050AD91FC5919D00C0A051 /* CellTryViewController.swift */,
 			);
 			name = ViewController;
@@ -463,13 +454,13 @@
 				41D305F61E40A07A004031DA /* LaunchScreen.storyboard in Resources */,
 				AA8BB529200DAB84006D8C29 /* 矢印i.png in Resources */,
 				AA8BB51C200DAB84006D8C29 /* orangeのコピー.png in Resources */,
-				AA8BB534200DABF5006D8C29 /* CollectionChangeCell.xib in Resources */,
 				AA8BB528200DAB84006D8C29 /* redのコピー.png in Resources */,
 				AA8BB52D200DAB84006D8C29 /* orange.png in Resources */,
 				AA8BB525200DAB84006D8C29 /* sett.png in Resources */,
 				AA8BB52E200DAB84006D8C29 /* blue.png in Resources */,
 				41D305F31E40A07A004031DA /* Assets.xcassets in Resources */,
 				AA8BB521200DAB84006D8C29 /* yellowのコピー.png in Resources */,
+				AA8BB53E200DC765006D8C29 /* CalendarCustomCell.xib in Resources */,
 				AA8BB526200DAB84006D8C29 /* 矢印.png in Resources */,
 				AA8BB52C200DAB84006D8C29 /* blueのコピー.png in Resources */,
 				41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */,
@@ -663,21 +654,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */,
-				AA8BB530200DABCE006D8C29 /* CalendarCell.swift in Sources */,
 				41050ADA1FC5919D00C0A051 /* CellTryViewController.swift in Sources */,
 				412342F41FB1C24100712D00 /* DateManager.swift in Sources */,
 				412342E31FB1BDE600712D00 /* ViewController.swift in Sources */,
 				412342E51FB1BE6D00712D00 /* ShowController.swift in Sources */,
 				41A706CB1E91F18900F43E9F /* Diary.swift in Sources */,
-				412342EB1FB1BF5200712D00 /* HensyuuController.swift in Sources */,
 				4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */,
 				41050AE21FCD70AD00C0A051 /* CustumTableCell.swift in Sources */,
-				AA8BB533200DABF5006D8C29 /* CollectionChangeCell.swift in Sources */,
 				AA8BB538200DAC1C006D8C29 /* Extention.swift in Sources */,
 				41122CB01F557F9700DA3612 /* DeviceSize.swift in Sources */,
 				412342E91FB1BF2700712D00 /* EditController.swift in Sources */,
-				412342F11FB1C08400712D00 /* ChangeController.swift in Sources */,
 				AA8BB536200DAC0A006D8C29 /* ColorManeger.swift in Sources */,
+				AA8BB53D200DC765006D8C29 /* CalendarCustomCell.swift in Sources */,
 				41D305EC1E40A07A004031DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

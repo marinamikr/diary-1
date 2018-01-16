@@ -46,34 +46,35 @@ class ShowController: UIViewController {
         
         //日付を表示
         dateLabel.text = selectedDateString
-        
-        //Realmオブジェクトの取得
-        let realm = try! Realm()
-        //Realmから、dateの情報が、selectedDateStringと一致するものを検索
-        if let diary = realm.objects(Diary.self).filter("date == %@", self.selectedDateString).last{
-            
-            
-            label.text = diary.title
-            mainLabel.text = diary.main
-            changeCheck = diary.changeCheck
-            
-            
-            if let photo = diary.photo {
-                picture.image = UIImage(data: photo)
-                let data = UIImage(data: photo)
-                userDefaults.set(photo, forKey: "picture")
-            }
-            
-            userDefaults.set(diary.title, forKey: "title")
-            userDefaults.set(selectedDateString, forKey: "date")
-            userDefaults.set(diary.title, forKey: "main")
-            
-        }
+        //日付の情報をもとに、Realmに保存されている情報を取得
+        showData(date: self.selectedDateString)
         
         if changeCheck == true {
             changeButton.isHidden = true
         }
         takeScreenShot()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //日付の情報をもとに、Realmに保存されている情報を取得
+        showData(date: self.selectedDateString)
+    }
+    
+    //日付の情報をもとに、Realmに保存されている情報を取得し表示
+    func showData(date : String)  {
+        //Realmオブジェクトの取得
+        let realm = try! Realm()
+        //Realmから、dateの情報が、selectedDateStringと一致するものを検索
+        if let diary = realm.objects(Diary.self).filter("date == %@", date).last{
+            //Viewに表示
+            label.text = diary.title
+            mainLabel.text = diary.main
+            self.changeCheck = diary.changeCheck
+            
+            if let photo = diary.photo {
+                picture.image = UIImage(data: photo)
+            }
+        }
     }
     
     //レイアウトの色を指定する
@@ -114,14 +115,16 @@ class ShowController: UIViewController {
         let storage = Storage.storage()
         let storageRef = storage.reference(forURL: "gs://calender-4a2d3.appspot.com")
         
+        //変数picに画像を設定
         if let pic = picture.image{
             
+            //変数dataにpicをNSDataにしたものを指定
             if let data = UIImagePNGRepresentation(pic) {
                 
                 // トップReferenceの一つ下の固有IDの枝を指定
                 let riversRef = storageRef.child(uuid)
                 
-                // strageに画像アップロード
+                // strageに画像をアップロード
                 riversRef.putData(data, metadata: nil, completion: { metaData, error in
                     
                     // FireBaseの一番トップのReferenceを指定
@@ -137,13 +140,6 @@ class ShowController: UIViewController {
                 })
             }
         }
-        
-        if let number = userDefaults.object(forKey: "SAVE") as? Int {
-            userDefaults.set(number + 1, forKey: "SAVE")
-        } else {
-            userDefaults.set(1, forKey: "SAVE")
-        }
-        
     }
     
     @IBAction func eraser(){
@@ -156,6 +152,18 @@ class ShowController: UIViewController {
     }
     
     @IBAction func editbtn() {
+        //画面遷移
+        performSegue(withIdentifier: "toEditViewController", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toEditViewController" {
+            //画面遷移前に、選ばれたCellの日付の情報をShowControllerに渡しておく
+            let editController:EditController = segue.destination as! EditController
+            editController.selectedDate = self.selectedDate
+            editController.selectedDateString = self.selectedDateString
+        }
         
     }
     

@@ -23,7 +23,7 @@ class ViewController: UIViewController{
     @IBOutlet weak var calenderCollectionView: UICollectionView!//CollectionView自体
     @IBOutlet weak var nextlabel: UILabel!//一月後に移動するボタンのlabel
     @IBOutlet weak var prelabel: UILabel!//一月前に移動するボタンのlabel
-    var calenderCell:CalendarCell = CalendarCell() //CollectionView内のcell
+    
     
     //日付を管理するManeger
     let dateManager = DateManager()
@@ -50,6 +50,7 @@ class ViewController: UIViewController{
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
         calenderCollectionView.backgroundColor = UIColor.white
+        calenderCollectionView.register(UINib(nibName: "CalendarCustomCell", bundle: nil), forCellWithReuseIdentifier: "calendarCustomCell")
         
         //ヘッダーの指定
         headerTitle.text = dateManager.firstDateOfMonth.toMonthString()
@@ -62,9 +63,9 @@ class ViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
+        setLayoutColor()//色の設置をする
         calenderCollectionView.reloadData()
-        self.calenderCell.reloadInputViews()
     }
     
    
@@ -99,6 +100,9 @@ class ViewController: UIViewController{
         calenderCollectionView.reloadData()
     }
     
+    @IBAction func add(_ sender: Any) {
+        performSegue(withIdentifier:  "toEditViewController", sender: nil)
+    }
     
     //レイアウトの色を指定する
     func  setLayoutColor() {
@@ -179,7 +183,8 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //カスタムCellを取得【CalendarCell型】
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarCell
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCustomCell",for: indexPath) as! CalendarCustomCell
         
         //テキストカラーの指定
         if (indexPath.row % 7 == 0) {
@@ -196,6 +201,10 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegate, 
             cell.textLabel.text = dateManager.weekArray[indexPath.row]
             cell.textLabel.textAlignment = .center
         } else {
+            
+            //一度、画像を削除
+            cell.imageView.image = UIImage()
+            
             //セルに表示する日付の情報を取得
             let cellDate  = dateManager.currentMonthOfDates[indexPath.row]
             
@@ -207,9 +216,10 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegate, 
             let realm = try! Realm()
             //Realmから、dateの情報が、Cellに表示する日付と一致するものを検索
             if let diary = realm.objects(Diary.self).filter("date == %@", cellDate.toString()).last{
+                
                 //もし、dateの情報が、Cellに表示する日付と一致するデータの中に、画像の情報が存在したら
                 if diary.photo != nil {
-                    cell.image.image = UIImage(data: diary.photo as! Data)
+                    cell.imageView.image = UIImage(data: diary.photo as! Data)
                 }
             }
         }
@@ -250,12 +260,12 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegate, 
         let cellDate  = dateManager.currentMonthOfDates[indexPath.row]
         self.selectedDate = cellDate
         //画面遷移
-        performSegue(withIdentifier: "EditController", sender: self)
+        performSegue(withIdentifier: "toShowController", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "EditController" {
+        if segue.identifier == "toShowController" {
             //画面遷移前に、選ばれたCellの日付の情報をShowControllerに渡しておく
             let showController:ShowController = segue.destination as! ShowController
             showController.selectedDate = self.selectedDate

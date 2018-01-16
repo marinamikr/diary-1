@@ -15,11 +15,6 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
-  
-    
-    //let konann = UIImage(named:"akaisann.png")
-  //  let shakemii = UIImage(named:"P0cSq5sf_400×400.jpg")
-    
     
     var image = ""
     var ititle:String = ""
@@ -30,56 +25,56 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     var mainArray: [String] = Array()
     var picArray: [UIImage] = Array()
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        SVProgressHUD.show()
-
-       
-
-        
         tableView.estimatedRowHeight = 10//セルの高さの見積もり
         tableView.rowHeight = UITableViewAutomaticDimension
-        
         tableView.dataSource = self
-        self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumCell")
-        ChangeDiary()
+        self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumTableCell")
         
+       changeDiary()
     }
     
-    func MyDiary(){
+    //端末内のある日記を取得する処理
+    func myDiary(){
+        //配列の要素を全て削除
+        dateArray.removeAll()
+        titleArray.removeAll()
+        mainArray.removeAll()
+        picArray.removeAll()
+        
+        //Realmオブジェクトの取得
         let realm = try! Realm()
-
-        let results = realm.objects(Diary.self)
-        let array = Array(results)
-        
-        for i in 0 ..< array.count {
-        
-            dateArray.append(array[i].date)
-            titleArray.append(array[i].title)
-            picArray.append(UIImage(data:array[i].photo! )!)
-            mainArray.append(array[i].main)
-        
-        
+        //Realmに保存されている全ての情報を取得
+        let results = Array(realm.objects(Diary.self))
+        //Realmに保存されている要素の数だけfor文を回して配列に追加
+        for i in 0 ..< results.count {
+            dateArray.append(results[i].date)
+            titleArray.append(results[i].title)
+            picArray.append(UIImage(data:results[i].photo! )!)
+            mainArray.append(results[i].main)
         }
-        
+        //tableViewのリロード
         self.tableView.reloadData()
-        
-        
     }
     
-    
-    func ChangeDiary(){
+    //サーバー上の日記を取得する処理
+    func changeDiary(){
+        //配列の要素を全て削除
+        dateArray.removeAll()
+        titleArray.removeAll()
+        mainArray.removeAll()
+        picArray.removeAll()
+        
+        //ロード中のダイアログを表示する
+        SVProgressHUD.show()
+        
         // databaseから画像の名前を取得
         let ref = Database.database().reference().child("283D266E-95F6-4622-BDEB-B8E20BA754E5")
         ref.observe(DataEventType.value, with: { snapshot in
             
             let postDict = snapshot.value as! [String : AnyObject]
-            var names: [String] = []
-            var count = 0
+            
             for (key, value) in postDict {
                 if (key == "date"){
                     self.dateArray.append(value as! String)
@@ -89,51 +84,31 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                     let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
                     self.picArray.append(UIImage(data: loadedImageData as! Data)!)
                     
-                    
-                    
                 }else if (key == "main"){
                     self.mainArray.append(value as! String)
                 }
-                
-                
-                
             }
-            
+            //ロード中のダイアログを消去する
             SVProgressHUD.dismiss()
+            //tableViewのリロード
             self.tableView.reloadData()
-            
         })
-        
-
     }
     
     
-    @IBAction func testSegmentedControl(sender: UISegmentedControl) {
-        
-        
-        //セグメント番号で条件分岐させる
-        switch sender.selectedSegmentIndex {
-        case 0:
-            print("first")
-        case 1:
-            print("second")
-        default:
-            print("該当無し")
-        }
-    }
     
     @IBAction func segumentControllTap(_ sender: Any) {
         switch (sender as AnyObject).selectedSegmentIndex {
         case 0:
             print("first")
+            changeDiary()
         case 1:
             print("second")
+            myDiary()
+            
         default:
             print("該当無し")
-        }    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        }
     }
     
     /// セルの個数を指定するデリゲートメソッド（必須）
@@ -145,18 +120,11 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // セルを取得する
-        let custumCell = tableView.dequeueReusableCell(withIdentifier: "custumCell", for: indexPath) as! CustumTableCell
-        
+        let custumCell = tableView.dequeueReusableCell(withIdentifier: "custumTableCell", for: indexPath) as! CustumTableCell
         // セルに表示する値を設定する
-        
-        custumCell.imageView?.image = picArray[indexPath.row]
+        custumCell.pic.image = picArray[indexPath.row]
         custumCell.title.text = titleArray[indexPath.row]
         custumCell.date.text = dateArray[indexPath.row]
-        
-        
-        
-        
-        
         
         return custumCell
     }

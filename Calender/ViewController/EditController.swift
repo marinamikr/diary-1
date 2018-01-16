@@ -13,219 +13,77 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     @IBOutlet weak var datepicker: UIDatePicker!
     @IBOutlet weak var textField: UITextField!
-    
+    @IBOutlet weak var textView: PlaceHolderTextView!
+    @IBOutlet var haikei: UIImageView!
     @IBOutlet var addpictureButton:UIButton!
     
-    var colorNum:Int = 0
-    let colorManager = ColorManeger()
-    
-    var userDefaults:UserDefaults = UserDefaults.standard
-    
-    var scale:CGFloat = 1.0
-    var width:CGFloat = 0
-    var height:CGFloat = 0
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    
-    @IBOutlet weak var textView: PlaceHolderTextView!
-    
-    func textViewShouldReturn(_ textView: UITextView) -> Bool {
-        textView.resignFirstResponder()
-        return true
-        
-        
-    }
-    
-    @IBOutlet var haikei: UIImageView!
+    //選ばれた日付をStringに変換したもの。ViewControllerから直接画面遷移した場合はnil
+    var selectedDateString : String!
+    //選ばれた日付。ViewControllerから直接画面遷移した場合はnil
+    var selectedDate : Date!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        
-        if userDefaults.object(forKey: "COLOR") != nil {
-            colorNum = userDefaults.object(forKey: "COLOR") as! Int
-        }
-        haikei.backgroundColor = colorManager.mainColor()[colorNum]
+        setLayoutColor() //レイアウトの色を指定
         textField.delegate = self
-        //textView.delegate = self
         textView.placeHolder = "ここに書く"
         
-        
-        //
-        //        addpictureButton.titleLabel?.numberOfLines = 2
-        //        addpictureButton.titleLabel?.text = "add\npicture"
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //非表示にする。
-        if(textView.isFirstResponder){
-            textView.resignFirstResponder()
-        }else if(textField.isFirstResponder){
-            textField.resignFirstResponder()
+        if self.selectedDateString != nil{
+            //Realmに保存されている情報を取得し表示
+            showData(date: self.selectedDateString)
+            //Buttonのラベルを消す
+            addpictureButton.setTitle("", for: .normal)
+            //datepickerに日付を表示
+            datepicker.date = self.selectedDate
         }
-        
     }
-    
-    
-    
-    
-    @IBAction func picture() {
-        addpictureButton.isHidden = true
-        //        //UIImagePicker Controllerのインスタンスを作る
-        //        let imagePickerController: UIImagePickerController = UIImagePickerController()
-        //
-        //        //フォトライブラリを使う設定をする
-        //        imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        //        imagePickerController.delegate = self
-        //        imagePickerController.allowsEditing = true
-        //
-        //
-        //      //  imagePickerController= [NSForegroundColorAttributeName : UIColor.greenColor()]
-        //
-        //        //フォトライブラリを呼び出す
-        //        self.present(imagePickerController, animated: true, completion: nil)
-        
-        let sourceType:UIImagePickerControllerSourceType = UIImagePickerControllerSourceType.photoLibrary
-        // カメラが利用可能かチェック
-        //if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera){
-        // インスタンスの作成
-        let cameraPicker = UIImagePickerController()
-        cameraPicker.sourceType = sourceType
-        cameraPicker.delegate = self
-        self.present(cameraPicker, animated: true, completion: nil)
-        
-        //}
-        
-    }
-    
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-        
-    }
-    //フォトライブラリから画像の選択が終わったら呼ばれるメソッド
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        //imageに選んだ画像を表示する
-        let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
-        
-        //そのimageを背景に設定する
-        haikei.image = image
-        
-        //フォトライブラリを閉じる
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    
-    @IBAction func tapScreen(_ sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-    }
-    
-    @IBAction func oooo() {
-    }
-    
-    @IBAction func add() {
-        
-        //アラート
-        let alert:UIAlertController = UIAlertController(title: "OK", message: "saved diary",preferredStyle: .alert)
-        //OKボタン
-        alert.addAction(UIAlertAction(title: "got it",
-                                      style: UIAlertActionStyle.default,
-                                      handler: {action in
-                                        
-                                       
-                
-                                        //ボタンが押されたら
-                                        
-                                        // STEP.1 Realmを初期化
-                                        let realm = try! Realm()
-                                        
-                                        //STEP.2 保存する要素を書く
-                                        let diary = Diary()
-                                        let calendar = Calendar.current
-                                        //                let component = (calendar as NSCalendar).components([NSCalendar.Unit.year, NSCalendar.Unit.month, NSCalendar.Unit.day, NSCalendar.Unit.hour, NSCalendar.Unit.minute, NSCalendar.Unit.second], from: self.datepicker.date)
-                                        //
-                                        let component = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self.datepicker.date)
-                                        
-                                        if component.day! <= 9{
-                                            diary.date = String(component.year!)+"/"+String(component.month!)+"/0" + String(component.day!)
-                                            
-
-                                        }else{
-                                            diary.date = String(component.year!)+"/"+String(component.month!)+"/" + String(component.day!)
-                                            
-
-                                        }
-                                        
-                                       
-                                        diary.iddate = String(describing: Date())
-                                        
-                                        diary.main = self.textView.text
-                                        diary.title = self.textField.text!
-                                        
-                                        if let photo = self.haikei.image
-                                        {
-                                            diary.photo = NSData(data: UIImageJPEGRepresentation(photo,1)!) as Data
-                                        }
-                                        
-                                        
-                                        //STEP.3 Realmに書き込み
-                                        try! realm.write {
-                                            realm.add(diary, update: true)
-                                        }
-                                        
-                                        
-                                        self.navigationController?.popViewController(animated: true)
-                                        self.dismiss(animated: true, completion: nil)
-                                        
-        }
-            )
-        )
-        present(alert, animated: true, completion: nil)
-    }
-    
-    @IBAction func delete () {
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    var date: String!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // dateLabel.text = date
-        if userDefaults.object(forKey: "COLOR") != nil {
-            colorNum = userDefaults.object(forKey: "COLOR") as! Int
-            
-        }
-        haikei.backgroundColor = colorManager.mainColor()[colorNum]
-        self.configureObserver()
-        
+        setLayoutColor() //レイアウトの色を指定
+        self.configureObserver()// Notificationを設定
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated) //エフェクト関係のパラメタだと思うが、今回は使用しないので、基底クラスを呼び出して、終わり。
-        var _: AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateオブジェクトの呼び出し。as ◯◯はSwiftのキャスト表現
-        //appDelegate.ViewVal = textField.text! // TextFieldの値を取得し、値引き渡し用のプロパティにセット
-        
-        self.removeObserver()
+        super.viewDidDisappear(animated)
+        self.removeObserver()// Notificationを削除
     }
+    
+    //レイアウトの色を指定する
+    func  setLayoutColor() {
+        
+        let colorManager = ColorManeger()
+        var userDefaults:UserDefaults = UserDefaults.standard
+        var colorNum:Int = 0
+        
+        //NSUserDefaultsから、ユーザーの指定している色の情報を取得
+        if userDefaults.object(forKey: "COLOR") != nil {
+            colorNum = userDefaults.object(forKey: "COLOR") as! Int
+        }
+        //背景色の指定
+        haikei.backgroundColor = colorManager.mainColor()[colorNum]
+    }
+    
+    
+    //日付の情報をもとに、Realmに保存されている情報を取得し表示
+    func showData(date : String)  {
+        //Realmオブジェクトの取得
+        let realm = try! Realm()
+        //Realmから、dateの情報が、selectedDateStringと一致するものを検索
+        if let diary = realm.objects(Diary.self).filter("date == %@", date).last{
+            //Viewに表示
+            textField.text = diary.title
+            textView.text = diary.main
+            if let photo = diary.photo {
+                haikei.image = UIImage(data: photo)
+            }
+        }
+    }
+    
     // Notificationを設定
     func configureObserver() {
-        
         let notification = NotificationCenter.default
         notification.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         notification.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -233,10 +91,125 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     // Notificationを削除
     func removeObserver() {
-        
         let notification = NotificationCenter.default
         notification.removeObserver(self)
     }
+    
+    
+    @IBAction func picture() {
+        
+        selectImage()
+    }
+    
+    //写真選択用のアラートを表示
+    func selectImage() {
+        let alertController = UIAlertController(title: "画像を選択", message: nil, preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "カメラを起動", style: .default) { (UIAlertAction) -> Void in
+            self.selectFromCamera()
+        }
+        let libraryAction = UIAlertAction(title: "カメラロールから選択", style: .default) { (UIAlertAction) -> Void in
+            self.selectFromLibrary()
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (UIAlertAction) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(cameraAction)
+        alertController.addAction(libraryAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    //カメラから画像を取得する処理
+    func selectFromCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+            imagePickerController.allowsEditing = true
+            self.present(imagePickerController, animated: true, completion: nil)
+        } else {
+            print("カメラ許可をしていない時の処理")
+        }
+    }
+    
+    //フォトライブラリから画像を取得する
+    func selectFromLibrary() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePickerController.allowsEditing = true
+            self.present(imagePickerController, animated: true, completion: nil)
+        } else {
+            print("カメラロール許可をしていない時の処理")
+        }
+    }
+    
+    //フォトライブラリから画像の選択が終わったら呼ばれるメソッド
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //imageに選んだ画像を表示する
+        let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        //そのimageを背景に設定する
+        haikei.image = image
+        //Buttonのラベルを消す
+        addpictureButton.setTitle("", for: .normal)
+        //フォトライブラリを閉じる
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    //フォトライブラリでの画像の選択がキャンセルされた場合
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+    @IBAction func add() {
+        //アラートの作成
+        let alert:UIAlertController = UIAlertController(title: "OK", message: "saved diary",preferredStyle: .alert)
+        //OKボタンが押された時の処理
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: UIAlertActionStyle.default,
+                                      handler: {action in
+                                        self.saveData() //Realmに保存
+                                        self.navigationController?.popViewController(animated: true)//ViewControllerに戻る
+                                        
+        }))
+        //アラートの表示
+        present(alert, animated: true, completion: nil)
+    }
+    
+    //Realmに保存
+    func saveData(){
+        
+        // STEP.1 Realmを初期化
+        let realm = try! Realm()
+        
+        //STEP.2 保存する要素を書く
+        let diary = Diary()
+        
+        diary.date = self.datepicker.date.toString()
+        diary.main = self.textView.text
+        diary.title = self.textField.text!
+        
+        if let photo = self.haikei.image{
+            diary.photo = NSData(data: UIImageJPEGRepresentation(photo,1)!) as Data
+        }
+        
+        //STEP.3 Realmに書き込み
+        try! realm.write {
+            realm.add(diary, update: true)
+        }
+        print(diary)
+    }
+    
+    @IBAction func delete () {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     // キーボードが現れた時に、画面全体をずらす。
     func keyboardWillShow(notification: Notification?) {
@@ -261,6 +234,21 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             
             self.view.transform = CGAffineTransform.identity
         })
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //非表示にする。
+        if(textView.isFirstResponder){
+            textView.resignFirstResponder()
+        }else if(textField.isFirstResponder){
+            textField.resignFirstResponder()
+        }
+        
+    }
+    
+    @IBAction func tapScreen(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
 }

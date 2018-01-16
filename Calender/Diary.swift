@@ -11,7 +11,6 @@ import Foundation
 import RealmSwift
 
 class Diary: Object {
-    dynamic var iddate = ""
     dynamic var date = ""
     dynamic var main = ""
     dynamic var title = ""
@@ -19,7 +18,7 @@ class Diary: Object {
     dynamic var changeCheck: Bool = false
     
     override static func primaryKey() -> String? {
-        return "iddate"
+        return "date"
     }
     
 }

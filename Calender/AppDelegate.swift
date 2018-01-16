@@ -15,43 +15,12 @@ import Photos
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
-    
-    var year:String?
-    var month:String?
-    var date:String?
-    //日付
+   
     
     var window: UIWindow?
-
-    fileprivate var viewVal: String = ""
-    var ViewVal: String {
-        get {
-            return viewVal // Labelに表示する値を返す。
-        }
-        set {
-            viewVal = newValue // TextFieldの値をここに設定する。
-        }
-    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        PHPhotoLibrary.requestAuthorization({ _ in
-        })
-        let config = Realm.Configuration(
-            // 新しいスキーマバージョンを設定します。以前のバージョンより大きくなければなりません。
-            // （スキーマバージョンを設定したことがなければ、最初は0が設定されています）
-            schemaVersion: 2,
-            
-            // マイグレーション処理を記述します。古いスキーマバージョンのRealmを開こうとすると
-            // 自動的にマイグレーションが実行されます。
-            migrationBlock: { migration, oldSchemaVersion in
-                // 最初のマイグレーションの場合、`oldSchemaVersion`は0です
-                if (oldSchemaVersion < 1) {
-                }
-        })
-        
-        // デフォルトRealmに新しい設定を適用します
-        Realm.Configuration.defaultConfiguration = config
         return true
     }
 
