@@ -71,7 +71,6 @@ class ViewController: UIViewController{
     //１ヶ月前に戻るボタンをタップした時の処理
     @IBAction func tappedHeaderPrevBtn(_ sender: UIButton) {
         
-        print("hoge")
         //まず、DateManagerの情報を１ヶ月前に変更
         dateManager.changePreMonth()
         

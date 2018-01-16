@@ -67,6 +67,9 @@
                                         <state key="normal" title="＋">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="bWZ-Ye-kVo" kind="show" id="8z6-TJ-qkw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2n-AF-iyp">
                                         <rect key="frame" x="30" y="53" width="72" height="33"/>
@@ -157,7 +160,6 @@
                         <outlet property="nextlabel" destination="iGp-fC-j0B" id="5z7-Fg-c2J"/>
                         <outlet property="prelabel" destination="V5d-Uy-La9" id="2t6-2A-H8g"/>
                         <segue destination="jWm-TU-EP4" kind="show" identifier="EditController" id="Hz9-xm-EOK"/>
-                        <segue destination="bWZ-Ye-kVo" kind="show" identifier="toEditViewController" id="IRQ-Dg-NaA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -628,12 +630,12 @@ picture</string>
     <resources>
         <image name="modoruu.png" width="34" height="34"/>
         <image name="ya.png" width="30" height="30"/>
-        <image name="カレンダー.png" width="440" height="330"/>
+        <image name="カレンダー.png" width="57" height="57"/>
         <image name="矢印.png" width="380" height="144"/>
         <image name="矢印i.png" width="380" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IRQ-Dg-NaA"/>
+        <segue reference="8z6-TJ-qkw"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

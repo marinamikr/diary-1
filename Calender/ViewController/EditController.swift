@@ -145,7 +145,8 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                                       style: UIAlertActionStyle.default,
                                       handler: {action in
                                         
-                                        print("hoge")
+                                       
+                
                                         //ボタンが押されたら
                                         
                                         // STEP.1 Realmを初期化
@@ -168,18 +169,17 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
 
                                         }
                                         
-                                        print(diary.date)
                                        
                                         diary.iddate = String(describing: Date())
                                         
                                         diary.main = self.textView.text
                                         diary.title = self.textField.text!
-                                        print("ok1")
+                                        
                                         if let photo = self.haikei.image
                                         {
                                             diary.photo = NSData(data: UIImageJPEGRepresentation(photo,1)!) as Data
                                         }
-                                        print("ok2")
+                                        
                                         
                                         //STEP.3 Realmに書き込み
                                         try! realm.write {

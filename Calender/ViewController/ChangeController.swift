@@ -102,10 +102,8 @@ class changeController: UIViewController, UICollectionViewDataSource,UICollectio
                         break
                     }
                 } else {
-                    print("ダメでした")
                     break
                 }
-                print("きたきた")
                 SVProgressHUD.dismiss()
                 count += 1
                 if let name = value as? String {
@@ -130,24 +128,22 @@ class changeController: UIViewController, UICollectionViewDataSource,UICollectio
     
     func download(names: [String]) {
         // 画像ダウンロード
-        print("画像きた")
+        
         images.removeAll()
         // collection viewに表示
         var newImage: [UIImage] = []
         for name in names {
             
-            print(name)
             
-            print("画像きたよ")
+           
             let storage = Storage.storage()
             let storageRef = storage.reference(forURL: "gs://calender-4a2d3.appspot.com")
-            //storageRefのかくにん
-            print(storageRef)
+            
             
             storageRef.child(name).getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
                 if (error != nil) {
                     // Uh-oh, an error occurred!
-                    print("Uh-oh, an error occurred!")
+                    
                 } else {
                     self.images.append(UIImage(data: data!)!)
                     self.getCollectionView.reloadData()

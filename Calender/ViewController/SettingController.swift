@@ -119,7 +119,6 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
         // Configure the cell...
         // 各 Cellの設定をしている　今回はタイトル入力のみ
         // print()を使って確かめてみるとわかるが、このメソッドはCellの数だけ呼び出されている
-        print(indexPath.section)
         
         cell.textLabel?.text = array[indexPath.section][indexPath.row + 1]
         
@@ -166,7 +165,7 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
             }
         }else if indexPath.section == 1{
             let alert: UIAlertController = UIAlertController(title: "全削除", message: "いいですか", preferredStyle: .alert)
-            print("全削除します")
+            
             // ② Actionの設定
             // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
             // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
@@ -190,14 +189,13 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
                 try! realm.write() {
                     realm.deleteAll()
                 }
-                print("OK")
                 
             })
             // キャンセルボタン
             let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
                 // ボタンが押された時の処理を書く（クロージャ実装）
                 (action: UIAlertAction!) -> Void in
-                print("Cancel")
+                
             })
             
             // ③ UIAlertControllerにActionを追加

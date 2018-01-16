@@ -99,11 +99,6 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                 
             }
             
-            print(self.dateArray)
-            print(self.mainArray)
-            print(self.titleArray)
-            print(self.picArray)
-            
             SVProgressHUD.dismiss()
             self.tableView.reloadData()
             

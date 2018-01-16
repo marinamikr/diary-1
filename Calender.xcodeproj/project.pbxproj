@@ -14,21 +14,6 @@
 		41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41050AE11FCD70AD00C0A051 /* CustumTableCell.xib */; };
 		41122CAE1F55781500DA3612 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41122CAD1F55781500DA3612 /* SVProgressHUD.framework */; };
 		41122CB01F557F9700DA3612 /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41122CAF1F557F9700DA3612 /* DeviceSize.swift */; };
-		41122CB91F5851C400DA3612 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CB11F5851C400DA3612 /* blue.png */; };
-		41122CBA1F5851C400DA3612 /* blueのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CB21F5851C400DA3612 /* blueのコピー.png */; };
-		41122CBB1F5851C400DA3612 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CB31F5851C400DA3612 /* green.png */; };
-		41122CBC1F5851C400DA3612 /* greenのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CB41F5851C400DA3612 /* greenのコピー.png */; };
-		41122CBD1F5851C400DA3612 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CB51F5851C400DA3612 /* orange.png */; };
-		41122CBE1F5851C400DA3612 /* orangeのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CB61F5851C400DA3612 /* orangeのコピー.png */; };
-		41122CBF1F5851C400DA3612 /* purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CB71F5851C400DA3612 /* purple.png */; };
-		41122CC01F5851C400DA3612 /* purpleのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CB81F5851C400DA3612 /* purpleのコピー.png */; };
-		41122CC31F58663200DA3612 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CC11F58663200DA3612 /* red.png */; };
-		41122CC41F58663200DA3612 /* redのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CC21F58663200DA3612 /* redのコピー.png */; };
-		41122CC71F586C9B00DA3612 /* yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CC51F586C9B00DA3612 /* yellow.png */; };
-		41122CC81F586C9B00DA3612 /* yellowのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CC61F586C9B00DA3612 /* yellowのコピー.png */; };
-		41122CCE1F5871F600DA3612 /* modoruu.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CCD1F5871F600DA3612 /* modoruu.png */; };
-		41122CD01F58749600DA3612 /* ya.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CCF1F58749600DA3612 /* ya.png */; };
-		41122CDA1F64602300DA3612 /* カレンダー.png in Resources */ = {isa = PBXBuildFile; fileRef = 41122CD91F64602300DA3612 /* カレンダー.png */; };
 		412342E31FB1BDE600712D00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E21FB1BDE600712D00 /* ViewController.swift */; };
 		412342E51FB1BE6D00712D00 /* ShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E41FB1BE6D00712D00 /* ShowController.swift */; };
 		412342E91FB1BF2700712D00 /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E81FB1BF2700712D00 /* EditController.swift */; };
@@ -36,25 +21,43 @@
 		412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342EE1FB1BF9200712D00 /* SettingController.swift */; };
 		412342F11FB1C08400712D00 /* ChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F01FB1C08400712D00 /* ChangeController.swift */; };
 		412342F41FB1C24100712D00 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F31FB1C24100712D00 /* DateManager.swift */; };
-		412F00231F38D84400EB1CC4 /* set.png in Resources */ = {isa = PBXBuildFile; fileRef = 412F00221F38D84400EB1CC4 /* set.png */; };
 		4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182FD851F55728D000E750E /* PlaceHolderTextView.swift */; };
-		418BA12C1F1DEDFD0084413F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418BA12B1F1DEDFD0084413F /* CalendarCell.swift */; };
 		418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418BA1691F359D930084413F /* GoogleService-Info.plist */; };
-		418BA16E1F36D8C20084413F /* CollectionChangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418BA16D1F36D8C20084413F /* CollectionChangeCell.swift */; };
-		418BA1701F36E7650084413F /* CollectionChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 418BA16F1F36E7650084413F /* CollectionChangeCell.xib */; };
-		41A706C71E770DAF00F43E9F /* 矢印.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A706C61E770DAF00F43E9F /* 矢印.png */; };
-		41A706C91E77B15000F43E9F /* 矢印i.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A706C81E77B15000F43E9F /* 矢印i.png */; };
 		41A706CB1E91F18900F43E9F /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A706CA1E91F18900F43E9F /* Diary.swift */; };
 		41A706CE1E92237B00F43E9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A706CC1E92237B00F43E9F /* Main.storyboard */; };
 		41A706D01E95774000F43E9F /* Existence-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41A706CF1E95774000F43E9F /* Existence-Light.otf */; };
-		41C70C5B1EEFF82F0020916A /* ColorManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C70C5A1EEFF82F0020916A /* ColorManeger.swift */; };
 		41D305EC1E40A07A004031DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D305EB1E40A07A004031DA /* AppDelegate.swift */; };
 		41D305F31E40A07A004031DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41D305F21E40A07A004031DA /* Assets.xcassets */; };
 		41D305F61E40A07A004031DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D305F41E40A07A004031DA /* LaunchScreen.storyboard */; };
 		41D306011E40A07A004031DA /* CalenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D306001E40A07A004031DA /* CalenderTests.swift */; };
 		41D3060C1E40A07A004031DA /* CalenderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3060B1E40A07A004031DA /* CalenderUITests.swift */; };
 		662E44B77EDD770908F048C5 /* Pods_Calender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F1B0CF892EFC77E28F6CA2 /* Pods_Calender.framework */; };
-		AABAB3642005FD28004D2203 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABAB3632005FD28004D2203 /* Extention.swift */; };
+		AA8BB51A200DAB84006D8C29 /* ya.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB505200DAB82006D8C29 /* ya.png */; };
+		AA8BB51B200DAB84006D8C29 /* 矢印.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB506200DAB82006D8C29 /* 矢印.jpg */; };
+		AA8BB51C200DAB84006D8C29 /* orangeのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB507200DAB82006D8C29 /* orangeのコピー.png */; };
+		AA8BB51D200DAB84006D8C29 /* purpleのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB508200DAB82006D8C29 /* purpleのコピー.png */; };
+		AA8BB51E200DAB84006D8C29 /* greenのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB509200DAB83006D8C29 /* greenのコピー.png */; };
+		AA8BB51F200DAB84006D8C29 /* purple.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB50A200DAB83006D8C29 /* purple.png */; };
+		AA8BB520200DAB84006D8C29 /* modoruu.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB50B200DAB83006D8C29 /* modoruu.png */; };
+		AA8BB521200DAB84006D8C29 /* yellowのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB50C200DAB83006D8C29 /* yellowのコピー.png */; };
+		AA8BB522200DAB84006D8C29 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB50D200DAB83006D8C29 /* red.png */; };
+		AA8BB523200DAB84006D8C29 /* set.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB50E200DAB83006D8C29 /* set.png */; };
+		AA8BB524200DAB84006D8C29 /* カレンダー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB50F200DAB83006D8C29 /* カレンダー.png */; };
+		AA8BB525200DAB84006D8C29 /* sett.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB510200DAB83006D8C29 /* sett.png */; };
+		AA8BB526200DAB84006D8C29 /* 矢印.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB511200DAB83006D8C29 /* 矢印.png */; };
+		AA8BB527200DAB84006D8C29 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB512200DAB83006D8C29 /* green.png */; };
+		AA8BB528200DAB84006D8C29 /* redのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB513200DAB84006D8C29 /* redのコピー.png */; };
+		AA8BB529200DAB84006D8C29 /* 矢印i.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB514200DAB84006D8C29 /* 矢印i.png */; };
+		AA8BB52A200DAB84006D8C29 /* 矢印iのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB515200DAB84006D8C29 /* 矢印iのコピー.png */; };
+		AA8BB52B200DAB84006D8C29 /* yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB516200DAB84006D8C29 /* yellow.png */; };
+		AA8BB52C200DAB84006D8C29 /* blueのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB517200DAB84006D8C29 /* blueのコピー.png */; };
+		AA8BB52D200DAB84006D8C29 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB518200DAB84006D8C29 /* orange.png */; };
+		AA8BB52E200DAB84006D8C29 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB519200DAB84006D8C29 /* blue.png */; };
+		AA8BB530200DABCE006D8C29 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BB52F200DABCE006D8C29 /* CalendarCell.swift */; };
+		AA8BB533200DABF5006D8C29 /* CollectionChangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BB531200DABF5006D8C29 /* CollectionChangeCell.swift */; };
+		AA8BB534200DABF5006D8C29 /* CollectionChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB532200DABF5006D8C29 /* CollectionChangeCell.xib */; };
+		AA8BB536200DAC0A006D8C29 /* ColorManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BB535200DAC0A006D8C29 /* ColorManeger.swift */; };
+		AA8BB538200DAC1C006D8C29 /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8BB537200DAC1C006D8C29 /* Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,21 +85,6 @@
 		41050AE11FCD70AD00C0A051 /* CustumTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustumTableCell.xib; path = CustumCell/CustumTableCell.xib; sourceTree = "<group>"; };
 		41122CAD1F55781500DA3612 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/Calender-aebsukpjxyvpawbohslyovxsnhle/Build/Products/Debug-iphonesimulator/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
 		41122CAF1F557F9700DA3612 /* DeviceSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
-		41122CB11F5851C400DA3612 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = SOURCE_ROOT; };
-		41122CB21F5851C400DA3612 /* blueのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueのコピー.png"; sourceTree = SOURCE_ROOT; };
-		41122CB31F5851C400DA3612 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = SOURCE_ROOT; };
-		41122CB41F5851C400DA3612 /* greenのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenのコピー.png"; sourceTree = SOURCE_ROOT; };
-		41122CB51F5851C400DA3612 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = SOURCE_ROOT; };
-		41122CB61F5851C400DA3612 /* orangeのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeのコピー.png"; sourceTree = SOURCE_ROOT; };
-		41122CB71F5851C400DA3612 /* purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple.png; sourceTree = SOURCE_ROOT; };
-		41122CB81F5851C400DA3612 /* purpleのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purpleのコピー.png"; sourceTree = SOURCE_ROOT; };
-		41122CC11F58663200DA3612 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = SOURCE_ROOT; };
-		41122CC21F58663200DA3612 /* redのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redのコピー.png"; sourceTree = SOURCE_ROOT; };
-		41122CC51F586C9B00DA3612 /* yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow.png; sourceTree = SOURCE_ROOT; };
-		41122CC61F586C9B00DA3612 /* yellowのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowのコピー.png"; sourceTree = SOURCE_ROOT; };
-		41122CCD1F5871F600DA3612 /* modoruu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modoruu.png; sourceTree = SOURCE_ROOT; };
-		41122CCF1F58749600DA3612 /* ya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ya.png; sourceTree = SOURCE_ROOT; };
-		41122CD91F64602300DA3612 /* カレンダー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "カレンダー.png"; sourceTree = SOURCE_ROOT; };
 		412342E21FB1BDE600712D00 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ViewController/ViewController.swift; sourceTree = "<group>"; };
 		412342E41FB1BE6D00712D00 /* ShowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowController.swift; path = ViewController/ShowController.swift; sourceTree = "<group>"; };
 		412342E81FB1BF2700712D00 /* EditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditController.swift; path = ViewController/EditController.swift; sourceTree = "<group>"; };
@@ -104,19 +92,12 @@
 		412342EE1FB1BF9200712D00 /* SettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingController.swift; path = ViewController/SettingController.swift; sourceTree = "<group>"; };
 		412342F01FB1C08400712D00 /* ChangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeController.swift; path = ViewController/ChangeController.swift; sourceTree = "<group>"; };
 		412342F31FB1C24100712D00 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = Manager/DateManager.swift; sourceTree = "<group>"; };
-		412F00221F38D84400EB1CC4 /* set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set.png; sourceTree = "<group>"; };
 		4182FD851F55728D000E750E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		4182FD871F55760A000E750E /* Calender-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calender-Bridging-Header.h"; sourceTree = "<group>"; };
-		418BA12B1F1DEDFD0084413F /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = ../CalendarCell.swift; sourceTree = "<group>"; };
 		418BA1691F359D930084413F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		418BA16D1F36D8C20084413F /* CollectionChangeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionChangeCell.swift; sourceTree = "<group>"; };
-		418BA16F1F36E7650084413F /* CollectionChangeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionChangeCell.xib; sourceTree = "<group>"; };
-		41A706C61E770DAF00F43E9F /* 矢印.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢印.png"; sourceTree = "<group>"; };
-		41A706C81E77B15000F43E9F /* 矢印i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢印i.png"; sourceTree = "<group>"; };
 		41A706CA1E91F18900F43E9F /* Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		41A706CD1E92237B00F43E9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41A706CF1E95774000F43E9F /* Existence-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-Light.otf"; sourceTree = "<group>"; };
-		41C70C5A1EEFF82F0020916A /* ColorManeger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManeger.swift; sourceTree = "<group>"; };
 		41D305E81E40A07A004031DA /* Calender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D305EB1E40A07A004031DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41D305F21E40A07A004031DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,7 +111,32 @@
 		41D3060D1E40A07A004031DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5370A4A5F59C17E94D2185D7 /* Pods-CalenderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalenderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalenderTests/Pods-CalenderTests.release.xcconfig"; sourceTree = "<group>"; };
 		624F444C1D9793F3949F1E5D /* Pods-Calender.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calender.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calender/Pods-Calender.debug.xcconfig"; sourceTree = "<group>"; };
-		AABAB3632005FD28004D2203 /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
+		AA8BB505200DAB82006D8C29 /* ya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ya.png; path = images/ya.png; sourceTree = "<group>"; };
+		AA8BB506200DAB82006D8C29 /* 矢印.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "矢印.jpg"; path = "images/矢印.jpg"; sourceTree = "<group>"; };
+		AA8BB507200DAB82006D8C29 /* orangeのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "orangeのコピー.png"; path = "images/orangeのコピー.png"; sourceTree = "<group>"; };
+		AA8BB508200DAB82006D8C29 /* purpleのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "purpleのコピー.png"; path = "images/purpleのコピー.png"; sourceTree = "<group>"; };
+		AA8BB509200DAB83006D8C29 /* greenのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "greenのコピー.png"; path = "images/greenのコピー.png"; sourceTree = "<group>"; };
+		AA8BB50A200DAB83006D8C29 /* purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = purple.png; path = images/purple.png; sourceTree = "<group>"; };
+		AA8BB50B200DAB83006D8C29 /* modoruu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = modoruu.png; path = images/modoruu.png; sourceTree = "<group>"; };
+		AA8BB50C200DAB83006D8C29 /* yellowのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yellowのコピー.png"; path = "images/yellowのコピー.png"; sourceTree = "<group>"; };
+		AA8BB50D200DAB83006D8C29 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red.png; path = images/red.png; sourceTree = "<group>"; };
+		AA8BB50E200DAB83006D8C29 /* set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = set.png; path = images/set.png; sourceTree = "<group>"; };
+		AA8BB50F200DAB83006D8C29 /* カレンダー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "カレンダー.png"; path = "images/カレンダー.png"; sourceTree = "<group>"; };
+		AA8BB510200DAB83006D8C29 /* sett.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sett.png; path = images/sett.png; sourceTree = "<group>"; };
+		AA8BB511200DAB83006D8C29 /* 矢印.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "矢印.png"; path = "images/矢印.png"; sourceTree = "<group>"; };
+		AA8BB512200DAB83006D8C29 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = images/green.png; sourceTree = "<group>"; };
+		AA8BB513200DAB84006D8C29 /* redのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redのコピー.png"; path = "images/redのコピー.png"; sourceTree = "<group>"; };
+		AA8BB514200DAB84006D8C29 /* 矢印i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "矢印i.png"; path = "images/矢印i.png"; sourceTree = "<group>"; };
+		AA8BB515200DAB84006D8C29 /* 矢印iのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "矢印iのコピー.png"; path = "images/矢印iのコピー.png"; sourceTree = "<group>"; };
+		AA8BB516200DAB84006D8C29 /* yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellow.png; path = images/yellow.png; sourceTree = "<group>"; };
+		AA8BB517200DAB84006D8C29 /* blueのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueのコピー.png"; path = "images/blueのコピー.png"; sourceTree = "<group>"; };
+		AA8BB518200DAB84006D8C29 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orange.png; path = images/orange.png; sourceTree = "<group>"; };
+		AA8BB519200DAB84006D8C29 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue.png; path = images/blue.png; sourceTree = "<group>"; };
+		AA8BB52F200DABCE006D8C29 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = CustumCell/CalendarCell.swift; sourceTree = "<group>"; };
+		AA8BB531200DABF5006D8C29 /* CollectionChangeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionChangeCell.swift; path = CustumCell/CollectionChangeCell.swift; sourceTree = "<group>"; };
+		AA8BB532200DABF5006D8C29 /* CollectionChangeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionChangeCell.xib; path = CustumCell/CollectionChangeCell.xib; sourceTree = "<group>"; };
+		AA8BB535200DAC0A006D8C29 /* ColorManeger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorManeger.swift; path = Manager/ColorManeger.swift; sourceTree = "<group>"; };
+		AA8BB537200DAC1C006D8C29 /* Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extention.swift; path = Extention/Extention.swift; sourceTree = "<group>"; };
 		BD39B833FED21B8A6B921758 /* Pods-CalenderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalenderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalenderUITests/Pods-CalenderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE017672D86243A94992FC45 /* Pods_CalenderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalenderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F1B0CF892EFC77E28F6CA2 /* Pods_Calender.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calender.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,24 +187,27 @@
 		410081201EF92B1500DBCA05 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				41122CCF1F58749600DA3612 /* ya.png */,
-				41122CC51F586C9B00DA3612 /* yellow.png */,
-				41122CC61F586C9B00DA3612 /* yellowのコピー.png */,
-				41122CC11F58663200DA3612 /* red.png */,
-				41122CCD1F5871F600DA3612 /* modoruu.png */,
-				41122CC21F58663200DA3612 /* redのコピー.png */,
-				41122CB11F5851C400DA3612 /* blue.png */,
-				41122CB21F5851C400DA3612 /* blueのコピー.png */,
-				41122CB31F5851C400DA3612 /* green.png */,
-				41122CB41F5851C400DA3612 /* greenのコピー.png */,
-				41122CB51F5851C400DA3612 /* orange.png */,
-				41122CB61F5851C400DA3612 /* orangeのコピー.png */,
-				41122CD91F64602300DA3612 /* カレンダー.png */,
-				41122CB71F5851C400DA3612 /* purple.png */,
-				41122CB81F5851C400DA3612 /* purpleのコピー.png */,
-				41A706C61E770DAF00F43E9F /* 矢印.png */,
-				41A706C81E77B15000F43E9F /* 矢印i.png */,
-				412F00221F38D84400EB1CC4 /* set.png */,
+				AA8BB519200DAB84006D8C29 /* blue.png */,
+				AA8BB517200DAB84006D8C29 /* blueのコピー.png */,
+				AA8BB512200DAB83006D8C29 /* green.png */,
+				AA8BB509200DAB83006D8C29 /* greenのコピー.png */,
+				AA8BB50B200DAB83006D8C29 /* modoruu.png */,
+				AA8BB518200DAB84006D8C29 /* orange.png */,
+				AA8BB507200DAB82006D8C29 /* orangeのコピー.png */,
+				AA8BB50A200DAB83006D8C29 /* purple.png */,
+				AA8BB508200DAB82006D8C29 /* purpleのコピー.png */,
+				AA8BB50D200DAB83006D8C29 /* red.png */,
+				AA8BB513200DAB84006D8C29 /* redのコピー.png */,
+				AA8BB50E200DAB83006D8C29 /* set.png */,
+				AA8BB510200DAB83006D8C29 /* sett.png */,
+				AA8BB505200DAB82006D8C29 /* ya.png */,
+				AA8BB516200DAB84006D8C29 /* yellow.png */,
+				AA8BB50C200DAB83006D8C29 /* yellowのコピー.png */,
+				AA8BB50F200DAB83006D8C29 /* カレンダー.png */,
+				AA8BB506200DAB82006D8C29 /* 矢印.jpg */,
+				AA8BB511200DAB83006D8C29 /* 矢印.png */,
+				AA8BB514200DAB84006D8C29 /* 矢印i.png */,
+				AA8BB515200DAB84006D8C29 /* 矢印iのコピー.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -206,6 +215,9 @@
 		41050ADF1FCD705300C0A051 /* CustumCell */ = {
 			isa = PBXGroup;
 			children = (
+				AA8BB531200DABF5006D8C29 /* CollectionChangeCell.swift */,
+				AA8BB532200DABF5006D8C29 /* CollectionChangeCell.xib */,
+				AA8BB52F200DABCE006D8C29 /* CalendarCell.swift */,
 				41050AE01FCD70AD00C0A051 /* CustumTableCell.swift */,
 				41050AE11FCD70AD00C0A051 /* CustumTableCell.xib */,
 			);
@@ -229,7 +241,7 @@
 		412342F21FB1C1FB00712D00 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				41C70C5A1EEFF82F0020916A /* ColorManeger.swift */,
+				AA8BB535200DAC0A006D8C29 /* ColorManeger.swift */,
 				412342F31FB1C24100712D00 /* DateManager.swift */,
 			);
 			name = Manager;
@@ -268,9 +280,6 @@
 				41D305EB1E40A07A004031DA /* AppDelegate.swift */,
 				41A706CA1E91F18900F43E9F /* Diary.swift */,
 				41A706CC1E92237B00F43E9F /* Main.storyboard */,
-				418BA16D1F36D8C20084413F /* CollectionChangeCell.swift */,
-				418BA16F1F36E7650084413F /* CollectionChangeCell.xib */,
-				418BA12B1F1DEDFD0084413F /* CalendarCell.swift */,
 				41D305F21E40A07A004031DA /* Assets.xcassets */,
 				41A706CF1E95774000F43E9F /* Existence-Light.otf */,
 				41D305F41E40A07A004031DA /* LaunchScreen.storyboard */,
@@ -304,7 +313,7 @@
 		AABAB3652005FD2E004D2203 /* Extention */ = {
 			isa = PBXGroup;
 			children = (
-				AABAB3632005FD28004D2203 /* Extention.swift */,
+				AA8BB537200DAC1C006D8C29 /* Extention.swift */,
 			);
 			name = Extention;
 			sourceTree = "<group>";
@@ -439,31 +448,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41122CBC1F5851C400DA3612 /* greenのコピー.png in Resources */,
-				41A706C71E770DAF00F43E9F /* 矢印.png in Resources */,
+				AA8BB527200DAB84006D8C29 /* green.png in Resources */,
 				41A706D01E95774000F43E9F /* Existence-Light.otf in Resources */,
-				41122CCE1F5871F600DA3612 /* modoruu.png in Resources */,
+				AA8BB52B200DAB84006D8C29 /* yellow.png in Resources */,
+				AA8BB520200DAB84006D8C29 /* modoruu.png in Resources */,
+				AA8BB52A200DAB84006D8C29 /* 矢印iのコピー.png in Resources */,
+				AA8BB51D200DAB84006D8C29 /* purpleのコピー.png in Resources */,
 				41A706CE1E92237B00F43E9F /* Main.storyboard in Resources */,
-				41122CDA1F64602300DA3612 /* カレンダー.png in Resources */,
-				418BA1701F36E7650084413F /* CollectionChangeCell.xib in Resources */,
+				AA8BB51E200DAB84006D8C29 /* greenのコピー.png in Resources */,
+				AA8BB522200DAB84006D8C29 /* red.png in Resources */,
+				AA8BB51A200DAB84006D8C29 /* ya.png in Resources */,
+				AA8BB523200DAB84006D8C29 /* set.png in Resources */,
+				AA8BB524200DAB84006D8C29 /* カレンダー.png in Resources */,
 				41D305F61E40A07A004031DA /* LaunchScreen.storyboard in Resources */,
-				41122CBE1F5851C400DA3612 /* orangeのコピー.png in Resources */,
+				AA8BB529200DAB84006D8C29 /* 矢印i.png in Resources */,
+				AA8BB51C200DAB84006D8C29 /* orangeのコピー.png in Resources */,
+				AA8BB534200DABF5006D8C29 /* CollectionChangeCell.xib in Resources */,
+				AA8BB528200DAB84006D8C29 /* redのコピー.png in Resources */,
+				AA8BB52D200DAB84006D8C29 /* orange.png in Resources */,
+				AA8BB525200DAB84006D8C29 /* sett.png in Resources */,
+				AA8BB52E200DAB84006D8C29 /* blue.png in Resources */,
 				41D305F31E40A07A004031DA /* Assets.xcassets in Resources */,
-				41122CC81F586C9B00DA3612 /* yellowのコピー.png in Resources */,
-				41122CBD1F5851C400DA3612 /* orange.png in Resources */,
-				41122CC31F58663200DA3612 /* red.png in Resources */,
-				41122CC41F58663200DA3612 /* redのコピー.png in Resources */,
-				41122CB91F5851C400DA3612 /* blue.png in Resources */,
-				41122CC71F586C9B00DA3612 /* yellow.png in Resources */,
-				41122CC01F5851C400DA3612 /* purpleのコピー.png in Resources */,
-				41A706C91E77B15000F43E9F /* 矢印i.png in Resources */,
-				41122CBB1F5851C400DA3612 /* green.png in Resources */,
-				41122CD01F58749600DA3612 /* ya.png in Resources */,
-				41122CBA1F5851C400DA3612 /* blueのコピー.png in Resources */,
-				412F00231F38D84400EB1CC4 /* set.png in Resources */,
+				AA8BB521200DAB84006D8C29 /* yellowのコピー.png in Resources */,
+				AA8BB526200DAB84006D8C29 /* 矢印.png in Resources */,
+				AA8BB52C200DAB84006D8C29 /* blueのコピー.png in Resources */,
 				41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */,
+				AA8BB51B200DAB84006D8C29 /* 矢印.jpg in Resources */,
+				AA8BB51F200DAB84006D8C29 /* purple.png in Resources */,
 				418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */,
-				41122CBF1F5851C400DA3612 /* purple.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,21 +663,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */,
+				AA8BB530200DABCE006D8C29 /* CalendarCell.swift in Sources */,
 				41050ADA1FC5919D00C0A051 /* CellTryViewController.swift in Sources */,
 				412342F41FB1C24100712D00 /* DateManager.swift in Sources */,
 				412342E31FB1BDE600712D00 /* ViewController.swift in Sources */,
 				412342E51FB1BE6D00712D00 /* ShowController.swift in Sources */,
 				41A706CB1E91F18900F43E9F /* Diary.swift in Sources */,
 				412342EB1FB1BF5200712D00 /* HensyuuController.swift in Sources */,
-				418BA12C1F1DEDFD0084413F /* CalendarCell.swift in Sources */,
 				4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */,
 				41050AE21FCD70AD00C0A051 /* CustumTableCell.swift in Sources */,
-				418BA16E1F36D8C20084413F /* CollectionChangeCell.swift in Sources */,
-				AABAB3642005FD28004D2203 /* Extention.swift in Sources */,
+				AA8BB533200DABF5006D8C29 /* CollectionChangeCell.swift in Sources */,
+				AA8BB538200DAC1C006D8C29 /* Extention.swift in Sources */,
 				41122CB01F557F9700DA3612 /* DeviceSize.swift in Sources */,
 				412342E91FB1BF2700712D00 /* EditController.swift in Sources */,
-				41C70C5B1EEFF82F0020916A /* ColorManeger.swift in Sources */,
 				412342F11FB1C08400712D00 /* ChangeController.swift in Sources */,
+				AA8BB536200DAC0A006D8C29 /* ColorManeger.swift in Sources */,
 				41D305EC1E40A07A004031DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
