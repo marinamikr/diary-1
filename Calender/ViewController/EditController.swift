@@ -16,6 +16,7 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var textView: PlaceHolderTextView!
     @IBOutlet var haikei: UIImageView!
     @IBOutlet var addpictureButton:UIButton!
+    @IBOutlet var deleteButton:UIButton!
     
     //選ばれた日付をStringに変換したもの。ViewControllerから直接画面遷移した場合はnil
     var selectedDateString : String!
@@ -30,6 +31,7 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         textField.delegate = self
         textView.placeHolder = "ここに書く"
         
+        //
         if self.selectedDateString != nil{
             //Realmに保存されている情報を取得し表示
             showData(date: self.selectedDateString)
@@ -37,6 +39,9 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             addpictureButton.setTitle("", for: .normal)
             //datepickerに日付を表示
             datepicker.date = self.selectedDate
+            deleteButton.isHidden = false
+        }else{
+            deleteButton.isHidden = true
         }
     }
     
@@ -195,8 +200,8 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         diary.main = self.textView.text
         diary.title = self.textField.text!
         
-        if let photo = self.haikei.image{
-            diary.photo = NSData(data: UIImageJPEGRepresentation(photo,1)!) as Data
+        if self.haikei.image != nil{
+            diary.photo = NSData(data: UIImageJPEGRepresentation(self.haikei.image!,1)!) as Data
         }
         
         //STEP.3 Realmに書き込み
@@ -204,6 +209,17 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             realm.add(diary, update: true)
         }
         print(diary)
+    }
+    @IBAction func ddeleteButton(){
+        //Realmオブジェクトの取得
+        let realm = try! Realm()
+        //Realmから、dateの情報が、selectedDateStringと一致するものを検索
+        if let diary = realm.objects(Diary.self).filter("date == %@",selectedDateString ).last{
+            try! realm.write {
+                realm.delete(diary)
+            }
+        }
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func delete () {
@@ -222,10 +238,19 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 self.view.transform = transform
                 
             })
-        }
+        }}
+    @IBAction func onlyDelete(){
+        // STEP.1 Realmを初期化
+        let realm = try! Realm()
         
+        if let diary = realm.objects(Diary.self).filter("date == %@", selectedDateString).last{
+            
+            try! realm.write() {
+                realm.delete(diary)
+            }
+        }
+        navigationController?.popToViewController(navigationController!.viewControllers[0], animated: true)
     }
-    
     // キーボードが消えたときに、画面を戻す
     func keyboardWillHide(notification: Notification?) {
         

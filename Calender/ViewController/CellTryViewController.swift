@@ -32,7 +32,11 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         tableView.dataSource = self
         self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumTableCell")
         
-       changeDiary()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        myDiary()
     }
     
     //端末内のある日記を取得する処理
@@ -49,9 +53,16 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         let results = Array(realm.objects(Diary.self))
         //Realmに保存されている要素の数だけfor文を回して配列に追加
         for i in 0 ..< results.count {
+            
             dateArray.append(results[i].date)
             titleArray.append(results[i].title)
-            picArray.append(UIImage(data:results[i].photo! )!)
+            
+            if results[i].photo != nil{
+                 picArray.append(UIImage(data:results[i].photo! )!)
+            }else{
+                picArray.append(UIImage())
+            }
+           
             mainArray.append(results[i].main)
         }
         //tableViewのリロード
@@ -101,10 +112,11 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         switch (sender as AnyObject).selectedSegmentIndex {
         case 0:
             print("first")
-            changeDiary()
+            myDiary()
         case 1:
             print("second")
-            myDiary()
+            changeDiary()
+            
             
         default:
             print("該当無し")

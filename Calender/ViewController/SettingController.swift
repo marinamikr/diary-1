@@ -13,6 +13,7 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
     
     var array = [ ["Colors","red",  "pink", "orange", "yellow", "green","blue","purple"],
                   ["日記削除", "all delete"],
+                  ["change", "my QR", "add friends", "交換範囲"],
                   ]
     
     var checkArr = [true,false,false,false,false,false,false]
@@ -54,7 +55,7 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
             checkArr = userDefaults.object(forKey: "CHECK") as! [Bool]
         }
     }
-  
+    
     @IBAction func save() {
         userDefaults.set(checkArr, forKey: "CHECK")
         userDefaults.set(colorNumber, forKey: "COLOR")
@@ -155,8 +156,19 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
             alert.addAction(cancelAction)
             alert.addAction(defaultAction)
             present(alert, animated: true, completion: nil)
-        }
+        }else if indexPath.section == 2{
             
+            if indexPath.row == 0{
+                performSegue(withIdentifier: "myqr", sender: nil)
+            }
+            else if indexPath.row == 1{
+                performSegue(withIdentifier: "friends", sender: nil)
+            }
+           else if indexPath.row == 2{
+                performSegue(withIdentifier: "select", sender: nil)
+            }
+        }
+        
         userDefaults.set(checkArr, forKey: "CHECK")
         userDefaults.set(colorNumber, forKey: "COLOR")
         tableView.reloadData()
@@ -172,3 +184,4 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
         
     }
 }
+
