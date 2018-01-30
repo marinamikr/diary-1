@@ -3,7 +3,7 @@ import AVFoundation
 import UIKit
 
 class FriendsController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-    
+    /*
     // カメラやマイクの入出力を管理するオブジェクトを生成
     private let session = AVCaptureSession()
     
@@ -79,5 +79,5 @@ class FriendsController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
             
             
         }
-    }
+    }*/
 }

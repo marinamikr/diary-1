@@ -44,6 +44,7 @@ class ShowController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
         //日付を表示
         dateLabel.text = selectedDateString
         //日付の情報をもとに、Realmに保存されている情報を取得
@@ -70,10 +71,16 @@ class ShowController: UIViewController {
             label.text = diary.title
             mainLabel.text = diary.main
             self.changeCheck = diary.changeCheck
-            
+          
+            if diary.changeCheck == true{
+                changeButton.isEnabled = false
+            }
             if let photo = diary.photo {
                 picture.image = UIImage(data: photo)
             }
+         
+        }else{
+            changeButton.isHidden = true
         }
     }
     
@@ -107,6 +114,17 @@ class ShowController: UIViewController {
     
     
     @IBAction func change() {
+        // 無効化
+        self.changeButton.isEnabled = false
+        print("mukou")
+        //Realmオブジェクトの取得
+        let realm = try! Realm()
+        
+        if let diary = realm.objects(Diary.self).filter("date == %@", self.selectedDateString).last{
+            try! realm.write {
+                diary.changeCheck = true
+            }
+        }
         
         // 端末の固有IDを取得
         let uuid = NSUUID().uuidString
@@ -136,7 +154,7 @@ class ShowController: UIViewController {
                     //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
                     ref.child(uuid).setValue(data)
                     
-                    
+                   
                 })
             }
         }

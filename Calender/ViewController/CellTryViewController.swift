@@ -32,6 +32,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         tableView.dataSource = self
         self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumTableCell")
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,16 +58,18 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
             dateArray.append(results[i].date)
             titleArray.append(results[i].title)
             
+            
             if results[i].photo != nil{
-                 picArray.append(UIImage(data:results[i].photo! )!)
+                picArray.append(UIImage(data:results[i].photo! )!)
             }else{
                 picArray.append(UIImage())
             }
-           
+            
             mainArray.append(results[i].main)
+            
+            //tableViewのリロード
+            self.tableView.reloadData()
         }
-        //tableViewのリロード
-        self.tableView.reloadData()
     }
     
     //サーバー上の日記を取得する処理
@@ -112,16 +115,22 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         switch (sender as AnyObject).selectedSegmentIndex {
         case 0:
             print("first")
-            myDiary()
+            changeDiary()
         case 1:
             print("second")
-            changeDiary()
-            
+            myDiary()
             
         default:
             print("該当無し")
         }
+        
+        //ロード中のダイアログを消去する
+        SVProgressHUD.dismiss()
+        //tableViewのリロード
+        self.tableView.reloadData()
     }
+    
+
     
     /// セルの個数を指定するデリゲートメソッド（必須）
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,6 +149,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         
         return custumCell
     }
-    
 }
+
+
 
