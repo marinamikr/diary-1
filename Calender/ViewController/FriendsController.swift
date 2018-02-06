@@ -1,83 +1,98 @@
-import Foundation
-import AVFoundation
+//
+//  ViewController.swift
+//  AVCaptureMetadataOutputSample_QRCodeReader
+//
+//  Created by hirauchi.shinichi on 2016/12/19.
+//  Copyright © 2016年 SAPPOROWORKS. All rights reserved.
+//
+
 import UIKit
+import AVFoundation
 
 class FriendsController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-    /*
-    // カメラやマイクの入出力を管理するオブジェクトを生成
-    private let session = AVCaptureSession()
+    
+    @IBOutlet weak var previewView: UIView!
+    @IBOutlet weak var textField: UITextView!
+     var userDefaults:UserDefaults = UserDefaults.standard
+    
+    // セッションのインスタンス生成
+    let captureSession = AVCaptureSession()
+    var videoLayer: AVCaptureVideoPreviewLayer?
+    
+    var qrView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        // カメラやマイクのデバイスそのものを管理するオブジェクトを生成（ここではワイドアングルカメラ・ビデオ・背面カメラを指定）
-        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera],
-                                                                mediaType: AVMediaType.video,
-                                                                position: .back)
+        // QRコードをマークするビュー
+        qrView = UIView()
+        qrView.layer.borderWidth = 4
+        qrView.layer.borderColor = UIColor.red.cgColor
+        qrView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        view.addSubview(qrView)
         
-        // ワイドアングルカメラ・ビデオ・背面カメラに該当するデバイスを取得
-        let devices = discoverySession.devices
+        // 入力（背面カメラ）
+        let videoDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        let videoInput = try! AVCaptureDeviceInput.init(device: videoDevice)
+        captureSession.addInput(videoInput)
         
-        //　該当するデバイスのうち最初に取得したものを利用する
-        if let backCamera = devices.first {
-            do {
-                // QRコードの読み取りに背面カメラの映像を利用するための設定
-                let deviceInput = try AVCaptureDeviceInput(device: backCamera)
-                
-                if self.session.canAddInput(deviceInput) {
-                    self.session.addInput(deviceInput)
+        // 出力（メタデータ）
+        let metadataOutput = AVCaptureMetadataOutput()
+        captureSession.addOutput(metadataOutput)
+        
+        // QRコードを検出した際のデリゲート設定
+        metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        // QRコードの認識を設定
+        metadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+        
+        // プレビュー表示
+        videoLayer = AVCaptureVideoPreviewLayer.init(session: captureSession)
+        videoLayer?.frame = previewView.bounds
+        videoLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        previewView.layer.addSublayer(videoLayer!)
+        
+        // セッションの開始
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.captureSession.startRunning()
+        }
+    }
+    
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+        // 複数のメタデータを検出できる
+        for metadata in metadataObjects as! [AVMetadataMachineReadableCodeObject] {
+            // QRコードのデータかどうかの確認
+            if metadata.type == AVMetadataObjectTypeQRCode {
+                // 検出位置を取得
+                let barCode = videoLayer?.transformedMetadataObject(for: metadata) as! AVMetadataMachineReadableCodeObject
+                qrView!.frame = barCode.bounds
+                if metadata.stringValue != nil {
+                    // 検出データを取得
+                    textField.text = metadata.stringValue!
+                    let id = metadata.stringValue
                     
-                    // 背面カメラの映像からQRコードを検出するための設定
-                    let metadataOutput = AVCaptureMetadataOutput()
+                    userDefaults.register(defaults: ["userIDs": []])
+                    var userIDs = userDefaults.object(forKey: "userIDs") as! Array<String>
                     
-                    if self.session.canAddOutput(metadataOutput) {
-                        self.session.addOutput(metadataOutput)
-                        
-                        metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-                        metadataOutput.metadataObjectTypes = [.qr]
-                        
-                        // 背面カメラの映像を画面に表示するためのレイヤーを生成
-                        let previewLayer = AVCaptureVideoPreviewLayer(session: self.session)
-                        previewLayer.frame = self.view.bounds
-                        previewLayer.videoGravity = .resizeAspectFill
-                        self.view.layer.addSublayer(previewLayer)
-                        
-                        // 読み取り開始
-                        self.session.startRunning()
+                    if !(userIDs.contains(id!)){
+                        userIDs.append(id!)
+                        userDefaults.set(userIDs,forKey:"userIDs")
+                        userDefaults.synchronize()
                     }
+                    
+                      print(userIDs)
+                   
+                    
+                    
+                  
+                    self.captureSession.stopRunning()
+                    
+                    
                 }
-            } catch {
-                print("Error occured while creating video device input: \(error)")
             }
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        for metadata in metadataObjects as! [AVMetadataMachineReadableCodeObject] {
-            // QRコードのデータかどうかの確認
-            if metadata.type != .qr { continue }
-            
-            // QRコードの内容が空かどうかの確認
-            if metadata.stringValue == nil { continue }
-            
-            /*
-             このあたりで取得したQRコードを使ってゴニョゴニョする
-             読み取りの終了・再開のタイミングは用途によって制御が異なるので注意
-             以下はQRコードに紐づくWebサイトをSafariで開く例
-             */
-            
-            print(metadata.stringValue)
-            
-            // 読み取り終了
-            self.session.stopRunning()
-            
-            
-        }
-    }*/
 }
+
+
+

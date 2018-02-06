@@ -408,7 +408,7 @@
 				TargetAttributes = {
 					41D305E71E40A07A004031DA = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = KRD3HBM28P;
+						DevelopmentTeam = 66M7BL3A9M;
 						LastSwiftMigration = 0830;
 					};
 					41D305FB1E40A07A004031DA = {
@@ -824,11 +824,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = KRD3HBM28P;
+				DEVELOPMENT_TEAM = 66M7BL3A9M;
 				INFOPLIST_FILE = Calender/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = hazuki.Calender;
+				PRODUCT_BUNDLE_IDENTIFIER = hazuki.CalenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Calender/Calender-Bridging-Header.h";
@@ -845,11 +845,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = KRD3HBM28P;
+				DEVELOPMENT_TEAM = 66M7BL3A9M;
 				INFOPLIST_FILE = Calender/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = hazuki.Calender;
+				PRODUCT_BUNDLE_IDENTIFIER = hazuki.CalenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Calender/Calender-Bridging-Header.h";
