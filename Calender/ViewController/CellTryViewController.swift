@@ -25,6 +25,8 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     var mainArray: [String] = Array()
     var picArray: [UIImage] = Array()
     
+    var userDefaults:UserDefaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 10//セルの高さの見積もり
@@ -37,7 +39,8 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        myDiary()
+        changeDiary()
+        
     }
     
     //端末内のある日記を取得する処理
@@ -83,30 +86,48 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         //ロード中のダイアログを表示する
         SVProgressHUD.show()
         
-        // databaseから画像の名前を取得
-        let ref = Database.database().reference().child("283D266E-95F6-4622-BDEB-B8E20BA754E5")
-        ref.observe(DataEventType.value, with: { snapshot in
-            
-            let postDict = snapshot.value as! [String : AnyObject]
-            
-            for (key, value) in postDict {
-                if (key == "date"){
-                    self.dateArray.append(value as! String)
-                }else if (key == "title"){
-                    self.titleArray.append(value as! String)
-                }else if (key == "downloadURL"){
-                    let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
-                    self.picArray.append(UIImage(data: loadedImageData as! Data)!)
-                    
-                }else if (key == "main"){
-                    self.mainArray.append(value as! String)
+          userDefaults.register(defaults: ["userIDs": []])
+        
+        var userIDs = userDefaults.object(forKey: "userIDs") as! Array<String>
+        
+        
+        for i in 0 ..< userIDs.count {
+            print(userIDs[i])
+            // databaseから画像の名前を取得
+            let ref = Database.database().reference().child(userIDs[i])
+            ref.observe(DataEventType.value, with: { snapshot in
+                
+                let postDict = snapshot.value as! [String : AnyObject]
+                print(postDict)
+                for (key, value) in postDict {
+                    if (key == "date"){
+                        self.dateArray.append(value as! String)
+                        
+                    }else if (key == "title"){
+                        self.titleArray.append(value as! String)
+                    }else if (key == "downloadURL"){
+                        let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
+                        self.picArray.append(UIImage(data: loadedImageData as! Data)!)
+                        
+                    }else if (key == "main"){
+                        self.mainArray.append(value as! String)
+                    }
                 }
-            }
-            //ロード中のダイアログを消去する
-            SVProgressHUD.dismiss()
-            //tableViewのリロード
-            self.tableView.reloadData()
-        })
+                
+                //tableViewのリロード
+                self.tableView.reloadData()
+                
+            })
+            
+            
+            
+        }
+        
+        
+        //ロード中のダイアログを消去する
+        SVProgressHUD.dismiss()
+        //tableViewのリロード
+        self.tableView.reloadData()
     }
     
     
@@ -130,10 +151,11 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         self.tableView.reloadData()
     }
     
-
+    
     
     /// セルの個数を指定するデリゲートメソッド（必須）
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(dateArray.count)
         return dateArray.count
     }
     
@@ -146,6 +168,9 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         custumCell.pic.image = picArray[indexPath.row]
         custumCell.title.text = titleArray[indexPath.row]
         custumCell.date.text = dateArray[indexPath.row]
+        
+        print(picArray[indexPath.row])
+        print(titleArray[indexPath.row])
         
         return custumCell
     }

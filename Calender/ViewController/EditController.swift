@@ -202,6 +202,8 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         if self.haikei.image != nil{
             diary.photo = NSData(data: UIImageJPEGRepresentation(self.haikei.image!,1)!) as Data
+        }else{
+            diary.photo = NSData(data: UIImageJPEGRepresentation(UIImage(named:"にる.png")! ,1)!) as Data
         }
         
         //STEP.3 Realmに書き込み

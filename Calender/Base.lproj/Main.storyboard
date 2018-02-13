@@ -280,11 +280,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIC-87-D47">
-                                <rect key="frame" x="-16" y="391" width="366" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -466,7 +461,7 @@ picture</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaB-az-Uei" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="bn1-KJ-z2K"/>
             </objects>
-            <point key="canvasLocation" x="5199" y="356"/>
+            <point key="canvasLocation" x="5236" y="375"/>
         </scene>
         <!--Cell Try View Controller-->
         <scene sceneID="CRk-mC-F23">

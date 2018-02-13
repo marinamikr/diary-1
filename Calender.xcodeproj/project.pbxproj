@@ -19,6 +19,9 @@
 		412342E91FB1BF2700712D00 /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E81FB1BF2700712D00 /* EditController.swift */; };
 		412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342EE1FB1BF9200712D00 /* SettingController.swift */; };
 		412342F41FB1C24100712D00 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F31FB1C24100712D00 /* DateManager.swift */; };
+		413A6A662032F5D000238BD2 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A652032F5D000238BD2 /* icon.png */; };
+		413A6A682032FB1F00238BD2 /* nil.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A672032FB1F00238BD2 /* nil.png */; };
+		413A6A6A2032FBD700238BD2 /* にる.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A692032FBD700238BD2 /* にる.png */; };
 		4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182FD851F55728D000E750E /* PlaceHolderTextView.swift */; };
 		418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418BA1691F359D930084413F /* GoogleService-Info.plist */; };
 		41A706CB1E91F18900F43E9F /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A706CA1E91F18900F43E9F /* Diary.swift */; };
@@ -90,6 +93,9 @@
 		412342E81FB1BF2700712D00 /* EditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditController.swift; path = ViewController/EditController.swift; sourceTree = "<group>"; };
 		412342EE1FB1BF9200712D00 /* SettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingController.swift; path = ViewController/SettingController.swift; sourceTree = "<group>"; };
 		412342F31FB1C24100712D00 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = Manager/DateManager.swift; sourceTree = "<group>"; };
+		413A6A652032F5D000238BD2 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		413A6A672032FB1F00238BD2 /* nil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nil.png; sourceTree = "<group>"; };
+		413A6A692032FBD700238BD2 /* にる.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "にる.png"; sourceTree = "<group>"; };
 		4182FD851F55728D000E750E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		4182FD871F55760A000E750E /* Calender-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calender-Bridging-Header.h"; sourceTree = "<group>"; };
 		418BA1691F359D930084413F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -187,6 +193,8 @@
 		410081201EF92B1500DBCA05 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				413A6A672032FB1F00238BD2 /* nil.png */,
+				413A6A692032FBD700238BD2 /* にる.png */,
 				AA8BB519200DAB84006D8C29 /* blue.png */,
 				AA8BB517200DAB84006D8C29 /* blueのコピー.png */,
 				AA8BB512200DAB83006D8C29 /* green.png */,
@@ -199,6 +207,7 @@
 				AA8BB50D200DAB83006D8C29 /* red.png */,
 				AA8BB513200DAB84006D8C29 /* redのコピー.png */,
 				AA8BB50E200DAB83006D8C29 /* set.png */,
+				413A6A652032F5D000238BD2 /* icon.png */,
 				AA8BB510200DAB83006D8C29 /* sett.png */,
 				AA8BB505200DAB82006D8C29 /* ya.png */,
 				AA8BB516200DAB84006D8C29 /* yellow.png */,
@@ -451,6 +460,7 @@
 				AA8BB527200DAB84006D8C29 /* green.png in Resources */,
 				41A706D01E95774000F43E9F /* Existence-Light.otf in Resources */,
 				AA8BB52B200DAB84006D8C29 /* yellow.png in Resources */,
+				413A6A682032FB1F00238BD2 /* nil.png in Resources */,
 				AA8BB520200DAB84006D8C29 /* modoruu.png in Resources */,
 				AA8BB52A200DAB84006D8C29 /* 矢印iのコピー.png in Resources */,
 				AA8BB51D200DAB84006D8C29 /* purpleのコピー.png in Resources */,
@@ -465,6 +475,7 @@
 				AA8BB51C200DAB84006D8C29 /* orangeのコピー.png in Resources */,
 				AA8BB528200DAB84006D8C29 /* redのコピー.png in Resources */,
 				AA8BB52D200DAB84006D8C29 /* orange.png in Resources */,
+				413A6A6A2032FBD700238BD2 /* にる.png in Resources */,
 				AA8BB525200DAB84006D8C29 /* sett.png in Resources */,
 				AA8BB52E200DAB84006D8C29 /* blue.png in Resources */,
 				41D305F31E40A07A004031DA /* Assets.xcassets in Resources */,
@@ -476,6 +487,7 @@
 				AA8BB51B200DAB84006D8C29 /* 矢印.jpg in Resources */,
 				AA8BB51F200DAB84006D8C29 /* purple.png in Resources */,
 				418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */,
+				413A6A662032F5D000238BD2 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

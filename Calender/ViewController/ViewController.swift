@@ -14,7 +14,7 @@ import Firebase
 
 
 class ViewController: UIViewController{
-  
+    
     /*View関連の変数*/
     @IBOutlet weak var headerPrevBtn: UIButton!//一月前に移動するボタン
     @IBOutlet weak var headerNextBtn: UIButton!//一月後に移動するボタン
@@ -40,7 +40,7 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //setUserData()
         // ナビバーの表示を切り替える
         if let nv = navigationController {
             nv.setNavigationBarHidden(true, animated: true)
@@ -68,7 +68,7 @@ class ViewController: UIViewController{
         calenderCollectionView.reloadData()
     }
     
-   
+    
     //１ヶ月前に戻るボタンをタップした時の処理
     @IBAction func tappedHeaderPrevBtn(_ sender: UIButton) {
         
@@ -85,6 +85,39 @@ class ViewController: UIViewController{
         calenderCollectionView.reloadData()
     }
     
+    
+   /* func setUserData(){
+        
+        let uuid = UIDevice.current.identifierForVendor!.uuidString
+        let ref = Database.database().reference().child("allUser")
+        
+        
+        ref.observe(DataEventType.value, with: { snapshot in
+            
+            
+            
+            let postDict = snapshot.value  as! [String : AnyObject]
+                print(postDict)
+                for (key, value) in postDict {
+                    if (key == "allUser"){
+                        var allArray = value as! Array<String>
+                        
+                        if !(allArray.contains(uuid)){
+                            allArray.append(uuid)
+                            ref.child("allUser").setValue(allArray)
+                        }
+                        
+                    }
+                }
+                
+            }
+            
+        })
+        
+        
+        
+    }
+ */
     //１ヶ月後に移動するボタンをタップした時の処理
     @IBAction func tappedHeaderNextBtn(_ sender: UIButton) {
         //まず、DateManagerの情報を１ヶ月後に変更
@@ -111,7 +144,7 @@ class ViewController: UIViewController{
         
         //NSUserDefaultsから、ユーザーの指定している色の情報を取得
         if let color = userDefaults.object(forKey: "COLOR") {
-           colorNum = color as! Int
+            colorNum = color as! Int
         }
         
         switch colorNum {
@@ -211,7 +244,7 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegate, 
             //セルに日付を表示
             cell.textLabel.text = cellDate.toDayString()
             cell.textLabel.textAlignment = .left
-           
+            
             //Realmオブジェクトの取得
             let realm = try! Realm()
             //Realmから、dateの情報が、Cellに表示する日付と一致するものを検索

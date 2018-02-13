@@ -127,7 +127,9 @@ class ShowController: UIViewController {
         }
         
         // 端末の固有IDを取得
-        let uuid = NSUUID().uuidString
+        
+        let uuid = UIDevice.current.identifierForVendor!.uuidString
+        
         
         // strageの一番トップのReferenceを指定
         let storage = Storage.storage()
