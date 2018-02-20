@@ -24,6 +24,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     var titleArray: [String] = Array()
     var mainArray: [String] = Array()
     var picArray: [UIImage] = Array()
+    var nameArray: [String] = Array()
     
     var userDefaults:UserDefaults = UserDefaults.standard
     
@@ -88,13 +89,17 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         
           userDefaults.register(defaults: ["userIDs": []])
         
-        var userIDs = userDefaults.object(forKey: "userIDs") as! Array<String>
+        //var userIDs = userDefaults.object(forKey: "userIDs") as! Array<String>
         
         
-        for i in 0 ..< userIDs.count {
-            print(userIDs[i])
+        let realm = try! Realm()
+        let user = Array(realm.objects(User.self))
+        
+        
+        for i in 0 ..< user.count {
+            
             // databaseから画像の名前を取得
-            let ref = Database.database().reference().child(userIDs[i])
+            let ref = Database.database().reference().child(user[i].userID)
             ref.observe(DataEventType.value, with: { snapshot in
                 
                 let postDict = snapshot.value as! [String : AnyObject]
@@ -113,6 +118,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                         self.mainArray.append(value as! String)
                     }
                 }
+                self.nameArray.append(user[i].userName)
                 
                 //tableViewのリロード
                 self.tableView.reloadData()
@@ -168,6 +174,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         custumCell.pic.image = picArray[indexPath.row]
         custumCell.title.text = titleArray[indexPath.row]
         custumCell.date.text = dateArray[indexPath.row]
+        custumCell.userName.text = nameArray[indexPath.row]
         
         print(picArray[indexPath.row])
         print(titleArray[indexPath.row])

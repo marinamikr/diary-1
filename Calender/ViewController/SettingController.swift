@@ -13,7 +13,7 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
     
     var array = [ ["Colors","red",  "pink", "orange", "yellow", "green","blue","purple"],
                   ["日記削除", "all delete"],
-                  ["change", "my QR", "add friends", "交換範囲"],
+                  ["change", "my QR", "add friends", "交換範囲","友達一覧"],
                   ]
     
     var checkArr = [true,false,false,false,false,false,false]
@@ -164,8 +164,11 @@ class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataS
             else if indexPath.row == 1{
                 performSegue(withIdentifier: "friends", sender: nil)
             }
-           else if indexPath.row == 2{
+            else if indexPath.row == 2{
                 performSegue(withIdentifier: "select", sender: nil)
+            }
+            else if indexPath.row == 3{
+                performSegue(withIdentifier: "collect", sender: nil)
             }
         }
         

@@ -22,6 +22,8 @@
 		413A6A662032F5D000238BD2 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A652032F5D000238BD2 /* icon.png */; };
 		413A6A682032FB1F00238BD2 /* nil.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A672032FB1F00238BD2 /* nil.png */; };
 		413A6A6A2032FBD700238BD2 /* にる.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A692032FBD700238BD2 /* にる.png */; };
+		413A6A6C203C17E400238BD2 /* CollectFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A6A6B203C17E400238BD2 /* CollectFriendController.swift */; };
+		413A6A71203C1C9000238BD2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A6A70203C1C9000238BD2 /* User.swift */; };
 		4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182FD851F55728D000E750E /* PlaceHolderTextView.swift */; };
 		418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418BA1691F359D930084413F /* GoogleService-Info.plist */; };
 		41A706CB1E91F18900F43E9F /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A706CA1E91F18900F43E9F /* Diary.swift */; };
@@ -96,6 +98,8 @@
 		413A6A652032F5D000238BD2 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		413A6A672032FB1F00238BD2 /* nil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nil.png; sourceTree = "<group>"; };
 		413A6A692032FBD700238BD2 /* にる.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "にる.png"; sourceTree = "<group>"; };
+		413A6A6B203C17E400238BD2 /* CollectFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectFriendController.swift; sourceTree = "<group>"; };
+		413A6A70203C1C9000238BD2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4182FD851F55728D000E750E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		4182FD871F55760A000E750E /* Calender-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calender-Bridging-Header.h"; sourceTree = "<group>"; };
 		418BA1691F359D930084413F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -236,13 +240,14 @@
 			isa = PBXGroup;
 			children = (
 				412342E21FB1BDE600712D00 /* ViewController.swift */,
-				412342E41FB1BE6D00712D00 /* ShowController.swift */,
 				412342E81FB1BF2700712D00 /* EditController.swift */,
+				412342E41FB1BE6D00712D00 /* ShowController.swift */,
 				412342EE1FB1BF9200712D00 /* SettingController.swift */,
 				41050AD91FC5919D00C0A051 /* CellTryViewController.swift */,
 				AA3C7E1B20207E94004462CB /* QRController.swift */,
 				AA3C7E1D2020853C004462CB /* FriendsController.swift */,
 				AA3C7E1F2020859A004462CB /* SelectController.swift */,
+				413A6A6B203C17E400238BD2 /* CollectFriendController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				410081201EF92B1500DBCA05 /* images */,
 				41D305EB1E40A07A004031DA /* AppDelegate.swift */,
 				41A706CA1E91F18900F43E9F /* Diary.swift */,
+				413A6A70203C1C9000238BD2 /* User.swift */,
 				41A706CC1E92237B00F43E9F /* Main.storyboard */,
 				41D305F21E40A07A004031DA /* Assets.xcassets */,
 				41A706CF1E95774000F43E9F /* Existence-Light.otf */,
@@ -688,9 +694,11 @@
 				41122CB01F557F9700DA3612 /* DeviceSize.swift in Sources */,
 				412342E91FB1BF2700712D00 /* EditController.swift in Sources */,
 				AA8BB536200DAC0A006D8C29 /* ColorManeger.swift in Sources */,
+				413A6A6C203C17E400238BD2 /* CollectFriendController.swift in Sources */,
 				AA3C7E1C20207E94004462CB /* QRController.swift in Sources */,
 				AA8BB53D200DC765006D8C29 /* CalendarCustomCell.swift in Sources */,
 				41D305EC1E40A07A004031DA /* AppDelegate.swift in Sources */,
+				413A6A71203C1C9000238BD2 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

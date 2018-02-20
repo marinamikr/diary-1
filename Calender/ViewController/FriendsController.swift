@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import RealmSwift
 
 class FriendsController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
@@ -90,11 +91,27 @@ class FriendsController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
                         // OKを押した時入力されていたテキストを表示
                         if let textFields = alert.textFields {
                             
+                            let user = User()
+                            let realm = try! Realm()
+                            
                             // アラートに含まれるすべてのテキストフィールドを調べる
                             for textField in textFields {
                                 print(textField.text!)
                                 
+                              
+                                user.userID = id!
+                                user.userName = textField.text!
+                                print(user)
                             }
+                            
+                            //STEP.3 Realmに書き込み
+                            try! realm.write {
+                                realm.add(user, update: true)
+                            }
+                            print(user)
+                            
+                            
+                            
                         }
                     })
                     alert.addAction(okAction)
