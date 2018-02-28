@@ -61,21 +61,27 @@ class ViewController: UIViewController{
         
         //色の設置をする
         setLayoutColor()
-        addMyID()
+        
+        //最初の一回のみ
+        let sentUserId = userDefaults.bool(forKey: "SENT_USERID")
+        if sentUserId == false {
+            addMyID()
+            userDefaults.set(true, forKey: "SENT_USERID")
+        }
         
     }
     
     func addMyID(){
         // databaseから画像の名前を取得
         let ref = Database.database().reference().child("UserridDArray")
-//        let data : Dictionary = ["userName":"hazuki","userID":UIDevice.current.identifierForVendor!.uuidString,]
+        let data : Dictionary = ["userName":"hazuki","userID":UIDevice.current.identifierForVendor!.uuidString,]
         
         //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
         ref.childByAutoId().setValue(data)
         
         
         ref.observe(DataEventType.value, with: { snapshot in
-            for i 0 ..< Int(snapshot.childrenCount) {
+            for i in 0 ..< Int(snapshot.childrenCount) {
                 //IDArray.append(snapshot.childSnapshot(forPath: """"))
             }
             

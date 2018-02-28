@@ -160,6 +160,24 @@ class ShowController: UIViewController {
                 })
             }
         }
+        
+        //交換対象のUserIdを取得
+        var users: [[String:String]] = userDefaults.array(forKey: "users") as? [[String:String]] ?? []
+        let ref = Database.database().reference().child("UserridDArray")
+        ref.observe(DataEventType.value, with: { snapshots in
+            var userData: [DataSnapshot] = []
+            for snap in snapshots.children {
+                userData.append(snap as! DataSnapshot)
+            }
+            let random = Int(arc4random_uniform(UInt32(userData.count)))
+            let user = userData[random].value as! [String : String]
+            users.append(user)
+            //useridを保存
+            self.userDefaults.set(users, forKey: "users")
+            print("保存オK")
+        })
+        
+        
     }
     
     @IBAction func eraser(){

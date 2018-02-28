@@ -27,6 +27,10 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+     //  datepicker.setValue(UIColor.white, forKey: "textColor")
+        
+         textField.backgroundColor = UIColor.white
+            
         setLayoutColor() //レイアウトの色を指定
         textField.delegate = self
         textView.placeHolder = "ここに書く"
@@ -68,7 +72,8 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             colorNum = userDefaults.object(forKey: "COLOR") as! Int
         }
         //背景色の指定
-        haikei.backgroundColor = colorManager.mainColor()[colorNum]
+      //  haikei.backgroundColor = colorManager.mainColor()[colorNum]
+      
     }
     
     

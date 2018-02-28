@@ -87,19 +87,14 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         //ロード中のダイアログを表示する
         SVProgressHUD.show()
         
-          userDefaults.register(defaults: ["userIDs": []])
+        //FIXME:
+        var users = userDefaults.object(forKey: "users") as! [[String:String]]
+       print(users)
         
-        //var userIDs = userDefaults.object(forKey: "userIDs") as! Array<String>
-        
-        
-        let realm = try! Realm()
-        let user = Array(realm.objects(User.self))
-        
-        
-        for i in 0 ..< user.count {
+        for user in users {
             
             // databaseから画像の名前を取得
-            let ref = Database.database().reference().child(user[i].userID)
+            let ref = Database.database().reference().child(user["userID"]!)
             ref.observe(DataEventType.value, with: { snapshot in
                 
                 let postDict = snapshot.value as! [String : AnyObject]
@@ -118,22 +113,22 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                         self.mainArray.append(value as! String)
                     }
                 }
-                self.nameArray.append(user[i].userName)
+                self.nameArray.append(user["userName"]!)
                 
                 //tableViewのリロード
                 self.tableView.reloadData()
-                
+
             })
-            
-            
+
+            SVProgressHUD.dismiss()
+
             
         }
         
         
         //ロード中のダイアログを消去する
-        SVProgressHUD.dismiss()
         //tableViewのリロード
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
     }
     
     
@@ -174,7 +169,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         custumCell.pic.image = picArray[indexPath.row]
         custumCell.title.text = titleArray[indexPath.row]
         custumCell.date.text = dateArray[indexPath.row]
-        custumCell.userName.text = nameArray[indexPath.row]
+       // custumCell.userName.text = nameArray[indexPath.row]
         
         print(picArray[indexPath.row])
         print(titleArray[indexPath.row])
