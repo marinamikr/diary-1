@@ -69,23 +69,28 @@ class ViewController: UIViewController{
             userDefaults.set(true, forKey: "SENT_USERID")
         }
         
+        let lef = Database.database().reference()
+        lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
+            print(snapshot)
+            let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
+            let name = String(describing: snapshot.childSnapshot(forPath: "userName").value!)
+            print(id)
+            print(name)
+
+        })
+        
+        
+        
     }
     
     func addMyID(){
+        
         // databaseから画像の名前を取得
-        let ref = Database.database().reference().child("UserridDArray")
+        let ref = Database.database().reference().child("UserIDArray")
         let data : Dictionary = ["userName":"hazuki","userID":UIDevice.current.identifierForVendor!.uuidString,]
         
         //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
         ref.childByAutoId().setValue(data)
-        
-        
-        ref.observe(DataEventType.value, with: { snapshot in
-            for i in 0 ..< Int(snapshot.childrenCount) {
-                //IDArray.append(snapshot.childSnapshot(forPath: """"))
-            }
-            
-        })
         
         
     }
@@ -114,38 +119,38 @@ class ViewController: UIViewController{
     }
     
     
-   /* func setUserData(){
-        
-        let uuid = UIDevice.current.identifierForVendor!.uuidString
-        let ref = Database.database().reference().child("allUser")
-        
-        
-        ref.observe(DataEventType.value, with: { snapshot in
-            
-            
-            
-            let postDict = snapshot.value  as! [String : AnyObject]
-                print(postDict)
-                for (key, value) in postDict {
-                    if (key == "allUser"){
-                        var allArray = value as! Array<String>
-                        
-                        if !(allArray.contains(uuid)){
-                            allArray.append(uuid)
-                            ref.child("allUser").setValue(allArray)
-                        }
-                        
-                    }
-                }
-                
-            }
-            
-        })
-        
-        
-        
-    }
- */
+    /* func setUserData(){
+     
+     let uuid = UIDevice.current.identifierForVendor!.uuidString
+     let ref = Database.database().reference().child("allUser")
+     
+     
+     ref.observe(DataEventType.value, with: { snapshot in
+     
+     
+     
+     let postDict = snapshot.value  as! [String : AnyObject]
+     print(postDict)
+     for (key, value) in postDict {
+     if (key == "allUser"){
+     var allArray = value as! Array<String>
+     
+     if !(allArray.contains(uuid)){
+     allArray.append(uuid)
+     ref.child("allUser").setValue(allArray)
+     }
+     
+     }
+     }
+     
+     }
+     
+     })
+     
+     
+     
+     }
+     */
     //１ヶ月後に移動するボタンをタップした時の処理
     @IBAction func tappedHeaderNextBtn(_ sender: UIButton) {
         //まず、DateManagerの情報を１ヶ月後に変更

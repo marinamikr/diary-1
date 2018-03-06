@@ -15,6 +15,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
+    var myDiaryCount: Int = 0
     
     var image = ""
     var ititle:String = ""
@@ -35,12 +36,23 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         tableView.dataSource = self
         self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumTableCell")
         
+        let uuid = UIDevice.current.identifierForVendor!.uuidString
+        let lef = Database.database().reference()
+        print(uuid)
+        lef.child(uuid).observeSingleEvent(of: .value, with:{ (snapshot)  in
+            
+            
+            print(snapshot.childrenCount)
+            print(snapshot)
+            self.myDiaryCount = Int(snapshot.childrenCount)
+        })
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        changeDiary()
+        //changeDiary()
         
     }
     
@@ -89,40 +101,52 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         
         //FIXME:
         var users = userDefaults.object(forKey: "users") as! [[String:String]]
-       print(users)
+        print("asdfghjkl")
+        print(myDiaryCount)
+        print(users)
         
-        for user in users {
+        if myDiaryCount <= users.count{
+            for i in 0 ..< myDiaryCount{
+                let random = arc4random_uniform(UInt32(users.count))
             
-            // databaseから画像の名前を取得
-            let ref = Database.database().reference().child(user["userID"]!)
-            ref.observe(DataEventType.value, with: { snapshot in
+                let lef = Database.database().reference()
+                let user = users[Int(random)]
+                print(user)
+            }
+        } else {
+            for user in users {
                 
-                let postDict = snapshot.value as! [String : AnyObject]
-                print(postDict)
-                for (key, value) in postDict {
-                    if (key == "date"){
-                        self.dateArray.append(value as! String)
-                        
-                    }else if (key == "title"){
-                        self.titleArray.append(value as! String)
-                    }else if (key == "downloadURL"){
-                        let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
-                        self.picArray.append(UIImage(data: loadedImageData as! Data)!)
-                        
-                    }else if (key == "main"){
-                        self.mainArray.append(value as! String)
+                // databaseから画像の名前を取得
+                let ref = Database.database().reference().child(user["userID"]!)
+                ref.observe(DataEventType.value, with: { snapshot in
+                    
+                    let postDict = snapshot.value as! [String : AnyObject]
+                    print(postDict)
+                    for (key, value) in postDict {
+                        if (key == "date"){
+                            self.dateArray.append(value as! String)
+                            
+                        }else if (key == "title"){
+                            self.titleArray.append(value as! String)
+                        }else if (key == "downloadURL"){
+                            let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
+                            self.picArray.append(UIImage(data: loadedImageData as! Data)!)
+                            
+                        }else if (key == "main"){
+                            self.mainArray.append(value as! String)
+                        }
                     }
-                }
-                self.nameArray.append(user["userName"]!)
+                    self.nameArray.append(user["userName"]!)
+                    
+                    //tableViewのリロード
+                    self.tableView.reloadData()
+                    
+                })
                 
-                //tableViewのリロード
-                self.tableView.reloadData()
-
-            })
-
-            SVProgressHUD.dismiss()
-
-            
+                SVProgressHUD.dismiss()
+                
+                
+            }
         }
         
         
@@ -169,7 +193,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         custumCell.pic.image = picArray[indexPath.row]
         custumCell.title.text = titleArray[indexPath.row]
         custumCell.date.text = dateArray[indexPath.row]
-       // custumCell.userName.text = nameArray[indexPath.row]
+        // custumCell.userName.text = nameArray[indexPath.row]
         
         print(picArray[indexPath.row])
         print(titleArray[indexPath.row])

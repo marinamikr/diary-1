@@ -30,9 +30,10 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
      //  datepicker.setValue(UIColor.white, forKey: "textColor")
         
          textField.backgroundColor = UIColor.white
-            
+             textView.backgroundColor = UIColor.white
         setLayoutColor() //レイアウトの色を指定
         textField.delegate = self
+        
         textView.placeHolder = "ここに書く"
         
         //
@@ -47,6 +48,8 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }else{
             deleteButton.isHidden = true
         }
+        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {

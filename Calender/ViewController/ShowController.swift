@@ -154,7 +154,7 @@ class ShowController: UIViewController {
                     let data : Dictionary = ["title":self.label.text,"date":self.dateLabel.text,"main":self.mainLabel.text,"downloadURL":metaData?.downloadURL()?.absoluteString]
                     
                     //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
-                    ref.child(uuid).setValue(data)
+                    ref.child(uuid).childByAutoId().setValue(data)
                     
                    
                 })
@@ -163,7 +163,7 @@ class ShowController: UIViewController {
         
         //交換対象のUserIdを取得
         var users: [[String:String]] = userDefaults.array(forKey: "users") as? [[String:String]] ?? []
-        let ref = Database.database().reference().child("UserridDArray")
+        let ref = Database.database().reference().child("UserIDArray")
         ref.observe(DataEventType.value, with: { snapshots in
             var userData: [DataSnapshot] = []
             for snap in snapshots.children {
