@@ -423,7 +423,7 @@
 				TargetAttributes = {
 					41D305E71E40A07A004031DA = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 66M7BL3A9M;
+						DevelopmentTeam = KRD3HBM28P;
 						LastSwiftMigration = 0830;
 					};
 					41D305FB1E40A07A004031DA = {
@@ -844,7 +844,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 66M7BL3A9M;
+				DEVELOPMENT_TEAM = KRD3HBM28P;
 				INFOPLIST_FILE = Calender/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -865,7 +865,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 66M7BL3A9M;
+				DEVELOPMENT_TEAM = KRD3HBM28P;
 				INFOPLIST_FILE = Calender/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

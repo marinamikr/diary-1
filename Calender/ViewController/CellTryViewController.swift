@@ -28,24 +28,17 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     var nameArray: [String] = Array()
     
     var userDefaults:UserDefaults = UserDefaults.standard
+    var ref :DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         tableView.estimatedRowHeight = 10//セルの高さの見積もり
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dataSource = self
         self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumTableCell")
         
-        let uuid = UIDevice.current.identifierForVendor!.uuidString
-        let lef = Database.database().reference()
-        print(uuid)
-        lef.child(uuid).observeSingleEvent(of: .value, with:{ (snapshot)  in
-            
-            
-            print(snapshot.childrenCount)
-            print(snapshot)
-            self.myDiaryCount = Int(snapshot.childrenCount)
-        })
+        
         
         
     }
@@ -53,6 +46,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //changeDiary()
+        changeAllUserDiary()
         
     }
     
@@ -90,6 +84,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     
     //サーバー上の日記を取得する処理
     func changeDiary(){
+        
         //配列の要素を全て削除
         dateArray.removeAll()
         titleArray.removeAll()
@@ -108,8 +103,8 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         if myDiaryCount <= users.count{
             for i in 0 ..< myDiaryCount{
                 let random = arc4random_uniform(UInt32(users.count))
-            
-                let lef = Database.database().reference()
+                
+                
                 let user = users[Int(random)]
                 print(user)
             }
@@ -117,8 +112,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
             for user in users {
                 
                 // databaseから画像の名前を取得
-                let ref = Database.database().reference().child(user["userID"]!)
-                ref.observe(DataEventType.value, with: { snapshot in
+                ref.child(user["userID"]!).observe(DataEventType.value, with: { snapshot in
                     
                     let postDict = snapshot.value as! [String : AnyObject]
                     print(postDict)
@@ -155,13 +149,131 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         //self.tableView.reloadData()
     }
     
+    //サーバー上の日記を取得する処理
+    func changeAllUserDiary(){
+        
+        //全ユーザー情報を取得
+        let allUserArray:Array<Dictionary<String,String>> = userDefaults.array(forKey: "allUser") as! Array<Dictionary<String,String>>
+        print(allUserArray)
+        //自分の日記数を取得
+        let uuid = UIDevice.current.identifierForVendor!.uuidString
+        let lef = Database.database().reference()
+        lef.child(uuid).observe(.value, with:{ (snapshot)  in
+            print("hoge")
+            print(snapshot.childrenCount)
+            print(snapshot)
+            self.myDiaryCount = Int(snapshot.childrenCount)
+            
+            print(self.myDiaryCount)
+            print(allUserArray.count)
+            
+            
+            
+            
+            var userNumber:Int = 0
+            var otherUserArray:Array<Dictionary<String,String>> = allUserArray
+
+            print("asdfgh")
+            print(otherUserArray.count)
+            var position = 0
+            
+            for i in 0 ..< otherUserArray.count{
+                print(i)
+                let dic = otherUserArray[i]
+                let ID = dic["user"]
+                if ID == uuid{
+                 position = i
+                }
+            }
+            otherUserArray.remove(at: position)
+            
+            print(uuid)
+            print(otherUserArray)
+            
+            
+            if self.myDiaryCount <= otherUserArray.count{
+                print("こっち")
+                userNumber = self.myDiaryCount
+            }else{
+                userNumber = otherUserArray.count
+            }
+            
+            
+            print("こっち")
+            for i in 0 ..< userNumber{
+                print("fuga")
+                
+                let randomNumber:Int = Int(arc4random_uniform(UInt32(otherUserArray.count)))
+                let targetUser:Dictionary<String,String> = otherUserArray[randomNumber]
+                print(randomNumber)
+                print(targetUser["user"]!)
+                
+                self.ref.child(targetUser["user"]!).observe(DataEventType.value, with: { snapshot in
+                    let randomDiaryNumber:Int = Int(arc4random_uniform(UInt32(snapshot.childrenCount)))
+                    print("hogehoge")
+                    print(snapshot.childrenCount)
+                    print(randomDiaryNumber)
+                    print(targetUser["user"]!)
+                    
+                    let targetSnapshot = snapshot.children.allObjects[randomDiaryNumber] as! DataSnapshot
+                    
+                    let targetDictionary = targetSnapshot.value as! [String : AnyObject]
+                    print(targetDictionary)
+                    for (key, value) in targetDictionary {
+                        if (key == "date"){
+                            self.dateArray.append(value as! String)
+                            
+                        }else if (key == "title"){
+                            self.titleArray.append(value as! String)
+                        }else if (key == "downloadURL"){
+                            let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
+                            self.picArray.append(UIImage(data: loadedImageData as! Data)!)
+                            
+                        }else if (key == "main"){
+                            self.mainArray.append(value as! String)
+                        }
+                    }
+                    
+                    print(self.dateArray)
+                    print(self.titleArray)
+                    print(self.mainArray)
+                    
+                    self.tableView.reloadData()
+                    
+                    SVProgressHUD.dismiss()
+                    
+                    
+                })
+                
+            }
+            
+        })
+        
+        
+        //配列の要素を全て削除
+        dateArray.removeAll()
+        titleArray.removeAll()
+        mainArray.removeAll()
+        picArray.removeAll()
+        
+        //ロード中のダイアログを表示する
+        SVProgressHUD.show()
+        
+        
+        
+        
+        
+        //ロード中のダイアログを消去する
+        //tableViewのリロード
+        //self.tableView.reloadData()
+    }
     
     
     @IBAction func segumentControllTap(_ sender: Any) {
         switch (sender as AnyObject).selectedSegmentIndex {
         case 0:
             print("first")
-            changeDiary()
+            changeAllUserDiary()
         case 1:
             print("second")
             myDiary()

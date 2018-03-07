@@ -156,26 +156,45 @@ class ShowController: UIViewController {
                     //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
                     ref.child(uuid).childByAutoId().setValue(data)
                     
+                    //最初の一回のみ
+                    let sentUserId = self.userDefaults.bool(forKey: "SENT_USERID")
+                    if sentUserId == false {
+                        self.self.addMyID()
+                        self.userDefaults.set(true, forKey: "SENT_USERID")
+                    }
+                    
                    
                 })
             }
         }
         
-        //交換対象のUserIdを取得
-        var users: [[String:String]] = userDefaults.array(forKey: "users") as? [[String:String]] ?? []
+//        //交換対象のUserIdを取得
+//        var users: [[String:String]] = userDefaults.array(forKey: "users") as? [[String:String]] ?? []
+//        let ref = Database.database().reference().child("UserIDArray")
+//        ref.observe(DataEventType.value, with: { snapshots in
+//            var userData: [DataSnapshot] = []
+//            for snap in snapshots.children {
+//                userData.append(snap as! DataSnapshot)
+//            }
+//            let random = Int(arc4random_uniform(UInt32(userData.count)))
+//            let user = userData[random].value as! [String : String]
+//            users.append(user)
+//            //useridを保存
+//            self.userDefaults.set(users, forKey: "users")
+//            print("保存オK")
+//        })
+        
+        
+    }
+    
+    func addMyID(){
+        
+        // databaseから画像の名前を取得
         let ref = Database.database().reference().child("UserIDArray")
-        ref.observe(DataEventType.value, with: { snapshots in
-            var userData: [DataSnapshot] = []
-            for snap in snapshots.children {
-                userData.append(snap as! DataSnapshot)
-            }
-            let random = Int(arc4random_uniform(UInt32(userData.count)))
-            let user = userData[random].value as! [String : String]
-            users.append(user)
-            //useridを保存
-            self.userDefaults.set(users, forKey: "users")
-            print("保存オK")
-        })
+        let data : Dictionary = ["userName":"hazuki","userID":UIDevice.current.identifierForVendor!.uuidString,]
+        
+        //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
+        ref.childByAutoId().setValue(data)
         
         
     }

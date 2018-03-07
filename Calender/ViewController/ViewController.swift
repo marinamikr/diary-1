@@ -33,7 +33,7 @@ class ViewController: UIViewController{
     var userDefaults:UserDefaults = UserDefaults.standard
     
     var IDArray:[String] = Array()
-    
+    var allUserArray: Array<Dictionary<String,String>> = Array()
     //CollectionViewのExtentionで使用する変数
     var cellMargin: CGFloat = 0
     var daysPerWeek: Int = 7
@@ -62,38 +62,24 @@ class ViewController: UIViewController{
         //色の設置をする
         setLayoutColor()
         
-        //最初の一回のみ
-        let sentUserId = userDefaults.bool(forKey: "SENT_USERID")
-        if sentUserId == false {
-            addMyID()
-            userDefaults.set(true, forKey: "SENT_USERID")
-        }
+     
         
         let lef = Database.database().reference()
         lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
             print(snapshot)
             let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
-            let name = String(describing: snapshot.childSnapshot(forPath: "userName").value!)
             print(id)
-            print(name)
-
+            var user: Dictionary<String,String> = ["user":id]
+            self?.allUserArray.append(user)
+            print(self?.allUserArray)
+            self?.userDefaults.set(self?.allUserArray, forKey: "allUser")
         })
         
         
         
     }
     
-    func addMyID(){
-        
-        // databaseから画像の名前を取得
-        let ref = Database.database().reference().child("UserIDArray")
-        let data : Dictionary = ["userName":"hazuki","userID":UIDevice.current.identifierForVendor!.uuidString,]
-        
-        //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
-        ref.childByAutoId().setValue(data)
-        
-        
-    }
+  
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
