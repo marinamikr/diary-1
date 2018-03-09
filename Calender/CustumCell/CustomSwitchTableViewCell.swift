@@ -11,11 +11,20 @@ import UIKit
 class CustomSwitchTableViewCell: UITableViewCell {
 
   var util = Util()
+     var userDefaults:UserDefaults = UserDefaults.standard
     
     @IBOutlet weak var mySwitch: UISwitch!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        userDefaults.register(defaults: ["isAllUser": false])
+        var isAllUser = false
+        isAllUser =  userDefaults.object(forKey: "isAllUser") as! Bool
+        mySwitch.isOn = isAllUser
+        util.printLog(viewC: self, tag: "TAG", contents: isAllUser)
+      
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,10 +34,15 @@ class CustomSwitchTableViewCell: UITableViewCell {
     }
     
     @IBAction func switchAction(_ sender: UISwitch) {
+        
+        
         if ( sender.isOn ) {
         util.printLog(viewC: self, tag: "switch", contents: "on")
+            userDefaults.set(true, forKey: "isAllUser")
+            
         } else {
         util.printLog(viewC: self, tag: "switch", contents: "off")
+            userDefaults.set(false, forKey: "isAllUser")
         }
     }
 }

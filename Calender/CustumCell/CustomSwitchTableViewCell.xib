@@ -37,8 +37,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="mySwitch" destination="tFB-qd-afp" id="K10-kW-J4e"/>
-                <outlet property="switch" destination="tFB-qd-afp" id="bRv-aY-eNX"/>
+                <outlet property="mySwitch" destination="tFB-qd-afp" id="hYG-IJ-gan"/>
             </connections>
             <point key="canvasLocation" x="-198" y="77"/>
         </tableViewCell>

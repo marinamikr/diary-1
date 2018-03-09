@@ -55,7 +55,13 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         //changeDiary()
         if isFirst == false{
             isFirst = true
-            changeAllUserDiary()
+            userDefaults.register(defaults: ["isAllUser": false])
+            let  isAllUser = userDefaults.object(forKey: "isAllUser") as! Bool
+            if isAllUser == true{
+                changeAllUserDiary()
+            }else{
+                changeFriendeDiary()
+            }
         }
     }
     
@@ -161,6 +167,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     //サーバー上の日記を取得する処理
     func changeAllUserDiary(){
         
+        self.util.printLog(viewC: self, tag: "取得条件", contents: "全ユーザー")
         //配列の要素を全て削除
         dateArray.removeAll()
         titleArray.removeAll()
@@ -206,7 +213,9 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
             }else{
                 userNumber = otherUserArray.count
             }
-            
+            if userNumber == 0{
+                SVProgressHUD.dismiss()
+            }
             self.util.printLog(viewC: self, tag: "取得する日記の数", contents: userNumber)
             
             
@@ -268,7 +277,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     }
     
     func changeFriendeDiary(){
-        
+         self.util.printLog(viewC: self, tag: "取得条件", contents: "友達")
         //全ユーザー情報を取得
         let allUserArray:Array<Dictionary<String,String>> = userDefaults.array(forKey: "allUser") as! Array<Dictionary<String,String>>
         util.printLog(viewC: self, tag: "全ユーザー情報", contents: allUserArray)
@@ -283,6 +292,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
             self.util.printLog(viewC: self, tag: "自分の日記の数", contents: self.myDiaryCount)
             
             var userNumber:Int = 0
+            self.userDefaults.register(defaults: ["friendsArray": Array<Dictionary<String,String>>()])
             var friendsUserArray:Array<Dictionary<String,String>> = self.userDefaults.object(forKey: "friendsArray") as! Array<Dictionary<String, String>>
             
             self.util.printLog(viewC: self, tag: "友達一覧", contents: friendsUserArray)
@@ -291,6 +301,9 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                 userNumber = self.myDiaryCount
             }else{
                 userNumber = friendsUserArray.count
+            }
+            if userNumber == 0{
+                       SVProgressHUD.dismiss()
             }
             
             self.util.printLog(viewC: self, tag: "取得する日記の数", contents: userNumber)

@@ -25,6 +25,8 @@ class ShowController: UIViewController {
     @IBOutlet weak var eraserButton:UIButton!
     @IBOutlet var captureView:UIView!//変更点
     
+    var util = Util()
+    
     
     //選ばれた日付をStringに変換したもの
     var selectedDateString : String = ""
@@ -129,7 +131,7 @@ class ShowController: UIViewController {
         // 端末の固有IDを取得
         
         let uuid = UIDevice.current.identifierForVendor!.uuidString
-        
+        print(uuid)
         
         // strageの一番トップのReferenceを指定
         let storage = Storage.storage()
@@ -138,6 +140,7 @@ class ShowController: UIViewController {
         //変数picに画像を設定
         if let pic = picture.image{
             
+            print("koko")
             //変数dataにpicをNSDataにしたものを指定
             if let data = UIImagePNGRepresentation(pic) {
                 
@@ -153,8 +156,11 @@ class ShowController: UIViewController {
                     //Firebaseに保存する情報の作成
                     let data : Dictionary = ["title":self.label.text,"date":self.dateLabel.text,"main":self.mainLabel.text,"downloadURL":metaData?.downloadURL()?.absoluteString]
                     
+                    self.util.printLog(viewC: self, tag: "日記情報", contents: data)
+                     self.util.printLog(viewC: self, tag: "uuid", contents: uuid)
                     //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
                     ref.child(uuid).childByAutoId().setValue(data)
+                    
                     
                     //最初の一回のみ
                     let sentUserId = self.userDefaults.bool(forKey: "SENT_USERID")
