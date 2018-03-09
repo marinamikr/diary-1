@@ -16,6 +16,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     var myDiaryCount: Int = 0
+    var util = Util()
     
     var image = ""
     var ititle:String = ""
@@ -25,10 +26,18 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     var titleArray: [String] = Array()
     var mainArray: [String] = Array()
     var picArray: [UIImage] = Array()
-    var nameArray: [String] = Array()
+    
+    var dateArrayFireBase: [String] = Array()
+    var titleArrayFireBase: [String] = Array()
+    var mainArrayFireBase: [String] = Array()
+    var picArrayFireBase: [UIImage] = Array()
+    
+    
     
     var userDefaults:UserDefaults = UserDefaults.standard
     var ref :DatabaseReference!
+    
+    var isFirst:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +48,15 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumTableCell")
         
         
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //changeDiary()
-        changeAllUserDiary()
-        
+        if isFirst == false{
+            isFirst = true
+            changeAllUserDiary()
+        }
     }
     
     //端末内のある日記を取得する処理
@@ -82,8 +91,75 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         }
     }
     
+    //    //サーバー上の日記を取得する処理
+    //    func changeDiary(){
+    //
+    //        //配列の要素を全て削除
+    //        dateArray.removeAll()
+    //        titleArray.removeAll()
+    //        mainArray.removeAll()
+    //        picArray.removeAll()
+    //
+    //        //ロード中のダイアログを表示する
+    //        SVProgressHUD.show()
+    //
+    //        //FIXME:
+    //        var users = userDefaults.object(forKey: "users") as! [[String:String]]
+    //        print("asdfghjkl")
+    //        print(myDiaryCount)
+    //        print(users)
+    //
+    //        if myDiaryCount <= users.count{
+    //            for i in 0 ..< myDiaryCount{
+    //                let random = arc4random_uniform(UInt32(users.count))
+    //
+    //
+    //                let user = users[Int(random)]
+    //                print(user)
+    //            }
+    //        } else {
+    //            for user in users {
+    //
+    //                // databaseから画像の名前を取得
+    //                ref.child(user["userID"]!).observe(DataEventType.value, with: { snapshot in
+    //
+    //                    let postDict = snapshot.value as! [String : AnyObject]
+    //                    print(postDict)
+    //                    for (key, value) in postDict {
+    //                        if (key == "date"){
+    //                            self.dateArray.append(value as! String)
+    //
+    //                        }else if (key == "title"){
+    //                            self.titleArray.append(value as! String)
+    //                        }else if (key == "downloadURL"){
+    //                            let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
+    //                            self.picArray.append(UIImage(data: loadedImageData as! Data)!)
+    //
+    //                        }else if (key == "main"){
+    //                            self.mainArray.append(value as! String)
+    //                        }
+    //                    }
+    //                    self.nameArray.append(user["userName"]!)
+    //
+    //                    //tableViewのリロード
+    //                    self.tableView.reloadData()
+    //
+    //                })
+    //
+    //                SVProgressHUD.dismiss()
+    //
+    //
+    //            }
+    //        }
+    //
+    //
+    //        //ロード中のダイアログを消去する
+    //        //tableViewのリロード
+    //        //self.tableView.reloadData()
+    //    }
+    
     //サーバー上の日記を取得する処理
-    func changeDiary(){
+    func changeAllUserDiary(){
         
         //配列の要素を全て削除
         dateArray.removeAll()
@@ -94,87 +170,22 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         //ロード中のダイアログを表示する
         SVProgressHUD.show()
         
-        //FIXME:
-        var users = userDefaults.object(forKey: "users") as! [[String:String]]
-        print("asdfghjkl")
-        print(myDiaryCount)
-        print(users)
-        
-        if myDiaryCount <= users.count{
-            for i in 0 ..< myDiaryCount{
-                let random = arc4random_uniform(UInt32(users.count))
-                
-                
-                let user = users[Int(random)]
-                print(user)
-            }
-        } else {
-            for user in users {
-                
-                // databaseから画像の名前を取得
-                ref.child(user["userID"]!).observe(DataEventType.value, with: { snapshot in
-                    
-                    let postDict = snapshot.value as! [String : AnyObject]
-                    print(postDict)
-                    for (key, value) in postDict {
-                        if (key == "date"){
-                            self.dateArray.append(value as! String)
-                            
-                        }else if (key == "title"){
-                            self.titleArray.append(value as! String)
-                        }else if (key == "downloadURL"){
-                            let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
-                            self.picArray.append(UIImage(data: loadedImageData as! Data)!)
-                            
-                        }else if (key == "main"){
-                            self.mainArray.append(value as! String)
-                        }
-                    }
-                    self.nameArray.append(user["userName"]!)
-                    
-                    //tableViewのリロード
-                    self.tableView.reloadData()
-                    
-                })
-                
-                SVProgressHUD.dismiss()
-                
-                
-            }
-        }
-        
-        
-        //ロード中のダイアログを消去する
-        //tableViewのリロード
-        //self.tableView.reloadData()
-    }
-    
-    //サーバー上の日記を取得する処理
-    func changeAllUserDiary(){
-        
         //全ユーザー情報を取得
         let allUserArray:Array<Dictionary<String,String>> = userDefaults.array(forKey: "allUser") as! Array<Dictionary<String,String>>
-        print(allUserArray)
+        util.printLog(viewC: self, tag: "全ユーザー情報", contents: allUserArray)
+        
         //自分の日記数を取得
         let uuid = UIDevice.current.identifierForVendor!.uuidString
         let lef = Database.database().reference()
         lef.child(uuid).observe(.value, with:{ (snapshot)  in
-            print("hoge")
-            print(snapshot.childrenCount)
-            print(snapshot)
+            
             self.myDiaryCount = Int(snapshot.childrenCount)
-            
-            print(self.myDiaryCount)
-            print(allUserArray.count)
-            
-            
-            
+            self.util.printLog(viewC: self, tag: "自分の日記の数", contents: self.myDiaryCount)
             
             var userNumber:Int = 0
             var otherUserArray:Array<Dictionary<String,String>> = allUserArray
-
-            print("asdfgh")
-            print(otherUserArray.count)
+            
+            
             var position = 0
             
             for i in 0 ..< otherUserArray.count{
@@ -182,61 +193,138 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                 let dic = otherUserArray[i]
                 let ID = dic["user"]
                 if ID == uuid{
-                 position = i
+                    position = i
                 }
             }
             otherUserArray.remove(at: position)
-            
-            print(uuid)
-            print(otherUserArray)
+            self.util.printLog(viewC: self, tag: "自分以外の全ユーザー情報", contents: otherUserArray)
             
             
             if self.myDiaryCount <= otherUserArray.count{
-                print("こっち")
+                
                 userNumber = self.myDiaryCount
             }else{
                 userNumber = otherUserArray.count
             }
             
+            self.util.printLog(viewC: self, tag: "取得する日記の数", contents: userNumber)
             
-            print("こっち")
+            
             for i in 0 ..< userNumber{
-                print("fuga")
+                
                 
                 let randomNumber:Int = Int(arc4random_uniform(UInt32(otherUserArray.count)))
                 let targetUser:Dictionary<String,String> = otherUserArray[randomNumber]
-                print(randomNumber)
-                print(targetUser["user"]!)
+                
+                self.util.printLog(viewC: self, tag: "randomNumber", contents: randomNumber)
+                self.util.printLog(viewC: self, tag: "取得予定の日記のユーザー情報", contents: targetUser)
                 
                 self.ref.child(targetUser["user"]!).observe(DataEventType.value, with: { snapshot in
                     let randomDiaryNumber:Int = Int(arc4random_uniform(UInt32(snapshot.childrenCount)))
-                    print("hogehoge")
-                    print(snapshot.childrenCount)
-                    print(randomDiaryNumber)
-                    print(targetUser["user"]!)
+                    self.util.printLog(viewC: self, tag: "randomDiaryNumber", contents: randomDiaryNumber)
                     
                     let targetSnapshot = snapshot.children.allObjects[randomDiaryNumber] as! DataSnapshot
                     
+                    
                     let targetDictionary = targetSnapshot.value as! [String : AnyObject]
-                    print(targetDictionary)
+                    self.util.printLog(viewC: self, tag: "日記の情報", contents: targetDictionary)
+                    
                     for (key, value) in targetDictionary {
                         if (key == "date"){
                             self.dateArray.append(value as! String)
-                            
+                            self.dateArrayFireBase.append(value as! String)
                         }else if (key == "title"){
                             self.titleArray.append(value as! String)
+                             self.titleArrayFireBase.append(value as! String)
                         }else if (key == "downloadURL"){
                             let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
                             self.picArray.append(UIImage(data: loadedImageData as! Data)!)
-                            
+                             self.picArrayFireBase.append(UIImage(data: loadedImageData as! Data)!)
                         }else if (key == "main"){
                             self.mainArray.append(value as! String)
+                            self.mainArrayFireBase.append(value as! String)
                         }
                     }
                     
-                    print(self.dateArray)
-                    print(self.titleArray)
-                    print(self.mainArray)
+                    self.tableView.reloadData()
+                    SVProgressHUD.dismiss()
+                
+                })
+                
+            }
+            
+        })
+        
+        
+        
+        
+        
+        
+        
+        
+        //ロード中のダイアログを消去する
+        //tableViewのリロード
+        //self.tableView.reloadData()
+    }
+    
+    func changeFriendeDiary(){
+        
+        //全ユーザー情報を取得
+        let allUserArray:Array<Dictionary<String,String>> = userDefaults.array(forKey: "allUser") as! Array<Dictionary<String,String>>
+        util.printLog(viewC: self, tag: "全ユーザー情報", contents: allUserArray)
+        
+        //自分の日記数を取得
+        let uuid = UIDevice.current.identifierForVendor!.uuidString
+        let lef = Database.database().reference()
+        
+        lef.child(uuid).observe(.value, with:{ (snapshot)  in
+            
+            self.myDiaryCount = Int(snapshot.childrenCount)
+            self.util.printLog(viewC: self, tag: "自分の日記の数", contents: self.myDiaryCount)
+            
+            var userNumber:Int = 0
+            var friendsUserArray:Array<Dictionary<String,String>> = self.userDefaults.object(forKey: "friendsArray") as! Array<Dictionary<String, String>>
+            
+            self.util.printLog(viewC: self, tag: "友達一覧", contents: friendsUserArray)
+            
+            if self.myDiaryCount <= friendsUserArray.count{
+                userNumber = self.myDiaryCount
+            }else{
+                userNumber = friendsUserArray.count
+            }
+            
+            self.util.printLog(viewC: self, tag: "取得する日記の数", contents: userNumber)
+            
+            for i in 0 ..< userNumber{
+                
+                let randomNumber:Int = Int(arc4random_uniform(UInt32(friendsUserArray.count)))
+                let targetUser:Dictionary<String,String> = friendsUserArray[randomNumber]
+                self.util.printLog(viewC: self, tag: "randomNumber", contents: randomNumber)
+                self.util.printLog(viewC: self, tag: "取得予定の日記のユーザー情報", contents: targetUser)
+                
+                self.ref.child(targetUser["friendID"]!).observe(DataEventType.value, with: { snapshot in
+                    let randomDiaryNumber:Int = Int(arc4random_uniform(UInt32(snapshot.childrenCount)))
+                    self.util.printLog(viewC: self, tag: "randomDiaryNumber", contents: randomDiaryNumber)
+                    let targetSnapshot = snapshot.children.allObjects[randomDiaryNumber] as! DataSnapshot
+                    
+                    let targetDictionary = targetSnapshot.value as! [String : AnyObject]
+                    self.util.printLog(viewC: self, tag: "日記の情報", contents: targetDictionary)
+                    for (key, value) in targetDictionary {
+                        if (key == "date"){
+                            self.dateArray.append(value as! String)
+                            self.dateArrayFireBase.append(value as! String)
+                        }else if (key == "title"){
+                            self.titleArray.append(value as! String)
+                            self.titleArrayFireBase.append(value as! String)
+                        }else if (key == "downloadURL"){
+                            let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
+                            self.picArray.append(UIImage(data: loadedImageData as! Data)!)
+                             self.picArrayFireBase.append(UIImage(data: loadedImageData as! Data)!)
+                        }else if (key == "main"){
+                            self.mainArray.append(value as! String)
+                            self.mainArrayFireBase.append(value as! String)
+                        }
+                    }
                     
                     self.tableView.reloadData()
                     
@@ -258,14 +346,6 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         
         //ロード中のダイアログを表示する
         SVProgressHUD.show()
-        
-        
-        
-        
-        
-        //ロード中のダイアログを消去する
-        //tableViewのリロード
-        //self.tableView.reloadData()
     }
     
     
@@ -273,7 +353,16 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         switch (sender as AnyObject).selectedSegmentIndex {
         case 0:
             print("first")
-            changeAllUserDiary()
+            dateArray.removeAll()
+            titleArray.removeAll()
+            mainArray.removeAll()
+            picArray.removeAll()
+            
+            dateArray = dateArrayFireBase
+            titleArray = titleArrayFireBase
+            mainArray = mainArrayFireBase
+            picArray = picArrayFireBase
+           
         case 1:
             print("second")
             myDiary()

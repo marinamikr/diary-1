@@ -63,77 +63,65 @@ class FriendsController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
                 
                 if metadata.stringValue != nil {
                     // 検出データを取得
-                    textField.text = metadata.stringValue!
                     let id = metadata.stringValue
+                    let defaultArray = Array<Dictionary<String,String>>()
+                    userDefaults.register(defaults: ["friendsArray": defaultArray])
                     
-                    userDefaults.register(defaults: ["userIDs": []])
-                    var userIDs = userDefaults.object(forKey: "userIDs") as! Array<String>
-                    
-                    if !(userIDs.contains(id!)){
-                        userIDs.append(id!)
-                        userDefaults.set(userIDs,forKey:"userIDs")
-                        userDefaults.synchronize()
+                    var friendsArray:Array<Dictionary<String,String>> = userDefaults.object(forKey: "friendsArray") as! Array<Dictionary<String,String>>
+                    var isContain:Bool = false
+                    for i in 0..<friendsArray.count{
+                        let friend:Dictionary<String,String> = friendsArray[i]
+                        let friendID:String = friend["friendID"]!
+                        
+                        if friendID == id {
+                            isContain = true
+                        }
                     }
                     
-                    print(userIDs)
-                    
-                    
-                    
-                    
-                    self.captureSession.stopRunning()
-                    
-                    let alert = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .alert)
-                    
-                    // OKボタンの設定
-                    let okAction = UIAlertAction(title: "OK", style: .default, handler: {
-                        (action:UIAlertAction!) -> Void in
+                    if isContain == false {
                         
-                        // OKを押した時入力されていたテキストを表示
-                        if let textFields = alert.textFields {
+                        self.captureSession.stopRunning()
+                        
+                        let alert = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .alert)
+                        
+                        // OKボタンの設定
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+                            (action:UIAlertAction!) -> Void in
                             
-                            let user = User()
-                            let realm = try! Realm()
-                            
-                            // アラートに含まれるすべてのテキストフィールドを調べる
-                            for textField in textFields {
-                                print(textField.text!)
+                            // OKを押した時入力されていたテキストを表示
+                            if let textFields = alert.textFields {
                                 
-                              
-                                user.userID = id!
-                                user.userName = textField.text!
-                                print(user)
+                                let newFriend:Dictionary<String,String> = ["friendID":id!,"friendName":textFields[0].text!]
+                                print(newFriend)
+                                print(friendsArray)
+                                friendsArray.append(newFriend)
+                                print(friendsArray)
+                                self.userDefaults.set(friendsArray, forKey: "friendsArray")
                             }
-                            
-                            //STEP.3 Realmに書き込み
-                            try! realm.write {
-                                realm.add(user, update: true)
-                            }
-                            print(user)
-                            
-                            
-                            
-                        }
-                    })
-                    alert.addAction(okAction)
-                    
-                    // キャンセルボタンの設定
-                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                    alert.addAction(cancelAction)
-                    
-                    // テキストフィールドを追加
-                    alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
-                        textField.placeholder = "テキスト"
-                    })
-                    
-                    // 複数追加したいならその数だけ書く
-                    // alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
-                    //     textField.placeholder = "テキスト"
-                    // })
-                    
-                    alert.view.setNeedsLayout() // シミュレータの種類によっては、これがないと警告が発生
-                    
-                    // アラートを画面に表示
-                    self.present(alert, animated: true, completion: nil)
+                        })
+                        
+                        alert.addAction(okAction)
+                        
+                        // キャンセルボタンの設定
+                        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                        alert.addAction(cancelAction)
+                        
+                        // テキストフィールドを追加
+                        alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
+                            textField.placeholder = "テキスト"
+                        })
+                        
+                        // 複数追加したいならその数だけ書く
+                        // alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
+                        //     textField.placeholder = "テキスト"
+                        // })
+                        
+                        alert.view.setNeedsLayout() // シミュレータの種類によっては、これがないと警告が発生
+                        
+                        // アラートを画面に表示
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
                     
                 }
                 
