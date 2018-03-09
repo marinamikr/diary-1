@@ -97,73 +97,6 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         }
     }
     
-    //    //サーバー上の日記を取得する処理
-    //    func changeDiary(){
-    //
-    //        //配列の要素を全て削除
-    //        dateArray.removeAll()
-    //        titleArray.removeAll()
-    //        mainArray.removeAll()
-    //        picArray.removeAll()
-    //
-    //        //ロード中のダイアログを表示する
-    //        SVProgressHUD.show()
-    //
-    //        //FIXME:
-    //        var users = userDefaults.object(forKey: "users") as! [[String:String]]
-    //        print("asdfghjkl")
-    //        print(myDiaryCount)
-    //        print(users)
-    //
-    //        if myDiaryCount <= users.count{
-    //            for i in 0 ..< myDiaryCount{
-    //                let random = arc4random_uniform(UInt32(users.count))
-    //
-    //
-    //                let user = users[Int(random)]
-    //                print(user)
-    //            }
-    //        } else {
-    //            for user in users {
-    //
-    //                // databaseから画像の名前を取得
-    //                ref.child(user["userID"]!).observe(DataEventType.value, with: { snapshot in
-    //
-    //                    let postDict = snapshot.value as! [String : AnyObject]
-    //                    print(postDict)
-    //                    for (key, value) in postDict {
-    //                        if (key == "date"){
-    //                            self.dateArray.append(value as! String)
-    //
-    //                        }else if (key == "title"){
-    //                            self.titleArray.append(value as! String)
-    //                        }else if (key == "downloadURL"){
-    //                            let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
-    //                            self.picArray.append(UIImage(data: loadedImageData as! Data)!)
-    //
-    //                        }else if (key == "main"){
-    //                            self.mainArray.append(value as! String)
-    //                        }
-    //                    }
-    //                    self.nameArray.append(user["userName"]!)
-    //
-    //                    //tableViewのリロード
-    //                    self.tableView.reloadData()
-    //
-    //                })
-    //
-    //                SVProgressHUD.dismiss()
-    //
-    //
-    //            }
-    //        }
-    //
-    //
-    //        //ロード中のダイアログを消去する
-    //        //tableViewのリロード
-    //        //self.tableView.reloadData()
-    //    }
-    
     //サーバー上の日記を取得する処理
     func changeAllUserDiary(){
         
@@ -255,28 +188,34 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                         }
                     }
                     
-                    self.tableView.reloadData()
-                    SVProgressHUD.dismiss()
+                    
+                    self.ref.child(targetUser["user"]!).removeAllObservers()
+                    
+                    if i == userNumber-1 {
+                        self.tableView.reloadData()
+                        SVProgressHUD.dismiss()
+                    }
                 
                 })
                 
             }
+            lef.child(uuid).removeAllObservers()
             
         })
         
-        
-        
-        
-        
-        
-        
-        
-        //ロード中のダイアログを消去する
-        //tableViewのリロード
-        //self.tableView.reloadData()
     }
     
     func changeFriendeDiary(){
+        
+        //配列の要素を全て削除
+        dateArray.removeAll()
+        titleArray.removeAll()
+        mainArray.removeAll()
+        picArray.removeAll()
+        
+        //ロード中のダイアログを表示する
+        SVProgressHUD.show()
+        
          self.util.printLog(viewC: self, tag: "取得条件", contents: "友達")
         //全ユーザー情報を取得
         let allUserArray:Array<Dictionary<String,String>> = userDefaults.array(forKey: "allUser") as! Array<Dictionary<String,String>>
@@ -339,26 +278,24 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                         }
                     }
                     
-                    self.tableView.reloadData()
+                   self.ref.child(targetUser["friendID"]!).removeAllObservers()
                     
-                    SVProgressHUD.dismiss()
+                    if i == userNumber-1 {
+                        self.tableView.reloadData()
+                        SVProgressHUD.dismiss()
+                    }
                     
                     
                 })
                 
             }
             
+            lef.child(uuid).removeAllObservers()
+            
         })
         
         
-        //配列の要素を全て削除
-        dateArray.removeAll()
-        titleArray.removeAll()
-        mainArray.removeAll()
-        picArray.removeAll()
         
-        //ロード中のダイアログを表示する
-        SVProgressHUD.show()
     }
     
     
