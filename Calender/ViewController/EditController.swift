@@ -23,6 +23,9 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     //選ばれた日付。ViewControllerから直接画面遷移した場合はnil
     var selectedDate : Date!
     
+    var isCellTryViewController:Bool = false
+    var util = Util()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,22 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         textField.delegate = self
         
         textView.placeHolder = "ここに書く"
+        util.printLog(viewC: self, tag: "hoge", contents: selectedDateString)
+        
+        if let pickerView = self.datepicker.subviews.first {
+            
+            for subview in pickerView.subviews {
+                
+                if subview.frame.height <= 5 {
+                    
+                    subview.backgroundColor = UIColor.white
+                    subview.tintColor = UIColor.white
+                    subview.layer.borderColor = UIColor.white.cgColor
+                    subview.layer.borderWidth = 0.5
+                }
+            }
+            self.datepicker.setValue(UIColor.gray, forKey: "textColor")
+        }
         
         //
         if self.selectedDateString != nil{
@@ -42,11 +61,16 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             showData(date: self.selectedDateString)
             //Buttonのラベルを消す
             addpictureButton.setTitle("", for: .normal)
+            
+            
             //datepickerに日付を表示
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd"
+            selectedDate = formatter.date(from :selectedDateString)!
             datepicker.date = self.selectedDate
             deleteButton.isHidden = false
         }else{
-            deleteButton.isHidden = true
+            deleteButton.isHidden = false
         }
         
        
@@ -55,7 +79,7 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setLayoutColor() //レイアウトの色を指定
-        self.configureObserver()// Notificationを設定
+        //self.configureObserver()// Notificationを設定
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,12 +119,12 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }
     }
     
-    // Notificationを設定
-    func configureObserver() {
-        let notification = NotificationCenter.default
-        notification.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notification.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
+//    // Notificationを設定
+//    func configureObserver() {
+//        let notification = NotificationCenter.default
+//        notification.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        notification.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    }
     
     // Notificationを削除
     func removeObserver() {
@@ -220,35 +244,41 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }
         print(diary)
     }
-    @IBAction func ddeleteButton(){
-        //Realmオブジェクトの取得
-        let realm = try! Realm()
-        //Realmから、dateの情報が、selectedDateStringと一致するものを検索
-        if let diary = realm.objects(Diary.self).filter("date == %@",selectedDateString ).last{
-            try! realm.write {
-                realm.delete(diary)
-            }
-        }
-        navigationController?.popToRootViewController(animated: true)
-    }
+//    @IBAction func ddeleteButton(){
+//        //Realmオブジェクトの取得
+//        let realm = try! Realm()
+//        //Realmから、dateの情報が、selectedDateStringと一致するものを検索
+//        if let diary = realm.objects(Diary.self).filter("date == %@",selectedDateString ).last{
+//            try! realm.write {
+//                realm.delete(diary)
+//            }
+//        }
+//        navigationController?.popToRootViewController(animated: true)
+//    }
     
     @IBAction func delete () {
-        self.navigationController?.popViewController(animated: true)
+        
+        if isCellTryViewController == true{
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+
     }
     
     
-    // キーボードが現れた時に、画面全体をずらす。
-    func keyboardWillShow(notification: Notification?) {
-        
-        if(textView.isFirstResponder){
-            let rect = (notification?.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-            let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-            UIView.animate(withDuration: duration!, animations: { () in
-                let transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
-                self.view.transform = transform
-                
-            })
-        }}
+//    // キーボードが現れた時に、画面全体をずらす。
+//    func keyboardWillShow(notification: Notification?) {
+//
+//        if(textView.isFirstResponder){
+//            let rect = (notification?.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+//            let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
+//            UIView.animate(withDuration: duration!, animations: { () in
+//                let transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
+//                self.view.transform = transform
+//
+       //     })
+       // }}
     @IBAction func onlyDelete(){
         // STEP.1 Realmを初期化
         let realm = try! Realm()

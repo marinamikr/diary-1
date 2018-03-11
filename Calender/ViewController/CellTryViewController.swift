@@ -11,7 +11,7 @@ import Firebase
 import SVProgressHUD
 import RealmSwift
 
-class CellTryViewController: UIViewController,UITableViewDataSource {
+class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,12 +32,16 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     var mainArrayFireBase: [String] = Array()
     var picArrayFireBase: [UIImage] = Array()
     
+    var isMyDiary = true
+    
     
     
     var userDefaults:UserDefaults = UserDefaults.standard
     var ref :DatabaseReference!
     
-    var isFirst:Bool = false
+    static var isFirst:Bool = false
+    
+    var indexPathNumber:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +49,9 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         tableView.estimatedRowHeight = 10//セルの高さの見積もり
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dataSource = self
+        tableView.delegate = self
         self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumTableCell")
+        
         
         
     }
@@ -53,16 +59,33 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //changeDiary()
-        if isFirst == false{
-            isFirst = true
+        if CellTryViewController.isFirst == true{
+            CellTryViewController.isFirst = false
             userDefaults.register(defaults: ["isAllUser": false])
             let  isAllUser = userDefaults.object(forKey: "isAllUser") as! Bool
             if isAllUser == true{
                 changeAllUserDiary()
+                //myDiary()
             }else{
                 changeFriendeDiary()
+                //myDiary()
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        userDefaults.set(dateArray, forKey: "dateArray")
+        userDefaults.set(titleArray, forKey: "titleArray")
+        userDefaults.set(mainArray, forKey: "mainArray")
+        
+        var picDataArray = Array<NSData>()
+        
+        for i in 0 ..< picArray.count{
+            picDataArray.append(UIImageJPEGRepresentation(picArray[i], 0.8) as! NSData)
+        }
+        
+        userDefaults.set(picDataArray, forKey: "picDataArray")
     }
     
     //端末内のある日記を取得する処理
@@ -106,6 +129,20 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         titleArray.removeAll()
         mainArray.removeAll()
         picArray.removeAll()
+        
+         userDefaults.register(defaults: ["dateArray": Array<String>()])
+         userDefaults.register(defaults: ["titleArray": Array<String>()])
+         userDefaults.register(defaults: ["mainArray": Array<String>()])
+         userDefaults.register(defaults: ["picDataArray": Array<UIImage>()])
+        dateArray = userDefaults.object(forKey: "dateArray") as! Array<String>
+        titleArray  = userDefaults.object(forKey: "titleArray") as! Array<String>
+        mainArray  = userDefaults.object(forKey: "mainArray") as! Array<String>
+        
+        let picDataArray :Array<NSData> = userDefaults.object(forKey: "picDataArray") as! Array<NSData>
+        
+        for i in 0 ..< picDataArray.count {
+            picArray.append(UIImage(data:picDataArray[i] as Data)!)
+        }
         
         //ロード中のダイアログを表示する
         SVProgressHUD.show()
@@ -189,7 +226,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                     }
                     
                     
-                    self.ref.child(targetUser["user"]!).removeAllObservers()
+                    //self.ref.child(targetUser["user"]!).removeAllObservers()
                     
                     if i == userNumber-1 {
                         self.tableView.reloadData()
@@ -199,7 +236,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                 })
                 
             }
-            lef.child(uuid).removeAllObservers()
+            //lef.child(uuid).removeAllObservers()
             
         })
         
@@ -278,7 +315,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                         }
                     }
                     
-                   self.ref.child(targetUser["friendID"]!).removeAllObservers()
+                   //self.ref.child(targetUser["friendID"]!).removeAllObservers()
                     
                     if i == userNumber-1 {
                         self.tableView.reloadData()
@@ -290,7 +327,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
                 
             }
             
-            lef.child(uuid).removeAllObservers()
+            //lef.child(uuid).removeAllObservers()
             
         })
         
@@ -312,10 +349,13 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
             titleArray = titleArrayFireBase
             mainArray = mainArrayFireBase
             picArray = picArrayFireBase
+            
+            isMyDiary = false
            
         case 1:
             print("second")
             myDiary()
+            isMyDiary = true
             
         default:
             print("該当無し")
@@ -350,6 +390,28 @@ class CellTryViewController: UIViewController,UITableViewDataSource {
         print(titleArray[indexPath.row])
         
         return custumCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        util.printLog(viewC: self, tag: "タッチされた場所", contents: indexPath.row)
+        indexPathNumber = indexPath.row
+        performSegue(withIdentifier: "toShowController", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toShowController" {
+            //画面遷移前に、選ばれたCellの日付の情報をShowControllerに渡しておく
+            let showController:ShowController = segue.destination as! ShowController
+            showController.isCellTryViewController = true
+            showController.isMyDiary = isMyDiary
+            showController.selectedDateString = dateArray[indexPathNumber]
+            showController.cellTryViewControllerTitle = titleArray[indexPathNumber]
+            showController.cellTryViewControllerMain = mainArray[indexPathNumber]
+        showController.cellTryViewControllerImage = picArray[indexPathNumber]
+            
+        }
+        
     }
 }
 

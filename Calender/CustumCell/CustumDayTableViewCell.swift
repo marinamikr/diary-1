@@ -1,18 +1,16 @@
 //
-//  CustumSettingTableViewCell.swift
+//  CustumDayTableViewCell.swift
 //  Calender
 //
-//  Created by 橋詰明宗 on 2018/03/09.
+//  Created by 橋詰明宗 on 2018/03/11.
 //  Copyright © 2018年 hazuki. All rights reserved.
 //
 
 import UIKit
 
-class CustumSettingTableViewCell: UITableViewCell {
-    @IBOutlet weak var label: UILabel!
-    
-    @IBOutlet weak var check: UIImageView!
-    
+class CustumDayTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var dayLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,10 +20,6 @@ class CustumSettingTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func setText(text:String){
-        label.text = text
     }
     
 }

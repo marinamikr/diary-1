@@ -14,7 +14,7 @@
         @IBOutlet weak var table: UITableView!
         var array = [ ["Colors","red",  "pink", "orange", "yellow", "green","blue","purple"],
                       ["日記削除", "all delete"],
-                      ["change", "my QR", "add friends","友達一覧"],
+                      ["change", "my QR", "add friends","友達一覧",""],
                       ]
         
         var checkArr = [true,false,false,false,false,false,false]
@@ -93,7 +93,7 @@
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-            if indexPath.section != 2 || indexPath.row != 2{
+            if indexPath.section != 2 || indexPath.row != 3{
                 let cell = table.dequeueReusableCell(withIdentifier: "custumSettingTableViewCell") as! CustumSettingTableViewCell
                 
                 // 各 Cellの設定をしている　今回はタイトル入力のみ
@@ -102,15 +102,11 @@
                 
                 if indexPath.section == 0 {
                     if checkArr[indexPath.row] {
-                        cell.accessoryType = .checkmark
+                        cell.check.alpha = 1
                     }else{
-                        cell.accessoryType = .none
+                         cell.check.alpha = 0
                     }
-                    
-                }else {
-                    cell.accessoryType = .none
                 }
-                
                 return cell
             }else{
                 
@@ -179,10 +175,7 @@
                     performSegue(withIdentifier: "friends", sender: nil)
                 }
                 else if indexPath.row == 2{
-                    performSegue(withIdentifier: "select", sender: nil)
-                }
-                else if indexPath.row == 3{
-                    performSegue(withIdentifier: "collect", sender: nil)
+                    performSegue(withIdentifier: "friendsNameViewController", sender: nil)
                 }
             }
             

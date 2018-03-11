@@ -44,5 +44,6 @@ class CustomSwitchTableViewCell: UITableViewCell {
         util.printLog(viewC: self, tag: "switch", contents: "off")
             userDefaults.set(false, forKey: "isAllUser")
         }
+        CellTryViewController.isFirst = true
     }
 }

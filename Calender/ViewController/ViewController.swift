@@ -54,15 +54,12 @@ class ViewController: UIViewController{
         calenderCollectionView.backgroundColor = UIColor.white
         calenderCollectionView.register(UINib(nibName: "CalendarCustomCell", bundle: nil), forCellWithReuseIdentifier: "calendarCustomCell")
         
+        calenderCollectionView.register(UINib(nibName: "CustomWeekCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customWeekCollectionViewCell")
+        
         //ヘッダーの指定
         headerTitle.text = dateManager.firstDateOfMonth.toMonthString()
         prelabel.text = dateManager.firstDateOfMonth.monthAgoDate().toMonthString()
         nextlabel.text = dateManager.firstDateOfMonth.monthLaterDate().toMonthString()
-        
-        //色の設置をする
-        setLayoutColor()
-        
-     
         
         let lef = Database.database().reference()
         lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
@@ -79,7 +76,7 @@ class ViewController: UIViewController{
         
     }
     
-  
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -158,55 +155,53 @@ class ViewController: UIViewController{
     
     //レイアウトの色を指定する
     func  setLayoutColor() {
-        
+
         var colorNum = 0
-        
+
         //NSUserDefaultsから、ユーザーの指定している色の情報を取得
         if let color = userDefaults.object(forKey: "COLOR") {
             colorNum = color as! Int
         }
-        
+
         switch colorNum {
         case 0:
             headerNextBtn.setImage(UIImage(named: "redのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "red.png"), for: .normal)
-            calenderCollectionView.layer.borderColor = UIColor(red:1.0,green:0.894, blue:0.882, alpha:1.0).cgColor
+
         case 1:
             headerNextBtn.setImage(UIImage(named: "矢印.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "矢印i.png"), for: .normal)
-            calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
+
         case 2:
             headerNextBtn.setImage(UIImage(named: "orangeのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "orange.png"), for: .normal)
-            calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
-            
+
+
         case 3:
             headerNextBtn.setImage(UIImage(named: "yellowのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "yellow.png"), for: .normal)
-            calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
-            
+
+
         case 4:
             headerNextBtn.setImage(UIImage(named: "greenのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "green.png"), for: .normal)
-            calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
-            
+
+
         case 5:
             headerNextBtn.setImage(UIImage(named: "blueのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "blue.png"), for: .normal)
-            calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
-            
+
+
         case 6:
             headerNextBtn.setImage(UIImage(named: "purpleのコピー.png"), for: .normal)
             headerPrevBtn.setImage(UIImage(named: "purple.png"), for: .normal)
-            calenderCollectionView.layer.borderColor = UIColor(red:0,green:0, blue:0, alpha:1.0).cgColor
-            
         default:
             return
         }
-        
+
         calenderHeaderView.backgroundColor = colorManager.mainColor()[colorNum]
     }
-    
+
 }
 
 
@@ -234,56 +229,73 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegate, 
     //CollectionViewのCellを作成する
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //カスタムCellを取得【CalendarCell型】
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCustomCell",for: indexPath) as! CalendarCustomCell
-        
-        //テキストカラーの指定
-        if (indexPath.row % 7 == 0) {
-            cell.textLabel.textColor = UIColor.lightRed() //日曜日は赤
-        } else if (indexPath.row % 7 == 6) {
-            cell.textLabel.textColor = UIColor.lightBlue()//土曜日は青
-        } else {
-            cell.textLabel.textColor = UIColor.gray//他は灰色
-        }
-        
-        
-        //テキストの文字を指定
-        if indexPath.section == 0 {
-            cell.textLabel.text = dateManager.weekArray[indexPath.row]
-            cell.textLabel.textAlignment = .center
-        } else {
+        if indexPath.section == 0{
+            //カスタムCellを取得【CustumDayTableViewCell型】
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customWeekCollectionViewCell",for: indexPath) as! CustomWeekCollectionViewCell
             
-            //一度、画像を削除
-            cell.imageView.image = UIImage()
-            
-            //セルに表示する日付の情報を取得
-            let cellDate  = dateManager.currentMonthOfDates[indexPath.row]
-            
-            //セルに日付を表示
-            cell.textLabel.text = cellDate.toDayString()
-            cell.textLabel.textAlignment = .left
-            
-            //Realmオブジェクトの取得
-            let realm = try! Realm()
-            //Realmから、dateの情報が、Cellに表示する日付と一致するものを検索
-            if let diary = realm.objects(Diary.self).filter("date == %@", cellDate.toString()).last{
-                
-                //もし、dateの情報が、Cellに表示する日付と一致するデータの中に、画像の情報が存在したら
-                if diary.photo != nil {
-                    cell.imageView.image = UIImage(data: diary.photo as! Data)
-                }
+            cell.dayLabel.text = dateManager.weekArray[indexPath.row]
+            //テキストカラーの指定
+            if (indexPath.row % 7 == 0) {
+                cell.dayLabel.textColor = UIColor.lightRed() //日曜日は赤
+            } else if (indexPath.row % 7 == 6) {
+                cell.dayLabel.textColor = UIColor.lightBlue()//土曜日は青
+            } else {
+                cell.dayLabel.textColor = UIColor.gray//他は灰色
             }
+            return cell
+            
+        } else {
+            //カスタムCellを取得【CalendarCell型】
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCustomCell",for: indexPath) as! CalendarCustomCell
+            
+            //テキストカラーの指定
+            if (indexPath.row % 7 == 0) {
+                cell.textLabel.textColor = UIColor.lightRed() //日曜日は赤
+            } else if (indexPath.row % 7 == 6) {
+                cell.textLabel.textColor = UIColor.lightBlue()//土曜日は青
+            } else {
+                cell.textLabel.textColor = UIColor.gray//他は灰色
+            }
+            
+            
+            //テキストの文字を指定
+            if indexPath.section == 0 {
+                cell.textLabel.text = dateManager.weekArray[indexPath.row]
+                cell.textLabel.textAlignment = .center
+            } else {
+                
+                //一度、画像を削除
+                cell.imageView.image = UIImage()
+                
+                //セルに表示する日付の情報を取得
+                let cellDate  = dateManager.currentMonthOfDates[indexPath.row]
+                
+                //セルに日付を表示
+                cell.textLabel.text = cellDate.toDayString()
+                cell.textLabel.textAlignment = .left
+                
+                //Realmオブジェクトの取得
+                let realm = try! Realm()
+                //Realmから、dateの情報が、Cellに表示する日付と一致するものを検索
+                if let diary = realm.objects(Diary.self).filter("date == %@", cellDate.toString()).last{
+                    
+                    //もし、dateの情報が、Cellに表示する日付と一致するデータの中に、画像の情報が存在したら
+                    if diary.photo != nil {
+                        cell.imageView.image = UIImage(data: diary.photo as! Data)
+                    }
+                }
+                
+            }
+          return cell
         }
-        
-        return cell
     }
     
     //セルのサイズを設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let numberOfMargin: CGFloat = 8.0
-        let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
+        let width: CGFloat = (collectionView.frame.size.width ) / CGFloat(daysPerWeek)
         var height: CGFloat = width * 1.53
         
         if indexPath.section == 0 {
@@ -320,6 +332,8 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegate, 
         if segue.identifier == "toShowController" {
             //画面遷移前に、選ばれたCellの日付の情報をShowControllerに渡しておく
             let showController:ShowController = segue.destination as! ShowController
+            showController.isCellTryViewController = false
+            showController.isMyDiary = false
             showController.selectedDate = self.selectedDate
             showController.selectedDateString = self.selectedDate.toString()
         }

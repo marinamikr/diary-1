@@ -22,7 +22,6 @@
 		413A6A662032F5D000238BD2 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A652032F5D000238BD2 /* icon.png */; };
 		413A6A682032FB1F00238BD2 /* nil.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A672032FB1F00238BD2 /* nil.png */; };
 		413A6A6A2032FBD700238BD2 /* にる.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A692032FBD700238BD2 /* にる.png */; };
-		413A6A6C203C17E400238BD2 /* CollectFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A6A6B203C17E400238BD2 /* CollectFriendController.swift */; };
 		413A6A71203C1C9000238BD2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A6A70203C1C9000238BD2 /* User.swift */; };
 		4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182FD851F55728D000E750E /* PlaceHolderTextView.swift */; };
 		418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418BA1691F359D930084413F /* GoogleService-Info.plist */; };
@@ -43,6 +42,11 @@
 		AA58D44F205296FB002AFC4A /* CustomSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA58D44D205296FB002AFC4A /* CustomSwitchTableViewCell.xib */; };
 		AA58D452205299B9002AFC4A /* CustumSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58D450205299B9002AFC4A /* CustumSettingTableViewCell.swift */; };
 		AA58D453205299B9002AFC4A /* CustumSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA58D451205299B9002AFC4A /* CustumSettingTableViewCell.xib */; };
+		AA88F3A72054C88C00324971 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = AA88F3A62054C88C00324971 /* check.png */; };
+		AA88F3A92054E0B000324971 /* FriendNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88F3A82054E0B000324971 /* FriendNameViewController.swift */; };
+		AA88F3AB2054E1B200324971 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88F3AA2054E1B200324971 /* FriendViewController.swift */; };
+		AA88F3B42054E4C800324971 /* CustomWeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88F3B22054E4C800324971 /* CustomWeekCollectionViewCell.swift */; };
+		AA88F3B52054E4C800324971 /* CustomWeekCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA88F3B32054E4C800324971 /* CustomWeekCollectionViewCell.xib */; };
 		AA8BB51A200DAB84006D8C29 /* ya.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB505200DAB82006D8C29 /* ya.png */; };
 		AA8BB51B200DAB84006D8C29 /* 矢印.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB506200DAB82006D8C29 /* 矢印.jpg */; };
 		AA8BB51C200DAB84006D8C29 /* orangeのコピー.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8BB507200DAB82006D8C29 /* orangeのコピー.png */; };
@@ -103,7 +107,6 @@
 		413A6A652032F5D000238BD2 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		413A6A672032FB1F00238BD2 /* nil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nil.png; sourceTree = "<group>"; };
 		413A6A692032FBD700238BD2 /* にる.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "にる.png"; sourceTree = "<group>"; };
-		413A6A6B203C17E400238BD2 /* CollectFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectFriendController.swift; sourceTree = "<group>"; };
 		413A6A70203C1C9000238BD2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4182FD851F55728D000E750E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		4182FD871F55760A000E750E /* Calender-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calender-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -132,6 +135,11 @@
 		AA58D44D205296FB002AFC4A /* CustomSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomSwitchTableViewCell.xib; path = CustumCell/CustomSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		AA58D450205299B9002AFC4A /* CustumSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustumSettingTableViewCell.swift; path = CustumCell/CustumSettingTableViewCell.swift; sourceTree = "<group>"; };
 		AA58D451205299B9002AFC4A /* CustumSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustumSettingTableViewCell.xib; path = CustumCell/CustumSettingTableViewCell.xib; sourceTree = "<group>"; };
+		AA88F3A62054C88C00324971 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		AA88F3A82054E0B000324971 /* FriendNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendNameViewController.swift; path = ViewController/FriendNameViewController.swift; sourceTree = "<group>"; };
+		AA88F3AA2054E1B200324971 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = ViewController/FriendViewController.swift; sourceTree = "<group>"; };
+		AA88F3B22054E4C800324971 /* CustomWeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomWeekCollectionViewCell.swift; path = CustumCell/CustomWeekCollectionViewCell.swift; sourceTree = "<group>"; };
+		AA88F3B32054E4C800324971 /* CustomWeekCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomWeekCollectionViewCell.xib; path = CustumCell/CustomWeekCollectionViewCell.xib; sourceTree = "<group>"; };
 		AA8BB505200DAB82006D8C29 /* ya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ya.png; path = images/ya.png; sourceTree = "<group>"; };
 		AA8BB506200DAB82006D8C29 /* 矢印.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "矢印.jpg"; path = "images/矢印.jpg"; sourceTree = "<group>"; };
 		AA8BB507200DAB82006D8C29 /* orangeのコピー.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "orangeのコピー.png"; path = "images/orangeのコピー.png"; sourceTree = "<group>"; };
@@ -207,6 +215,7 @@
 		410081201EF92B1500DBCA05 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				AA88F3A62054C88C00324971 /* check.png */,
 				413A6A672032FB1F00238BD2 /* nil.png */,
 				413A6A692032FBD700238BD2 /* にる.png */,
 				AA8BB519200DAB84006D8C29 /* blue.png */,
@@ -246,6 +255,8 @@
 				AA58D44D205296FB002AFC4A /* CustomSwitchTableViewCell.xib */,
 				AA58D450205299B9002AFC4A /* CustumSettingTableViewCell.swift */,
 				AA58D451205299B9002AFC4A /* CustumSettingTableViewCell.xib */,
+				AA88F3B22054E4C800324971 /* CustomWeekCollectionViewCell.swift */,
+				AA88F3B32054E4C800324971 /* CustomWeekCollectionViewCell.xib */,
 			);
 			name = CustumCell;
 			sourceTree = "<group>";
@@ -261,7 +272,8 @@
 				AA3C7E1B20207E94004462CB /* QRController.swift */,
 				AA3C7E1D2020853C004462CB /* FriendsController.swift */,
 				AA3C7E1F2020859A004462CB /* SelectController.swift */,
-				413A6A6B203C17E400238BD2 /* CollectFriendController.swift */,
+				AA88F3A82054E0B000324971 /* FriendNameViewController.swift */,
+				AA88F3AA2054E1B200324971 /* FriendViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -504,10 +516,12 @@
 				AA8BB521200DAB84006D8C29 /* yellowのコピー.png in Resources */,
 				AA8BB53E200DC765006D8C29 /* CalendarCustomCell.xib in Resources */,
 				AA8BB526200DAB84006D8C29 /* 矢印.png in Resources */,
+				AA88F3A72054C88C00324971 /* check.png in Resources */,
 				AA8BB52C200DAB84006D8C29 /* blueのコピー.png in Resources */,
 				41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */,
 				AA8BB51B200DAB84006D8C29 /* 矢印.jpg in Resources */,
 				AA8BB51F200DAB84006D8C29 /* purple.png in Resources */,
+				AA88F3B52054E4C800324971 /* CustomWeekCollectionViewCell.xib in Resources */,
 				418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */,
 				AA58D44F205296FB002AFC4A /* CustomSwitchTableViewCell.xib in Resources */,
 				413A6A662032F5D000238BD2 /* icon.png in Resources */,
@@ -701,8 +715,10 @@
 				412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */,
 				AA3C7E1E2020853C004462CB /* FriendsController.swift in Sources */,
 				41050ADA1FC5919D00C0A051 /* CellTryViewController.swift in Sources */,
+				AA88F3AB2054E1B200324971 /* FriendViewController.swift in Sources */,
 				412342F41FB1C24100712D00 /* DateManager.swift in Sources */,
 				412342E31FB1BDE600712D00 /* ViewController.swift in Sources */,
+				AA88F3B42054E4C800324971 /* CustomWeekCollectionViewCell.swift in Sources */,
 				412342E51FB1BE6D00712D00 /* ShowController.swift in Sources */,
 				41A706CB1E91F18900F43E9F /* Diary.swift in Sources */,
 				AA58D44B20528B0F002AFC4A /* Util.swift in Sources */,
@@ -714,7 +730,7 @@
 				41122CB01F557F9700DA3612 /* DeviceSize.swift in Sources */,
 				412342E91FB1BF2700712D00 /* EditController.swift in Sources */,
 				AA8BB536200DAC0A006D8C29 /* ColorManeger.swift in Sources */,
-				413A6A6C203C17E400238BD2 /* CollectFriendController.swift in Sources */,
+				AA88F3A92054E0B000324971 /* FriendNameViewController.swift in Sources */,
 				AA3C7E1C20207E94004462CB /* QRController.swift in Sources */,
 				AA8BB53D200DC765006D8C29 /* CalendarCustomCell.swift in Sources */,
 				41D305EC1E40A07A004031DA /* AppDelegate.swift in Sources */,
