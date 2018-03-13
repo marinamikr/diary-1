@@ -39,7 +39,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
     var userDefaults:UserDefaults = UserDefaults.standard
     var ref :DatabaseReference!
     
-    static var isFirst:Bool = false
+    static var isFirst:Bool = true
     
     var indexPathNumber:Int = 0
     
@@ -52,12 +52,25 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         tableView.delegate = self
         self.tableView.register(UINib(nibName:"CustumTableCell",bundle: nil),forCellReuseIdentifier: "custumTableCell")
         
+        var allUserArray = Array<Dictionary<String,String>>()
+        
+        let lef = Database.database().reference()
+        lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
+            print("hoge")
+            print(snapshot.key)
+            let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
+            print(id)
+            var user: Dictionary<String,String> = ["user":id]
+            allUserArray.append(user)
+            self?.userDefaults.set(allUserArray, forKey: "allUser")
+        })
         
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print(CellTryViewController.isFirst)
         //changeDiary()
         if CellTryViewController.isFirst == true{
             CellTryViewController.isFirst = false
@@ -75,17 +88,6 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        userDefaults.set(dateArray, forKey: "dateArray")
-        userDefaults.set(titleArray, forKey: "titleArray")
-        userDefaults.set(mainArray, forKey: "mainArray")
-        
-        var picDataArray = Array<NSData>()
-        
-        for i in 0 ..< picArray.count{
-            picDataArray.append(UIImageJPEGRepresentation(picArray[i], 0.8) as! NSData)
-        }
-        
-        userDefaults.set(picDataArray, forKey: "picDataArray")
     }
     
     //端末内のある日記を取得する処理
@@ -130,20 +132,6 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         mainArray.removeAll()
         picArray.removeAll()
         
-         userDefaults.register(defaults: ["dateArray": Array<String>()])
-         userDefaults.register(defaults: ["titleArray": Array<String>()])
-         userDefaults.register(defaults: ["mainArray": Array<String>()])
-         userDefaults.register(defaults: ["picDataArray": Array<UIImage>()])
-        dateArray = userDefaults.object(forKey: "dateArray") as! Array<String>
-        titleArray  = userDefaults.object(forKey: "titleArray") as! Array<String>
-        mainArray  = userDefaults.object(forKey: "mainArray") as! Array<String>
-        
-        let picDataArray :Array<NSData> = userDefaults.object(forKey: "picDataArray") as! Array<NSData>
-        
-        for i in 0 ..< picDataArray.count {
-            picArray.append(UIImage(data:picDataArray[i] as Data)!)
-        }
-        
         //ロード中のダイアログを表示する
         SVProgressHUD.show()
         
@@ -155,7 +143,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         let uuid = UIDevice.current.identifierForVendor!.uuidString
         let lef = Database.database().reference()
         lef.child(uuid).observe(.value, with:{ (snapshot)  in
-            
+             var targetUserArray = Array<String>()
             self.myDiaryCount = Int(snapshot.childrenCount)
             self.util.printLog(viewC: self, tag: "自分の日記の数", contents: self.myDiaryCount)
             
@@ -194,7 +182,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
                 
                 let randomNumber:Int = Int(arc4random_uniform(UInt32(otherUserArray.count)))
                 let targetUser:Dictionary<String,String> = otherUserArray[randomNumber]
-                
+                 targetUserArray.append(targetUser["user"]!)
                 self.util.printLog(viewC: self, tag: "randomNumber", contents: randomNumber)
                 self.util.printLog(viewC: self, tag: "取得予定の日記のユーザー情報", contents: targetUser)
                 
@@ -226,17 +214,22 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
                     }
                     
                     
-                    //self.ref.child(targetUser["user"]!).removeAllObservers()
                     
                     if i == userNumber-1 {
                         self.tableView.reloadData()
                         SVProgressHUD.dismiss()
+                        for i in 0 ..< targetUserArray.count{
+                            self.ref.child(targetUserArray[i]).removeAllObservers()
+                            self.util.printLog(viewC: self, tag: "targetUser", contents: targetUserArray[i])
+                        }
+                        lef.child(uuid).removeAllObservers()
                     }
+                    
                 
                 })
                 
             }
-            //lef.child(uuid).removeAllObservers()
+            
             
         })
         
@@ -264,19 +257,35 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         
         lef.child(uuid).observe(.value, with:{ (snapshot)  in
             
+            var targetUserArray = Array<String>()
+            
             self.myDiaryCount = Int(snapshot.childrenCount)
             self.util.printLog(viewC: self, tag: "自分の日記の数", contents: self.myDiaryCount)
             
             var userNumber:Int = 0
             self.userDefaults.register(defaults: ["friendsArray": Array<Dictionary<String,String>>()])
             var friendsUserArray:Array<Dictionary<String,String>> = self.userDefaults.object(forKey: "friendsArray") as! Array<Dictionary<String, String>>
-            
             self.util.printLog(viewC: self, tag: "友達一覧", contents: friendsUserArray)
             
-            if self.myDiaryCount <= friendsUserArray.count{
+             var diaryFriendsUserArray = Array<Dictionary<String,String>>()
+            
+            
+            for i in 0 ..< friendsUserArray.count{
+                for j in 0 ..< allUserArray.count{
+                    print(friendsUserArray[i]["friendID"])
+                    print(allUserArray[j]["user"])
+                    if friendsUserArray[i]["friendID"] == allUserArray[j]["user"]{
+                        diaryFriendsUserArray.append(friendsUserArray[i])
+                    }
+                }
+            }
+            
+            self.util.printLog(viewC: self, tag: "日記を投稿している友達一覧", contents: diaryFriendsUserArray)
+            
+            if self.myDiaryCount <= diaryFriendsUserArray.count{
                 userNumber = self.myDiaryCount
             }else{
-                userNumber = friendsUserArray.count
+                userNumber = diaryFriendsUserArray.count
             }
             if userNumber == 0{
                        SVProgressHUD.dismiss()
@@ -284,10 +293,13 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             
             self.util.printLog(viewC: self, tag: "取得する日記の数", contents: userNumber)
             
+            
+            
             for i in 0 ..< userNumber{
                 
-                let randomNumber:Int = Int(arc4random_uniform(UInt32(friendsUserArray.count)))
-                let targetUser:Dictionary<String,String> = friendsUserArray[randomNumber]
+                let randomNumber:Int = Int(arc4random_uniform(UInt32(diaryFriendsUserArray.count)))
+                let targetUser:Dictionary<String,String> = diaryFriendsUserArray[randomNumber]
+                targetUserArray.append(targetUser["friendID"]!)
                 self.util.printLog(viewC: self, tag: "randomNumber", contents: randomNumber)
                 self.util.printLog(viewC: self, tag: "取得予定の日記のユーザー情報", contents: targetUser)
                 
@@ -315,11 +327,15 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
                         }
                     }
                     
-                   //self.ref.child(targetUser["friendID"]!).removeAllObservers()
                     
                     if i == userNumber-1 {
                         self.tableView.reloadData()
                         SVProgressHUD.dismiss()
+                        for i in 0 ..< targetUserArray.count{
+                            self.ref.child(targetUserArray[i]).removeAllObservers()
+                            self.util.printLog(viewC: self, tag: "targetUser", contents: targetUserArray[i])
+                        }
+                        lef.child(uuid).removeAllObservers()
                     }
                     
                     
@@ -327,7 +343,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
                 
             }
             
-            //lef.child(uuid).removeAllObservers()
+           
             
         })
         
@@ -371,7 +387,6 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     /// セルの個数を指定するデリゲートメソッド（必須）
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(dateArray.count)
         return dateArray.count
     }
     

@@ -38,20 +38,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0SW-KU-bsN">
                                 <rect key="frame" x="99.5" y="0.0" width="231.5" height="89.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8x-r0-NsN">
-                                        <rect key="frame" x="0.0" y="0.0" width="231.5" height="42.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaA-L7-jVy">
-                                        <rect key="frame" x="0.0" y="42.5" width="231.5" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="231.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f96-eA-TjP">
-                                        <rect key="frame" x="0.0" y="69" width="231.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="26.5" width="231.5" height="63"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -82,7 +76,6 @@
                 <outlet property="date" destination="f96-eA-TjP" id="hpL-du-rYs"/>
                 <outlet property="pic" destination="1uQ-cm-SG6" id="Svq-Cy-8hX"/>
                 <outlet property="title" destination="JaA-L7-jVy" id="koY-sU-Rc6"/>
-                <outlet property="userName" destination="D8x-r0-NsN" id="mbO-gX-dmY"/>
             </connections>
             <point key="canvasLocation" x="40" y="108"/>
         </tableViewCell>

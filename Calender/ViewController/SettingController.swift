@@ -8,6 +8,7 @@
     
     import UIKit
     import RealmSwift
+    import Firebase
     
     class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataSource,UINavigationControllerDelegate{
         
@@ -155,6 +156,21 @@
                     try! realm.write() {
                         realm.deleteAll()
                     }
+                    
+//                    let uuid = UIDevice.current.identifierForVendor!.uuidString
+//                    let lef = Database.database().reference()
+//                    lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
+//
+//                        print(snapshot.key)
+//                        let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
+//                        if id == uuid{
+//                            lef.child("UserIDArray").child(snapshot.key).removeValue()
+//                        }
+//                    })
+//
+//                    lef.child(uuid).removeValue()
+//                    self.userDefaults.set(false, forKey: "SENT_USERID")
+                    
                 })
                 // キャンセルボタン
                 let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{

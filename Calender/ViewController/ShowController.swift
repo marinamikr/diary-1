@@ -200,13 +200,12 @@ class ShowController: UIViewController {
     
     func addMyID(){
         
-        // databaseから画像の名前を取得
-        let ref = Database.database().reference().child("UserIDArray")
+      
+        let ref = Database.database().reference()
         let data : Dictionary = ["userName":"hazuki","userID":UIDevice.current.identifierForVendor!.uuidString,]
         
         //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
-        ref.childByAutoId().setValue(data)
-        
+        ref.child("UserIDArray").childByAutoId().setValue(data)
         
     }
     

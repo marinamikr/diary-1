@@ -36,7 +36,6 @@
 		662E44B77EDD770908F048C5 /* Pods_Calender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F1B0CF892EFC77E28F6CA2 /* Pods_Calender.framework */; };
 		AA3C7E1C20207E94004462CB /* QRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3C7E1B20207E94004462CB /* QRController.swift */; };
 		AA3C7E1E2020853C004462CB /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3C7E1D2020853C004462CB /* FriendsController.swift */; };
-		AA3C7E202020859A004462CB /* SelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3C7E1F2020859A004462CB /* SelectController.swift */; };
 		AA58D44B20528B0F002AFC4A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58D44A20528B0F002AFC4A /* Util.swift */; };
 		AA58D44E205296FB002AFC4A /* CustomSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58D44C205296FB002AFC4A /* CustomSwitchTableViewCell.swift */; };
 		AA58D44F205296FB002AFC4A /* CustomSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA58D44D205296FB002AFC4A /* CustomSwitchTableViewCell.xib */; };
@@ -129,7 +128,6 @@
 		624F444C1D9793F3949F1E5D /* Pods-Calender.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calender.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calender/Pods-Calender.debug.xcconfig"; sourceTree = "<group>"; };
 		AA3C7E1B20207E94004462CB /* QRController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRController.swift; path = ViewController/QRController.swift; sourceTree = "<group>"; };
 		AA3C7E1D2020853C004462CB /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendsController.swift; path = ViewController/FriendsController.swift; sourceTree = "<group>"; };
-		AA3C7E1F2020859A004462CB /* SelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectController.swift; path = ViewController/SelectController.swift; sourceTree = "<group>"; };
 		AA58D44A20528B0F002AFC4A /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		AA58D44C205296FB002AFC4A /* CustomSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomSwitchTableViewCell.swift; path = CustumCell/CustomSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		AA58D44D205296FB002AFC4A /* CustomSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomSwitchTableViewCell.xib; path = CustumCell/CustomSwitchTableViewCell.xib; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 				41050AD91FC5919D00C0A051 /* CellTryViewController.swift */,
 				AA3C7E1B20207E94004462CB /* QRController.swift */,
 				AA3C7E1D2020853C004462CB /* FriendsController.swift */,
-				AA3C7E1F2020859A004462CB /* SelectController.swift */,
 				AA88F3A82054E0B000324971 /* FriendNameViewController.swift */,
 				AA88F3AA2054E1B200324971 /* FriendViewController.swift */,
 			);
@@ -723,7 +720,6 @@
 				41A706CB1E91F18900F43E9F /* Diary.swift in Sources */,
 				AA58D44B20528B0F002AFC4A /* Util.swift in Sources */,
 				4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */,
-				AA3C7E202020859A004462CB /* SelectController.swift in Sources */,
 				41050AE21FCD70AD00C0A051 /* CustumTableCell.swift in Sources */,
 				AA58D452205299B9002AFC4A /* CustumSettingTableViewCell.swift in Sources */,
 				AA8BB538200DAC1C006D8C29 /* Extention.swift in Sources */,

@@ -63,7 +63,8 @@ class ViewController: UIViewController{
         
         let lef = Database.database().reference()
         lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
-            print(snapshot)
+            print("hoge")
+            print(snapshot.key)
             let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
             print(id)
             var user: Dictionary<String,String> = ["user":id]

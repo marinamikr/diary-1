@@ -29,6 +29,7 @@ class FriendNameViewController: UIViewController ,UITableViewDelegate ,UITableVi
         table?.dataSource = self
         
         print("hoge")
+        userDefaults.register(defaults: ["friendsArray": Array<Dictionary<String,String>>()])
         var friendsArray:Array<Dictionary<String,String>> = userDefaults.object(forKey: "friendsArray") as! Array<Dictionary<String,String>>
         
         for i in 0 ..< friendsArray.count{

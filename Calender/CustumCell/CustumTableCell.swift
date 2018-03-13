@@ -13,7 +13,6 @@ class CustumTableCell: UITableViewCell {
     @IBOutlet weak var pic: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var userName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
