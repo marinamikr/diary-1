@@ -51,20 +51,31 @@ class ShowController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setLayoutColor()
         
-        if isCellTryViewController == true{
-           
+        
+        if isCellTryViewController == true && isMyDiary == false{
+            
             dateLabel.text = selectedDateString
             mainLabel.text = cellTryViewControllerMain
             label.text = cellTryViewControllerTitle
             picture.image = cellTryViewControllerImage
-            if changeCheck == true {
-                changeButton.isHidden = true
-            }
+            
             
             if isMyDiary == true{
                 editButton.isHidden = false
+                
+                if changeCheck == true {
+                    changeButton.isHidden = true
+                }
+                
             }else{
+                changeButton.isHidden = true
                 editButton.isHidden = true
             }
         }else{
@@ -72,19 +83,11 @@ class ShowController: UIViewController {
             dateLabel.text = selectedDateString
             //日付の情報をもとに、Realmに保存されている情報を取得
             showData(date: self.selectedDateString)
-            
+            util.printLog(viewC: self, tag: "changeCheck", contents: changeCheck)
             if changeCheck == true {
                 changeButton.isHidden = true
             }
         }
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setLayoutColor()
-        //日付の情報をもとに、Realmに保存されている情報を取得
-        showData(date: self.selectedDateString)
         
     }
     
@@ -190,7 +193,7 @@ class ShowController: UIViewController {
         let storageRef = storage.reference(forURL: "gs://calender-4a2d3.appspot.com")
         
         //変数picに画像を設定
-        if let pic = picture.image{
+        if let pic = resizeImage(src:picture.image!){
             
             print("koko")
             //変数dataにpicをNSDataにしたものを指定
@@ -200,7 +203,7 @@ class ShowController: UIViewController {
                 //SVProgressHUD.show()
                 
                 // トップReferenceの一つ下の固有IDの枝を指定
-                let riversRef = storageRef.child(uuid)
+                let riversRef = storageRef.child(uuid).child(String.getRandomStringWithLength(length: 60))
                 
                 // strageに画像をアップロード
                 riversRef.putData(data, metadata: nil, completion: { metaData, error in
@@ -215,7 +218,7 @@ class ShowController: UIViewController {
                     self.util.printLog(viewC: self, tag: "uuid", contents: uuid)
                     //トップReferenceの一つ下の固有IDの枝に、key value形式の情報を送る
                     ref.child(uuid).childByAutoId().setValue(data)
-                    
+                    self.changeButton.isHidden = true
                     
                     //最初の一回のみ
                     let sentUserId = self.userDefaults.bool(forKey: "SENT_USERID")
@@ -290,4 +293,36 @@ class ShowController: UIViewController {
         
     }
     
+    /// イメージのサイズを変更
+    func resizeImage(src: UIImage!) -> UIImage! {
+        
+        var resizedSize : CGSize!
+        let maxLongSide : CGFloat = 500
+        
+        // リサイズが必要か？
+        let ss = src.size
+        if maxLongSide == 0 || ( ss.width <= maxLongSide && ss.height <= maxLongSide ) {
+            resizedSize = ss
+            return src
+        }
+        
+        // TODO: リサイズ回りの処理を切りだし
+        
+        // リサイズ後のサイズを計算
+        let ax = ss.width / maxLongSide
+        let ay = ss.height / maxLongSide
+        let ar = ax > ay ? ax : ay
+        let re = CGRect(x: 0, y: 0, width: ss.width / ar, height: ss.height / ar)
+        
+        // リサイズ
+        UIGraphicsBeginImageContext(re.size)
+        src.draw(in: re)
+        let dst = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        resizedSize = dst?.size
+        
+        return dst!
+    }
+
 }

@@ -258,7 +258,11 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                                       style: UIAlertActionStyle.default,
                                       handler: {action in
                                         self.saveData() //Realmに保存
-                                        self.navigationController?.popViewController(animated: true)//ViewControllerに戻る
+                                        if self.isCellTryViewController == true{
+                                            self.dismiss(animated: true, completion: nil)
+                                        }else{
+                                            self.navigationController?.popToRootViewController(animated: true)
+                                        }
                                         
         }))
         //アラートの表示

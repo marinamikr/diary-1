@@ -34,7 +34,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
     var mainArrayFireBase: [String] = Array()
     var picArrayFireBase: [UIImage] = Array()
     
-    var isMyDiary = true
+    var isMyDiary = false
     
     
     
@@ -67,6 +67,25 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             self?.userDefaults.set(allUserArray, forKey: "allUser")
         })
         
+        lef.child("UserIDArray").observe(.childRemoved, with: { [weak self](snapshot) -> Void in
+            print("hogehogehoge")
+            print(snapshot.key)
+            let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
+            print(id)
+            for i in 0 ..< allUserArray.count{
+                if allUserArray[i]["user"] == id {
+                    print("hogehoge")
+                    print(snapshot.key)
+                    print(i)
+                    allUserArray.remove(at: i)
+                    print(allUserArray)
+                    break
+                }
+            }
+            
+            self?.userDefaults.set(allUserArray, forKey: "allUser")
+        })
+        
         changeAndMy.layer.cornerRadius = 5
        
     }
@@ -88,6 +107,10 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
                 //myDiary()
             }
         }
+        
+        if isMyDiary == true {
+            myDiary()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -101,6 +124,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         titleArray.removeAll()
         mainArray.removeAll()
         picArray.removeAll()
+        self.tableView.reloadData()
         
         //Realmオブジェクトの取得
         let realm = try! Realm()
@@ -136,6 +160,13 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         titleArray.removeAll()
         mainArray.removeAll()
         picArray.removeAll()
+        
+        dateArrayFireBase.removeAll()
+        titleArrayFireBase.removeAll()
+        mainArrayFireBase.removeAll()
+        picArrayFireBase.removeAll()
+        
+        self.tableView.reloadData()
         
         //ロード中のダイアログを表示する
         SVProgressHUD.show()
@@ -247,6 +278,13 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         titleArray.removeAll()
         mainArray.removeAll()
         picArray.removeAll()
+        
+        dateArrayFireBase.removeAll()
+        titleArrayFireBase.removeAll()
+        mainArrayFireBase.removeAll()
+        picArrayFireBase.removeAll()
+        
+        self.tableView.reloadData()
         
         //ロード中のダイアログを表示する
         SVProgressHUD.show()
@@ -371,6 +409,9 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             mainArray = mainArrayFireBase
             picArray = picArrayFireBase
             
+            
+            tableView.reloadData()
+            
             isMyDiary = false
            
         case 1:
@@ -429,9 +470,11 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             showController.cellTryViewControllerTitle = titleArray[indexPathNumber]
             showController.cellTryViewControllerMain = mainArray[indexPathNumber]
         showController.cellTryViewControllerImage = picArray[indexPathNumber]
+            util.printLog(viewC: self, tag: "isMyDiary", contents: isMyDiary)
+            if isMyDiary == true{
             showController.changeCheck = changeCheckArray[indexPathNumber]
-            
-            util.printLog(viewC: self, tag: "change", contents: changeCheckArray)
+            }
+            util.printLog(viewC: self, tag: "change", contents: showController.cellTryViewControllerTitle)
         }
         
     }

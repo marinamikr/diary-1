@@ -100,14 +100,17 @@
                 // 各 Cellの設定をしている　今回はタイトル入力のみ
                 
                 cell.setText(text:array[indexPath.section][indexPath.row + 1])
-                
+               
                 if indexPath.section == 0 {
                     if checkArr[indexPath.row] {
                         cell.check.alpha = 1
                     }else{
                          cell.check.alpha = 0
                     }
+                }else{
+                     cell.check.alpha = 0
                 }
+                    
                 return cell
             }else{
                 
@@ -122,12 +125,12 @@
 //        }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            // セルが選択された時に呼び出される
-            let cell = tableView.cellForRow(at:indexPath)
-            tableView.deselectRow(at: indexPath, animated: true)
-            colorNumber = indexPath.row
+            
+           
             
             if indexPath.section == 0{
+                colorNumber = indexPath.row
+                
                 for i in 0..<checkArr.count {
                     if checkArr[i] == true {
                         checkArr[i] = false
@@ -138,6 +141,10 @@
                         navigationController?.navigationBar.backgroundColor = colorManager.mainColor()[indexPath.row]
                     }
                 }
+                userDefaults.set(checkArr, forKey: "CHECK")
+                userDefaults.set(colorNumber, forKey: "COLOR")
+                tableView.reloadData()
+                
             }else if indexPath.section == 1{
                 let alert: UIAlertController = UIAlertController(title: "全削除", message: "いいですか", preferredStyle: .alert)
                 
@@ -159,7 +166,7 @@
                     
                     let uuid = UIDevice.current.identifierForVendor!.uuidString
                     let lef = Database.database().reference()
-                    lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
+                    var handle = lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
 
                         print(snapshot.key)
                         let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
@@ -167,9 +174,9 @@
                             lef.child("UserIDArray").child(snapshot.key).removeValue()
                         }
                     })
+                    lef.child("UserIDArray").removeObserver(withHandle: handle)
 
                     lef.child(uuid).removeValue()
-                    lef.child("UserIDArray").removeAllObservers()
                     self.userDefaults.set(false, forKey: "SENT_USERID")
                     
                 })
@@ -196,9 +203,8 @@
                 }
             }
             
-            userDefaults.set(checkArr, forKey: "CHECK")
-            userDefaults.set(colorNumber, forKey: "COLOR")
-            tableView.reloadData()
+           
+            
         }
         
         
