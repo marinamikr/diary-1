@@ -95,7 +95,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         setLayoutColor()
         print(CellTryViewController.isFirst)
         //changeDiary()
-        if CellTryViewController.isFirst == true{
+        if CellTryViewController.isFirst == true && isMyDiary == false {
             CellTryViewController.isFirst = false
             userDefaults.register(defaults: ["isAllUser": true])
             let  isAllUser = userDefaults.object(forKey: "isAllUser") as! Bool
