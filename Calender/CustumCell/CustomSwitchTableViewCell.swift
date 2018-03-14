@@ -18,7 +18,7 @@ class CustomSwitchTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        userDefaults.register(defaults: ["isAllUser": false])
+        userDefaults.register(defaults: ["isAllUser": true])
         var isAllUser = false
         isAllUser =  userDefaults.object(forKey: "isAllUser") as! Bool
         mySwitch.isOn = isAllUser

@@ -116,10 +116,10 @@
             }
         }
         
-        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            //　タイトルヘッダーの要素を返している　今回は各セクションの先頭 0番目がヘッダーとなる
-            return array[section][0]
-        }
+//        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//            //　タイトルヘッダーの要素を返している　今回は各セクションの先頭 0番目がヘッダーとなる
+//            return array[section][0]
+//        }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             // セルが選択された時に呼び出される
@@ -157,19 +157,20 @@
                         realm.deleteAll()
                     }
                     
-//                    let uuid = UIDevice.current.identifierForVendor!.uuidString
-//                    let lef = Database.database().reference()
-//                    lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
-//
-//                        print(snapshot.key)
-//                        let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
-//                        if id == uuid{
-//                            lef.child("UserIDArray").child(snapshot.key).removeValue()
-//                        }
-//                    })
-//
-//                    lef.child(uuid).removeValue()
-//                    self.userDefaults.set(false, forKey: "SENT_USERID")
+                    let uuid = UIDevice.current.identifierForVendor!.uuidString
+                    let lef = Database.database().reference()
+                    lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
+
+                        print(snapshot.key)
+                        let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
+                        if id == uuid{
+                            lef.child("UserIDArray").child(snapshot.key).removeValue()
+                        }
+                    })
+
+                    lef.child(uuid).removeValue()
+                    lef.child("UserIDArray").removeAllObservers()
+                    self.userDefaults.set(false, forKey: "SENT_USERID")
                     
                 })
                 // キャンセルボタン
@@ -209,6 +210,28 @@
             tableView.reloadData()
             
         }
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           
+            return 65
+        }
+//
+        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+        {
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+            let label : UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: tableView.bounds.size.width, height: 30))
+
+            label.textColor = UIColor.black
+            label.text = array[section][0]
+
+            headerView.addSubview(label)
+
+            headerView.backgroundColor = UIColor.white
+            return headerView
+        }
+//
+        
+       
     }
     
 

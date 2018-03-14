@@ -34,7 +34,6 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lrt-p0-2sp">
                                 <rect key="frame" x="0.0" y="103" width="414" height="633"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D9W-SU-Tpi">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -65,7 +64,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTf-bv-Lhj">
-                                        <rect key="frame" x="335.66666666666669" y="10" width="70.333333333333314" height="36.666666666666664"/>
+                                        <rect key="frame" x="341.66666666666669" y="22.999999999999996" width="70.333333333333314" height="36.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <state key="normal" title="＋">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -115,7 +114,7 @@
                                 <constraints>
                                     <constraint firstItem="i2n-AF-iyp" firstAttribute="height" secondItem="154-Uv-bl2" secondAttribute="height" multiplier="0.35" id="53G-PQ-Akc"/>
                                     <constraint firstAttribute="bottom" secondItem="i2n-AF-iyp" secondAttribute="bottom" constant="8" id="BVk-sP-q3Z"/>
-                                    <constraint firstAttribute="trailing" secondItem="nTf-bv-Lhj" secondAttribute="trailing" constant="8" id="Ckh-dD-ySB"/>
+                                    <constraint firstAttribute="trailing" secondItem="nTf-bv-Lhj" secondAttribute="trailing" constant="2" id="Ckh-dD-ySB"/>
                                     <constraint firstItem="i2n-AF-iyp" firstAttribute="leading" secondItem="154-Uv-bl2" secondAttribute="leading" constant="30" id="EpD-uv-hum"/>
                                     <constraint firstItem="Ddd-jf-pgg" firstAttribute="height" secondItem="i2n-AF-iyp" secondAttribute="height" id="I3W-wm-k3I"/>
                                     <constraint firstItem="i2n-AF-iyp" firstAttribute="centerY" secondItem="V5d-Uy-La9" secondAttribute="centerY" id="Jlo-qR-ZdX"/>
@@ -130,7 +129,7 @@
                                     <constraint firstItem="iGp-fC-j0B" firstAttribute="centerX" secondItem="Ddd-jf-pgg" secondAttribute="centerX" id="iI4-WG-A08"/>
                                     <constraint firstItem="iGp-fC-j0B" firstAttribute="centerY" secondItem="Ddd-jf-pgg" secondAttribute="centerY" id="jQJ-ef-Aa4"/>
                                     <constraint firstItem="V5d-Uy-La9" firstAttribute="height" secondItem="i2n-AF-iyp" secondAttribute="height" id="nHj-HU-fA8"/>
-                                    <constraint firstItem="nTf-bv-Lhj" firstAttribute="top" secondItem="154-Uv-bl2" secondAttribute="top" constant="10" id="q4k-oO-c3j"/>
+                                    <constraint firstItem="nTf-bv-Lhj" firstAttribute="top" secondItem="154-Uv-bl2" secondAttribute="top" constant="23" id="q4k-oO-c3j"/>
                                     <constraint firstItem="V5d-Uy-La9" firstAttribute="leading" secondItem="154-Uv-bl2" secondAttribute="leading" constant="30" id="tiC-sY-PiT"/>
                                     <constraint firstAttribute="trailing" secondItem="Ddd-jf-pgg" secondAttribute="trailing" constant="30" id="ucG-Yj-CIr"/>
                                 </constraints>
@@ -332,10 +331,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="AH8-P3-GSg">
-                                        <rect key="frame" x="0.0" y="28" width="363" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AH8-P3-GSg" id="kt3-zy-RjC">
-                                            <rect key="frame" x="0.0" y="0.0" width="363" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -361,7 +360,7 @@
         <!--Edit Controller-->
         <scene sceneID="sUd-0O-Iha">
             <objects>
-                <viewController id="bWZ-Ye-kVo" customClass="EditController" customModule="Calender" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="bWZ-Ye-kVo" customClass="EditController" customModule="Calender" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="siT-Yl-p8g"/>
                         <viewControllerLayoutGuide type="bottom" id="qKc-cm-lK0"/>
@@ -371,9 +370,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnf-hV-YzH">
-                                <rect key="frame" x="0.0" y="35.333333333333336" width="136.66666666666666" height="40.000000000000007"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="delete">
+                                <rect key="frame" x="0.0" y="30.333333333333329" width="136.66666666666666" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="⬅︎">
                                     <color key="titleColor" red="1" green="0.70588235290000001" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -540,10 +539,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="att-EH-Guv" id="zx3-7K-KH8"/>
                         <outlet property="addpictureButton" destination="OFE-tQ-gXC" id="WsN-D8-ao0"/>
                         <outlet property="datepicker" destination="5RE-5j-Pnh" id="rxS-vP-dZp"/>
                         <outlet property="deleteButton" destination="xnf-hV-YzH" id="SOf-Mu-jhK"/>
                         <outlet property="haikei" destination="iCR-sT-bce" id="eg2-2S-wcc"/>
+                        <outlet property="new" destination="gB2-Ni-Y9d" id="mhh-zW-C14"/>
                         <outlet property="textField" destination="QsS-PS-5sO" id="m4i-6f-uuU"/>
                         <outlet property="textView" destination="Hdv-SX-lde" id="ZQX-lz-TT9"/>
                     </connections>
@@ -553,7 +554,7 @@
             </objects>
             <point key="canvasLocation" x="5234.7826086956529" y="355.43478260869568"/>
         </scene>
-        <!--Item-->
+        <!--List-->
         <scene sceneID="CRk-mC-F23">
             <objects>
                 <viewController id="GFY-rD-uw8" customClass="CellTryViewController" customModule="Calender" customModuleProvider="target" sceneMemberID="viewController">
@@ -566,37 +567,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bLp-1s-FGa">
-                                <rect key="frame" x="50" y="50" width="314" height="29"/>
-                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="20" y="30" width="374" height="29"/>
                                 <segments>
                                     <segment title="change"/>
                                     <segment title="myDiary"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="segumentControllTap:" destination="GFY-rD-uw8" eventType="valueChanged" id="M5p-fd-oYv"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a41-xJ-bcU">
-                                <rect key="frame" x="0.0" y="108" width="414" height="628"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="648"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="a41-xJ-bcU" firstAttribute="leading" secondItem="VTY-bs-ro6" secondAttribute="leading" id="2if-XY-MUe"/>
-                            <constraint firstItem="bLp-1s-FGa" firstAttribute="leading" secondItem="VTY-bs-ro6" secondAttribute="leadingMargin" constant="30" id="38G-nD-UBM"/>
-                            <constraint firstItem="bLp-1s-FGa" firstAttribute="top" secondItem="1bm-Ld-Slg" secondAttribute="bottom" constant="30" id="F0v-rd-4yy"/>
+                            <constraint firstItem="bLp-1s-FGa" firstAttribute="leading" secondItem="VTY-bs-ro6" secondAttribute="leadingMargin" id="38G-nD-UBM"/>
+                            <constraint firstItem="bLp-1s-FGa" firstAttribute="top" secondItem="1bm-Ld-Slg" secondAttribute="bottom" constant="10" id="F0v-rd-4yy"/>
                             <constraint firstAttribute="bottom" secondItem="a41-xJ-bcU" secondAttribute="bottom" id="IaD-2t-MTf"/>
                             <constraint firstItem="a41-xJ-bcU" firstAttribute="top" secondItem="bLp-1s-FGa" secondAttribute="bottom" constant="30" id="kI9-mh-rPC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bLp-1s-FGa" secondAttribute="trailing" constant="30" id="m5u-ks-8hO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bLp-1s-FGa" secondAttribute="trailing" id="m5u-ks-8hO"/>
                             <constraint firstAttribute="trailing" secondItem="a41-xJ-bcU" secondAttribute="trailing" id="qvo-tt-bYU"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="XS1-Pc-kKU"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list.png" id="XS1-Pc-kKU"/>
                     <navigationItem key="navigationItem" id="O1V-je-yP8">
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="changeAndMy" destination="bLp-1s-FGa" id="Cwn-du-QXd"/>
                         <outlet property="tableView" destination="a41-xJ-bcU" id="JVa-a0-hb3"/>
                         <segue destination="jWm-TU-EP4" kind="show" identifier="toShowController" id="tIt-9a-Rpz"/>
                     </connections>
@@ -837,11 +839,11 @@
             </objects>
             <point key="canvasLocation" x="1498" y="356"/>
         </scene>
-        <!--calender-->
+        <!--CALENDER-->
         <scene sceneID="xbZ-Pr-ct8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yMm-wu-oeB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="calender" image="カレンダー.png" id="Cfj-C4-fFI"/>
+                    <tabBarItem key="tabBarItem" title="CALENDER" image="カレンダー.png" id="Cfj-C4-fFI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fLU-bD-ZRd">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -856,11 +858,11 @@
             </objects>
             <point key="canvasLocation" x="2606" y="356"/>
         </scene>
-        <!--Item-->
+        <!--setting-->
         <scene sceneID="XLE-AF-1IO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qpa-LL-cIS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="set.png" id="6nj-u1-HJ6"/>
+                    <tabBarItem key="tabBarItem" title="setting" image="set.png" id="6nj-u1-HJ6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WJy-Ac-9jF">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -877,6 +879,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="list.png" width="40" height="30"/>
         <image name="set.png" width="38" height="38"/>
         <image name="カレンダー.png" width="57" height="57"/>
         <image name="矢印.png" width="380" height="144"/>
@@ -884,7 +887,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tIt-9a-Rpz"/>
-        <segue reference="m6g-90-dn8"/>
+        <segue reference="6Yt-cT-uEB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

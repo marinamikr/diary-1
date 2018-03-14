@@ -14,6 +14,7 @@ import RealmSwift
 class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     
+    @IBOutlet weak var changeAndMy: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     var myDiaryCount: Int = 0
     var util = Util()
@@ -26,6 +27,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
     var titleArray: [String] = Array()
     var mainArray: [String] = Array()
     var picArray: [UIImage] = Array()
+    var changeCheckArray:[Bool] = Array()
     
     var dateArrayFireBase: [String] = Array()
     var titleArrayFireBase: [String] = Array()
@@ -65,16 +67,18 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             self?.userDefaults.set(allUserArray, forKey: "allUser")
         })
         
-        
+        changeAndMy.layer.cornerRadius = 5
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setLayoutColor()
         print(CellTryViewController.isFirst)
         //changeDiary()
         if CellTryViewController.isFirst == true{
             CellTryViewController.isFirst = false
-            userDefaults.register(defaults: ["isAllUser": false])
+            userDefaults.register(defaults: ["isAllUser": true])
             let  isAllUser = userDefaults.object(forKey: "isAllUser") as! Bool
             if isAllUser == true{
                 changeAllUserDiary()
@@ -107,6 +111,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             
             dateArray.append(results[i].date)
             titleArray.append(results[i].title)
+            changeCheckArray.append(results[i].changeCheck)
             
             
             if results[i].photo != nil{
@@ -424,10 +429,55 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             showController.cellTryViewControllerTitle = titleArray[indexPathNumber]
             showController.cellTryViewControllerMain = mainArray[indexPathNumber]
         showController.cellTryViewControllerImage = picArray[indexPathNumber]
+            showController.changeCheck = changeCheckArray[indexPathNumber]
             
+            util.printLog(viewC: self, tag: "change", contents: changeCheckArray)
         }
         
     }
+    
+    //レイアウトの色を指定する
+    func  setLayoutColor() {
+        
+        let colorManager = ColorManeger()
+        var userDefaults:UserDefaults = UserDefaults.standard
+        var colorNum:Int = 0
+        
+        //NSUserDefaultsから、ユーザーの指定している色の情報を取得
+        if userDefaults.object(forKey: "COLOR") != nil {
+            colorNum = userDefaults.object(forKey: "COLOR") as! Int
+        }
+        
+        switch colorNum {
+        case 0://  red
+            changeAndMy.tintColor = UIColor(hex: "DD3F4B")
+           
+        case 1:// pink
+           changeAndMy.tintColor = UIColor(hex: "F3B3BB")
+           
+        case 2:// orange
+            changeAndMy.tintColor = UIColor(hex: "F6BD60")
+           
+        case 3://  yellow
+             changeAndMy.tintColor = UIColor(hex: "F9DC5C")
+            
+            
+        case 4:// green
+             changeAndMy.tintColor = UIColor(hex: "4BA7A6")
+   
+        case 5:// blue
+             changeAndMy.tintColor = UIColor(hex: "A8DADC")
+           
+            
+        case 6://purple
+            changeAndMy.tintColor = UIColor(hex: "C2BBF0")
+           
+            
+        default:
+            return
+        }
+    }
+    
 }
 
 

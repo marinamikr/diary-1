@@ -11,6 +11,8 @@ import Photos
 
 class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UITextViewDelegate {
     
+    @IBOutlet weak var new: UILabel!
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var datepicker: UIDatePicker!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textView: PlaceHolderTextView!
@@ -30,10 +32,10 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     //  datepicker.setValue(UIColor.white, forKey: "textColor")
+        //  datepicker.setValue(UIColor.white, forKey: "textColor")
         
-         textField.backgroundColor = UIColor.white
-             textView.backgroundColor = UIColor.white
+        textField.backgroundColor = UIColor.white
+        textView.backgroundColor = UIColor.white
         setLayoutColor() //レイアウトの色を指定
         textField.delegate = self
         
@@ -73,7 +75,7 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             deleteButton.isHidden = false
         }
         
-       
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,9 +100,53 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         if userDefaults.object(forKey: "COLOR") != nil {
             colorNum = userDefaults.object(forKey: "COLOR") as! Int
         }
-        //背景色の指定
-      //  haikei.backgroundColor = colorManager.mainColor()[colorNum]
-      
+        
+        switch colorNum {
+        case 0://  red
+            new.textColor = UIColor(hex: "C43423")
+            addpictureButton.setTitleColor(UIColor(hex: "DD3F4B"), for: UIControlState.normal)
+            addButton.setTitleColor(UIColor(hex: "DD3F4B"), for: UIControlState.normal)
+            deleteButton.setTitleColor(UIColor(hex: "DD3F4B"), for: UIControlState.normal)
+            
+        case 1:// pink
+            new.textColor = UIColor(hex: "ED7DA9")
+            addpictureButton.setTitleColor(UIColor(hex: "F3B3BB"), for: UIControlState.normal)
+            addButton.setTitleColor(UIColor(hex: "F3B3BB"), for: UIControlState.normal)
+            deleteButton.setTitleColor(UIColor(hex: "F3B3BB"), for: UIControlState.normal)
+            
+        case 2:// orange
+            new.textColor = UIColor(hex: "EF8734")
+            addpictureButton.setTitleColor(UIColor(hex: "F6BD60"), for: UIControlState.normal)
+            addButton.setTitleColor(UIColor(hex: "F6BD60"), for: UIControlState.normal)
+            deleteButton.setTitleColor(UIColor(hex: "F6BD60"), for: UIControlState.normal)
+            
+        case 3://  yellow
+            new.textColor = UIColor(hex: "F8C840")
+            addpictureButton.setTitleColor(UIColor(hex: "F9DC5C"), for: UIControlState.normal)
+            addButton.setTitleColor(UIColor(hex: "F9DC5C"), for: UIControlState.normal)
+            deleteButton.setTitleColor(UIColor(hex: "F9DC5C"), for: UIControlState.normal)
+            
+        case 4:// green
+            new.textColor = UIColor(hex: "3B8AA7")
+            addpictureButton.setTitleColor(UIColor(hex: "4BA7A6"), for: UIControlState.normal)
+            addButton.setTitleColor(UIColor(hex: "4BA7A6"), for: UIControlState.normal)
+            deleteButton.setTitleColor(UIColor(hex: "4BA7A6"), for: UIControlState.normal)
+            
+        case 5:// blue
+            new.textColor = UIColor(hex: "5DB7DE")
+            addpictureButton.setTitleColor(UIColor(hex: "A8DADC"), for: UIControlState.normal)
+            addButton.setTitleColor(UIColor(hex: "A8DADC"), for: UIControlState.normal)
+            deleteButton.setTitleColor(UIColor(hex: "A8DADC"), for: UIControlState.normal)
+            
+        case 6://purple
+            new.textColor = UIColor(hex: "8D86C9")
+            addpictureButton.setTitleColor(UIColor(hex: "C2BBF0"), for: UIControlState.normal)
+            addButton.setTitleColor(UIColor(hex: "C2BBF0"), for: UIControlState.normal)
+            deleteButton.setTitleColor(UIColor(hex: "C2BBF0"), for: UIControlState.normal)
+            
+        default:
+            return
+        }
     }
     
     
@@ -119,12 +165,12 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }
     }
     
-//    // Notificationを設定
-//    func configureObserver() {
-//        let notification = NotificationCenter.default
-//        notification.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        notification.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//    }
+    //    // Notificationを設定
+    //    func configureObserver() {
+    //        let notification = NotificationCenter.default
+    //        notification.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    //        notification.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    //    }
     
     // Notificationを削除
     func removeObserver() {
@@ -244,52 +290,84 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }
         print(diary)
     }
-//    @IBAction func ddeleteButton(){
-//        //Realmオブジェクトの取得
-//        let realm = try! Realm()
-//        //Realmから、dateの情報が、selectedDateStringと一致するものを検索
-//        if let diary = realm.objects(Diary.self).filter("date == %@",selectedDateString ).last{
-//            try! realm.write {
-//                realm.delete(diary)
-//            }
-//        }
-//        navigationController?.popToRootViewController(animated: true)
-//    }
+    //    @IBAction func ddeleteButton(){
+    //        //Realmオブジェクトの取得
+    //        let realm = try! Realm()
+    //        //Realmから、dateの情報が、selectedDateStringと一致するものを検索
+    //        if let diary = realm.objects(Diary.self).filter("date == %@",selectedDateString ).last{
+    //            try! realm.write {
+    //                realm.delete(diary)
+    //            }
+    //        }
+    //        navigationController?.popToRootViewController(animated: true)
+    //    }
     
     @IBAction func delete () {
+        
+        
         
         if isCellTryViewController == true{
             self.dismiss(animated: true, completion: nil)
         }else{
             self.navigationController?.popToRootViewController(animated: true)
         }
-
+        
     }
     
     
-//    // キーボードが現れた時に、画面全体をずらす。
-//    func keyboardWillShow(notification: Notification?) {
-//
-//        if(textView.isFirstResponder){
-//            let rect = (notification?.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-//            let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-//            UIView.animate(withDuration: duration!, animations: { () in
-//                let transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
-//                self.view.transform = transform
-//
-       //     })
-       // }}
+    //    // キーボードが現れた時に、画面全体をずらす。
+    //    func keyboardWillShow(notification: Notification?) {
+    //
+    //        if(textView.isFirstResponder){
+    //            let rect = (notification?.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+    //            let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
+    //            UIView.animate(withDuration: duration!, animations: { () in
+    //                let transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
+    //                self.view.transform = transform
+    //
+    //     })
+    // }}
     @IBAction func onlyDelete(){
-        // STEP.1 Realmを初期化
-        let realm = try! Realm()
         
-        if let diary = realm.objects(Diary.self).filter("date == %@", selectedDateString).last{
-            
-            try! realm.write() {
-                realm.delete(diary)
-            }
-        }
-        navigationController?.popToViewController(navigationController!.viewControllers[0], animated: true)
+        //アラートの作成
+        let alert:UIAlertController = UIAlertController(title: "OK", message: "いいですか",preferredStyle: .alert)
+        //OKボタンが押された時の処理
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: UIAlertActionStyle.default,
+                                      handler: {action in
+                                        
+                                        if self.selectedDateString != nil {
+                                            // STEP.1 Realmを初期化
+                                            let realm = try! Realm()
+                                            if let diary = realm.objects(Diary.self).filter("date == %@", self.selectedDateString).last{
+                                                
+                                                try! realm.write() {
+                                                    realm.delete(diary)
+                                                }
+                                                
+                                            }
+                                        }
+                                        if self.isCellTryViewController == true{
+                                            self.dismiss(animated: true, completion: nil)
+                                        }else{
+                                            self.navigationController?.popToRootViewController(animated: true)
+                                        }
+                                        
+        }))
+        
+        // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+        })
+        
+        // ③ UIAlertControllerにActionを追加
+        alert.addAction(cancelAction)
+        
+        //アラートの表示
+        present(alert, animated: true, completion: nil)
+        
+        
     }
     // キーボードが消えたときに、画面を戻す
     func keyboardWillHide(notification: Notification?) {
