@@ -172,6 +172,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         SVProgressHUD.show()
         
         //全ユーザー情報を取得
+        userDefaults.register(defaults: ["allUser": Array<Dictionary<String,String>>()])
         let allUserArray:Array<Dictionary<String,String>> = userDefaults.array(forKey: "allUser") as! Array<Dictionary<String,String>>
         util.printLog(viewC: self, tag: "全ユーザー情報", contents: allUserArray)
         
@@ -187,7 +188,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             var otherUserArray:Array<Dictionary<String,String>> = allUserArray
             
             
-            var position = 0
+            var position = -1
             
             for i in 0 ..< otherUserArray.count{
                 print(i)
@@ -197,7 +198,9 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
                     position = i
                 }
             }
+            if position != -1{
             otherUserArray.remove(at: position)
+            }
             self.util.printLog(viewC: self, tag: "自分以外の全ユーザー情報", contents: otherUserArray)
             
             
@@ -291,6 +294,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         
          self.util.printLog(viewC: self, tag: "取得条件", contents: "友達")
         //全ユーザー情報を取得
+        userDefaults.register(defaults: ["allUser": Array<Dictionary<String,String>>()])
         let allUserArray:Array<Dictionary<String,String>> = userDefaults.array(forKey: "allUser") as! Array<Dictionary<String,String>>
         util.printLog(viewC: self, tag: "全ユーザー情報", contents: allUserArray)
         
