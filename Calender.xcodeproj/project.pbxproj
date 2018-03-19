@@ -450,16 +450,18 @@
 				TargetAttributes = {
 					41D305E71E40A07A004031DA = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = KRD3HBM28P;
+						DevelopmentTeam = CN6AX8XYKW;
 						LastSwiftMigration = 0830;
 					};
 					41D305FB1E40A07A004031DA = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = CN6AX8XYKW;
 						LastSwiftMigration = 0830;
 						TestTargetID = 41D305E71E40A07A004031DA;
 					};
 					41D306061E40A07A004031DA = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = CN6AX8XYKW;
 						LastSwiftMigration = 0830;
 						TestTargetID = 41D305E71E40A07A004031DA;
 					};
@@ -880,7 +882,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = KRD3HBM28P;
+				DEVELOPMENT_TEAM = CN6AX8XYKW;
 				INFOPLIST_FILE = Calender/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -901,7 +903,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = KRD3HBM28P;
+				DEVELOPMENT_TEAM = CN6AX8XYKW;
 				INFOPLIST_FILE = Calender/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -918,6 +920,7 @@
 			baseConfigurationReference = 10497BCFCBE4761E2A90B92F /* Pods-CalenderTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = CN6AX8XYKW;
 				INFOPLIST_FILE = CalenderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = litech.CalenderTests;
@@ -932,6 +935,7 @@
 			baseConfigurationReference = 5370A4A5F59C17E94D2185D7 /* Pods-CalenderTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = CN6AX8XYKW;
 				INFOPLIST_FILE = CalenderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = litech.CalenderTests;
@@ -945,6 +949,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BD39B833FED21B8A6B921758 /* Pods-CalenderUITests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = CN6AX8XYKW;
 				INFOPLIST_FILE = CalenderUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = litech.CalenderUITests;
@@ -958,6 +963,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FD886455AC8993B62C2F0ACA /* Pods-CalenderUITests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = CN6AX8XYKW;
 				INFOPLIST_FILE = CalenderUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = litech.CalenderUITests;

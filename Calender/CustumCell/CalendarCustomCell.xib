@@ -29,7 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="120" height="170"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ov-8i-6H4">
-                                <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                <rect key="frame" x="3" y="0.0" width="117" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -44,13 +44,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Lul-Ml-2Rs" secondAttribute="trailing" id="2kb-M6-Nnr"/>
-                            <constraint firstItem="0Ov-8i-6H4" firstAttribute="top" secondItem="lEX-FG-GUt" secondAttribute="top" id="4jT-7M-tar"/>
                             <constraint firstItem="Lul-Ml-2Rs" firstAttribute="top" secondItem="0Ov-8i-6H4" secondAttribute="bottom" id="DSu-wc-57g"/>
-                            <constraint firstItem="0Ov-8i-6H4" firstAttribute="leading" secondItem="lEX-FG-GUt" secondAttribute="leading" id="EkB-te-mis"/>
-                            <constraint firstAttribute="trailing" secondItem="0Ov-8i-6H4" secondAttribute="trailing" id="EmA-SD-zPg"/>
                             <constraint firstAttribute="trailing" secondItem="0Ov-8i-6H4" secondAttribute="trailing" id="SML-9u-rSx"/>
+                            <constraint firstItem="0Ov-8i-6H4" firstAttribute="leading" secondItem="lEX-FG-GUt" secondAttribute="leading" constant="3" id="Tb3-TI-YKJ"/>
                             <constraint firstItem="0Ov-8i-6H4" firstAttribute="top" secondItem="lEX-FG-GUt" secondAttribute="top" id="Tgg-aA-ZFz"/>
-                            <constraint firstItem="0Ov-8i-6H4" firstAttribute="leading" secondItem="lEX-FG-GUt" secondAttribute="leading" id="mIF-TO-yaR"/>
                             <constraint firstItem="Lul-Ml-2Rs" firstAttribute="leading" secondItem="lEX-FG-GUt" secondAttribute="leading" id="sqb-ii-me4"/>
                             <constraint firstAttribute="bottom" secondItem="Lul-Ml-2Rs" secondAttribute="bottom" id="u3u-Cu-fHu"/>
                         </constraints>

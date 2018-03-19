@@ -13,10 +13,10 @@
     class SettingController: UIViewController ,UITableViewDelegate ,UITableViewDataSource,UINavigationControllerDelegate{
         
         @IBOutlet weak var table: UITableView!
-        var array = [ ["Colors","red",  "pink", "orange", "yellow", "green","blue","purple"],
-                      ["日記削除", "all delete"],
-                      ["change", "my QR", "add friends","友達一覧",""],
-                      ]
+        var array =  [ ["COLORS","Red",  "Pink", "Orange", "Yellow", "Green","Blue","Purple"],
+                       ["DELETE", "AllDelete"],
+                       ["CHANGE", "MyQR", "AddFriend","FriendsList",""],
+                       ]
         
         var checkArr = [true,false,false,false,false,false,false]
         
@@ -100,17 +100,17 @@
                 // 各 Cellの設定をしている　今回はタイトル入力のみ
                 
                 cell.setText(text:array[indexPath.section][indexPath.row + 1])
-               
+                
                 if indexPath.section == 0 {
                     if checkArr[indexPath.row] {
                         cell.check.alpha = 1
                     }else{
-                         cell.check.alpha = 0
+                        cell.check.alpha = 0
                     }
                 }else{
-                     cell.check.alpha = 0
+                    cell.check.alpha = 0
                 }
-                    
+                
                 return cell
             }else{
                 
@@ -119,14 +119,14 @@
             }
         }
         
-//        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//            //　タイトルヘッダーの要素を返している　今回は各セクションの先頭 0番目がヘッダーとなる
-//            return array[section][0]
-//        }
+        //        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        //            //　タイトルヘッダーの要素を返している　今回は各セクションの先頭 0番目がヘッダーとなる
+        //            return array[section][0]
+        //        }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
-           
+            
             
             if indexPath.section == 0{
                 colorNumber = indexPath.row
@@ -146,7 +146,7 @@
                 tableView.reloadData()
                 
             }else if indexPath.section == 1{
-                let alert: UIAlertController = UIAlertController(title: "全削除", message: "いいですか", preferredStyle: .alert)
+                let alert: UIAlertController = UIAlertController(title: "全削除", message: "今までの日記が全て消えます", preferredStyle: .alert)
                 
                 // ② Actionの設定
                 // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
@@ -167,7 +167,7 @@
                     let uuid = UIDevice.current.identifierForVendor!.uuidString
                     let lef = Database.database().reference()
                     var handle = lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
-
+                        
                         print(snapshot.key)
                         let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
                         if id == uuid{
@@ -175,7 +175,7 @@
                         }
                     })
                     lef.child("UserIDArray").removeObserver(withHandle: handle)
-
+                    
                     lef.child(uuid).removeValue()
                     self.userDefaults.set(false, forKey: "SENT_USERID")
                     
@@ -203,7 +203,7 @@
                 }
             }
             
-           
+            
             
         }
         
@@ -218,26 +218,26 @@
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           
+            
             return 65
         }
-//
+        //
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
         {
             let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
             let label : UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: tableView.bounds.size.width, height: 30))
-
+            
             label.textColor = UIColor.black
             label.text = array[section][0]
-
+            
             headerView.addSubview(label)
-
+            
             headerView.backgroundColor = UIColor.white
             return headerView
         }
-//
+        //
         
-       
+        
     }
     
-
+    

@@ -39,7 +39,7 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         setLayoutColor() //レイアウトの色を指定
         textField.delegate = self
         
-        textView.placeHolder = "ここに書く"
+        textView.placeHolder = "main"
         util.printLog(viewC: self, tag: "hoge", contents: selectedDateString)
         
         if let pickerView = self.datepicker.subviews.first {
@@ -252,7 +252,7 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     @IBAction func add() {
         //アラートの作成
-        let alert:UIAlertController = UIAlertController(title: "OK", message: "saved diary",preferredStyle: .alert)
+        let alert:UIAlertController = UIAlertController(title: "保存完了", message: "saved diary",preferredStyle: .alert)
         //OKボタンが押された時の処理
         alert.addAction(UIAlertAction(title: "OK",
                                       style: UIAlertActionStyle.default,
@@ -399,3 +399,4 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
 }
+
