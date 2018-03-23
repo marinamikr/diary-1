@@ -19,10 +19,10 @@
 		412342E91FB1BF2700712D00 /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E81FB1BF2700712D00 /* EditController.swift */; };
 		412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342EE1FB1BF9200712D00 /* SettingController.swift */; };
 		412342F41FB1C24100712D00 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F31FB1C24100712D00 /* DateManager.swift */; };
-		413A6A662032F5D000238BD2 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A652032F5D000238BD2 /* icon.png */; };
 		413A6A682032FB1F00238BD2 /* nil.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A672032FB1F00238BD2 /* nil.png */; };
 		413A6A6A2032FBD700238BD2 /* にる.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A692032FBD700238BD2 /* にる.png */; };
 		413A6A71203C1C9000238BD2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A6A70203C1C9000238BD2 /* User.swift */; };
+		413D7D302064C86D00F2158D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 413D7D2F2064C86C00F2158D /* icon.png */; };
 		4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182FD851F55728D000E750E /* PlaceHolderTextView.swift */; };
 		418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418BA1691F359D930084413F /* GoogleService-Info.plist */; };
 		41A706CB1E91F18900F43E9F /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A706CA1E91F18900F43E9F /* Diary.swift */; };
@@ -104,10 +104,10 @@
 		412342E81FB1BF2700712D00 /* EditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditController.swift; path = ViewController/EditController.swift; sourceTree = "<group>"; };
 		412342EE1FB1BF9200712D00 /* SettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingController.swift; path = ViewController/SettingController.swift; sourceTree = "<group>"; };
 		412342F31FB1C24100712D00 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = Manager/DateManager.swift; sourceTree = "<group>"; };
-		413A6A652032F5D000238BD2 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		413A6A672032FB1F00238BD2 /* nil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nil.png; sourceTree = "<group>"; };
 		413A6A692032FBD700238BD2 /* にる.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "にる.png"; sourceTree = "<group>"; };
 		413A6A70203C1C9000238BD2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		413D7D2F2064C86C00F2158D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		4182FD851F55728D000E750E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		4182FD871F55760A000E750E /* Calender-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calender-Bridging-Header.h"; sourceTree = "<group>"; };
 		418BA1691F359D930084413F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -222,6 +222,7 @@
 				AA8BB519200DAB84006D8C29 /* blue.png */,
 				AA8BB517200DAB84006D8C29 /* blueのコピー.png */,
 				AA8BB512200DAB83006D8C29 /* green.png */,
+				413D7D2F2064C86C00F2158D /* icon.png */,
 				AA8BB509200DAB83006D8C29 /* greenのコピー.png */,
 				AA8BB50B200DAB83006D8C29 /* modoruu.png */,
 				AA8BB518200DAB84006D8C29 /* orange.png */,
@@ -231,7 +232,6 @@
 				AA8BB50D200DAB83006D8C29 /* red.png */,
 				AA8BB513200DAB84006D8C29 /* redのコピー.png */,
 				AA8BB50E200DAB83006D8C29 /* set.png */,
-				413A6A652032F5D000238BD2 /* icon.png */,
 				AA8BB510200DAB83006D8C29 /* sett.png */,
 				AA8BB505200DAB82006D8C29 /* ya.png */,
 				AA8BB516200DAB84006D8C29 /* yellow.png */,
@@ -452,6 +452,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = CN6AX8XYKW;
 						LastSwiftMigration = 0830;
+						ProvisioningStyle = Manual;
 					};
 					41D305FB1E40A07A004031DA = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -504,6 +505,7 @@
 				AA8BB51E200DAB84006D8C29 /* greenのコピー.png in Resources */,
 				AA8BB522200DAB84006D8C29 /* red.png in Resources */,
 				AA20C4472057C8AF00B443A6 /* list.png in Resources */,
+				413D7D302064C86D00F2158D /* icon.png in Resources */,
 				AA8BB51A200DAB84006D8C29 /* ya.png in Resources */,
 				AA8BB523200DAB84006D8C29 /* set.png in Resources */,
 				AA8BB524200DAB84006D8C29 /* カレンダー.png in Resources */,
@@ -527,7 +529,6 @@
 				AA88F3B52054E4C800324971 /* CustomWeekCollectionViewCell.xib in Resources */,
 				418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */,
 				AA58D44F205296FB002AFC4A /* CustomSwitchTableViewCell.xib in Resources */,
-				413A6A662032F5D000238BD2 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,15 +881,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hazuki Tamura (CN6AX8XYKW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hazuki Tamura (CN6AX8XYKW)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = CN6AX8XYKW;
 				INFOPLIST_FILE = Calender/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = hazuki.CalenderApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hazuki.CalenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "af490846-23d9-4572-b86c-c283aa367ffa";
+				PROVISIONING_PROFILE_SPECIFIER = sendiary_Release;
 				SWIFT_OBJC_BRIDGING_HEADER = "Calender/Calender-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -901,15 +904,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hazuki Tamura (CN6AX8XYKW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hazuki Tamura (CN6AX8XYKW)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = CN6AX8XYKW;
 				INFOPLIST_FILE = Calender/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = hazuki.CalenderApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hazuki.CalenderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "af490846-23d9-4572-b86c-c283aa367ffa";
+				PROVISIONING_PROFILE_SPECIFIER = sendiary_Release;
 				SWIFT_OBJC_BRIDGING_HEADER = "Calender/Calender-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
