@@ -23,15 +23,15 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>this app uses camera</string>
+	<string>scan the QR code/take a picture</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>this app uses library</string>
+	<string>select a photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ipaexm.ttf </string>
