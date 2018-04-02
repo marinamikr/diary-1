@@ -129,37 +129,37 @@ class ShowController: UIViewController {
         switch colorNum {
         case 0://  red
             backButton.setTitleColor(UIColor(hex: "DD3F4B"), for: UIControlState.normal)
-            changeButton.setTitleColor(UIColor(hex: "DD3F4B"), for: UIControlState.normal)
+            changeButton.backgroundColor = UIColor(hex: "DD3F4B")
             editButton.setTitleColor(UIColor(hex: "DD3F4B"), for: UIControlState.normal)
             
         case 1:// pink
            backButton.setTitleColor(UIColor(hex: "F3B3BB"), for: UIControlState.normal)
-            changeButton.setTitleColor(UIColor(hex: "F3B3BB"), for: UIControlState.normal)
+        changeButton.backgroundColor = UIColor(hex:  "F3B3BB")
             editButton.setTitleColor(UIColor(hex: "F3B3BB"), for: UIControlState.normal)
             
         case 2:// orange
             backButton.setTitleColor(UIColor(hex: "F6BD60"), for: UIControlState.normal)
-            changeButton.setTitleColor(UIColor(hex: "F6BD60"), for: UIControlState.normal)
+             changeButton.backgroundColor = UIColor(hex: "F6BD60")
             editButton.setTitleColor(UIColor(hex: "F6BD60"), for: UIControlState.normal)
             
         case 3://  yellow
             backButton.setTitleColor(UIColor(hex: "F9DC5C"), for: UIControlState.normal)
-            changeButton.setTitleColor(UIColor(hex: "F9DC5C"), for: UIControlState.normal)
+             changeButton.backgroundColor = UIColor(hex:  "F9DC5C")
             editButton.setTitleColor(UIColor(hex: "F9DC5C"), for: UIControlState.normal)
             
         case 4:// green
             backButton.setTitleColor(UIColor(hex: "4BA7A6"), for: UIControlState.normal)
-            changeButton.setTitleColor(UIColor(hex: "4BA7A6"), for: UIControlState.normal)
+            changeButton.backgroundColor = UIColor(hex: "4BA7A6")
             editButton.setTitleColor(UIColor(hex: "4BA7A6"), for: UIControlState.normal)
             
         case 5:// blue
             backButton.setTitleColor(UIColor(hex: "A8DADC"), for: UIControlState.normal)
-            changeButton.setTitleColor(UIColor(hex: "A8DADC"), for: UIControlState.normal)
+            changeButton.backgroundColor = UIColor(hex: "A8DADC")
             editButton.setTitleColor(UIColor(hex: "A8DADC"), for: UIControlState.normal)
             
         case 6://purple
             backButton.setTitleColor(UIColor(hex: "C2BBF0"), for: UIControlState.normal)
-            changeButton.setTitleColor(UIColor(hex: "C2BBF0"), for: UIControlState.normal)
+            changeButton.backgroundColor = UIColor(hex: "C2BBF0")
             editButton.setTitleColor(UIColor(hex: "C2BBF0"), for: UIControlState.normal)
             
         default:
