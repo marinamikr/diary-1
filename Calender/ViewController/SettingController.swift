@@ -16,6 +16,7 @@
         var array =  [ ["COLORS","Red",  "Pink", "Orange", "Yellow", "Green","Blue","Purple"],
                        ["DELETE", "AllDelete"],
                        ["CHANGE", "MyQR", "AddFriend","FriendsList",""],
+                       ["HELP", "HowToUse", "Question",],
                        ]
         
         var checkArr = [true,false,false,false,false,false,false]
@@ -200,6 +201,11 @@
                 }
                 else if indexPath.row == 2{
                     performSegue(withIdentifier: "friendsNameViewController", sender: nil)
+                }
+            }else if indexPath.section == 3{
+                
+                if indexPath.row == 0{
+                    performSegue(withIdentifier: "howTo", sender: nil)
                 }
             }
             

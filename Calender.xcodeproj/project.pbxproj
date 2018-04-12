@@ -28,6 +28,10 @@
 		41A706CB1E91F18900F43E9F /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A706CA1E91F18900F43E9F /* Diary.swift */; };
 		41A706CE1E92237B00F43E9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A706CC1E92237B00F43E9F /* Main.storyboard */; };
 		41A706D01E95774000F43E9F /* Existence-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41A706CF1E95774000F43E9F /* Existence-Light.otf */; };
+		41A85AD5207FA43A0067F13E /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A85AD1207FA4380067F13E /* 2.png */; };
+		41A85AD6207FA43A0067F13E /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A85AD2207FA4380067F13E /* 1.png */; };
+		41A85AD7207FA43A0067F13E /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A85AD3207FA4390067F13E /* 4.png */; };
+		41A85AD8207FA43A0067F13E /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A85AD4207FA43A0067F13E /* 3.png */; };
 		41D305EC1E40A07A004031DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D305EB1E40A07A004031DA /* AppDelegate.swift */; };
 		41D305F31E40A07A004031DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41D305F21E40A07A004031DA /* Assets.xcassets */; };
 		41D305F61E40A07A004031DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D305F41E40A07A004031DA /* LaunchScreen.storyboard */; };
@@ -114,6 +118,10 @@
 		41A706CA1E91F18900F43E9F /* Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		41A706CD1E92237B00F43E9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41A706CF1E95774000F43E9F /* Existence-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-Light.otf"; sourceTree = "<group>"; };
+		41A85AD1207FA4380067F13E /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = images/2.png; sourceTree = "<group>"; };
+		41A85AD2207FA4380067F13E /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = images/1.png; sourceTree = "<group>"; };
+		41A85AD3207FA4390067F13E /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 4.png; path = images/4.png; sourceTree = "<group>"; };
+		41A85AD4207FA43A0067F13E /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = images/3.png; sourceTree = "<group>"; };
 		41D305E81E40A07A004031DA /* Calender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D305EB1E40A07A004031DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41D305F21E40A07A004031DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -215,6 +223,10 @@
 		410081201EF92B1500DBCA05 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				41A85AD2207FA4380067F13E /* 1.png */,
+				41A85AD1207FA4380067F13E /* 2.png */,
+				41A85AD4207FA43A0067F13E /* 3.png */,
+				41A85AD3207FA4390067F13E /* 4.png */,
 				AA20C4462057C8AE00B443A6 /* list.png */,
 				AA88F3A62054C88C00324971 /* check.png */,
 				413A6A672032FB1F00238BD2 /* nil.png */,
@@ -496,12 +508,14 @@
 				AA8BB527200DAB84006D8C29 /* green.png in Resources */,
 				41A706D01E95774000F43E9F /* Existence-Light.otf in Resources */,
 				AA8BB52B200DAB84006D8C29 /* yellow.png in Resources */,
+				41A85AD7207FA43A0067F13E /* 4.png in Resources */,
 				AA58D453205299B9002AFC4A /* CustumSettingTableViewCell.xib in Resources */,
 				413A6A682032FB1F00238BD2 /* nil.png in Resources */,
 				AA8BB520200DAB84006D8C29 /* modoruu.png in Resources */,
 				AA8BB52A200DAB84006D8C29 /* 矢印iのコピー.png in Resources */,
 				AA8BB51D200DAB84006D8C29 /* purpleのコピー.png in Resources */,
 				41A706CE1E92237B00F43E9F /* Main.storyboard in Resources */,
+				41A85AD5207FA43A0067F13E /* 2.png in Resources */,
 				AA8BB51E200DAB84006D8C29 /* greenのコピー.png in Resources */,
 				AA8BB522200DAB84006D8C29 /* red.png in Resources */,
 				AA20C4472057C8AF00B443A6 /* list.png in Resources */,
@@ -519,12 +533,14 @@
 				AA8BB52E200DAB84006D8C29 /* blue.png in Resources */,
 				41D305F31E40A07A004031DA /* Assets.xcassets in Resources */,
 				AA8BB521200DAB84006D8C29 /* yellowのコピー.png in Resources */,
+				41A85AD6207FA43A0067F13E /* 1.png in Resources */,
 				AA8BB53E200DC765006D8C29 /* CalendarCustomCell.xib in Resources */,
 				AA8BB526200DAB84006D8C29 /* 矢印.png in Resources */,
 				AA88F3A72054C88C00324971 /* check.png in Resources */,
 				AA8BB52C200DAB84006D8C29 /* blueのコピー.png in Resources */,
 				41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */,
 				AA8BB51B200DAB84006D8C29 /* 矢印.jpg in Resources */,
+				41A85AD8207FA43A0067F13E /* 3.png in Resources */,
 				AA8BB51F200DAB84006D8C29 /* purple.png in Resources */,
 				AA88F3B52054E4C800324971 /* CustomWeekCollectionViewCell.xib in Resources */,
 				418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */,
