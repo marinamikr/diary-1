@@ -13,11 +13,20 @@ class QRController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         qr.image = makeQRCodeImage(text: UIDevice.current.identifierForVendor!.uuidString)
-
+        qr.image = makeQRCodeImage(text: UIDevice.current.identifierForVendor!.uuidString)
+        
         // Do any additional setup after loading the view.
+        //トップに戻るボタンを作成
+        let leftButton = UIBarButtonItem(title: "⬅︎", style: UIBarButtonItemStyle.plain, target: self, action: "goTop")
+        self.navigationItem.leftBarButtonItem = leftButton
     }
-
+    //トップに戻るボタン押下時の呼び出しメソッド
+    func goTop() {
+        
+        //トップ画面に戻る。
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     @IBOutlet var qr: UIImageView!
     
     

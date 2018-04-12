@@ -39,6 +39,15 @@ class FriendNameViewController: UIViewController ,UITableViewDelegate ,UITableVi
         }
         util.printLog(viewC: self, tag: "友達一覧", contents: friendsNameArray)
         table?.reloadData()
+        //トップに戻るボタンを作成
+        let leftButton = UIBarButtonItem(title: "⬅︎", style: UIBarButtonItemStyle.plain, target: self, action: "goTop")
+        self.navigationItem.leftBarButtonItem = leftButton
+    }
+    //トップに戻るボタン押下時の呼び出しメソッド
+    func goTop() {
+        
+        //トップ画面に戻る。
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     

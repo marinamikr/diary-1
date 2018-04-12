@@ -25,8 +25,6 @@ class FriendsController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         // 入力（背面カメラ）
         let videoDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         let videoInput = try! AVCaptureDeviceInput.init(device: videoDevice)
@@ -51,8 +49,16 @@ class FriendsController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
         DispatchQueue.global(qos: .userInitiated).async {
             self.captureSession.startRunning()
         }
+        //トップに戻るボタンを作成
+        let leftButton = UIBarButtonItem(title: "⬅︎", style: UIBarButtonItemStyle.plain, target: self, action: "goTop")
+        self.navigationItem.leftBarButtonItem = leftButton
     }
-    
+    //トップに戻るボタン押下時の呼び出しメソッド
+    func goTop() {
+        
+        //トップ画面に戻る。
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         // 複数のメタデータを検出できる
         for metadata in metadataObjects as! [AVMetadataMachineReadableCodeObject] {
