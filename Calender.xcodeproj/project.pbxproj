@@ -19,10 +19,15 @@
 		412342E91FB1BF2700712D00 /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342E81FB1BF2700712D00 /* EditController.swift */; };
 		412342EF1FB1BF9200712D00 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342EE1FB1BF9200712D00 /* SettingController.swift */; };
 		412342F41FB1C24100712D00 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412342F31FB1C24100712D00 /* DateManager.swift */; };
+		41354FD32080F07300DE894F /* re3.png in Resources */ = {isa = PBXBuildFile; fileRef = 41354FD22080F07300DE894F /* re3.png */; };
 		413A6A682032FB1F00238BD2 /* nil.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A672032FB1F00238BD2 /* nil.png */; };
 		413A6A6A2032FBD700238BD2 /* にる.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A6A692032FBD700238BD2 /* にる.png */; };
 		413A6A71203C1C9000238BD2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A6A70203C1C9000238BD2 /* User.swift */; };
 		413D7D302064C86D00F2158D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 413D7D2F2064C86C00F2158D /* icon.png */; };
+		4164D33320808C40005C3ECF /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4164D33220808C40005C3ECF /* ConnectViewController.swift */; };
+		4164D33520809EBA005C3ECF /* Twitter_Social_Icon_Rounded_Square_Color.png in Resources */ = {isa = PBXBuildFile; fileRef = 4164D33420809EB9005C3ECF /* Twitter_Social_Icon_Rounded_Square_Color.png */; };
+		4164D3372080A23B005C3ECF /* めっさげ.png in Resources */ = {isa = PBXBuildFile; fileRef = 4164D3362080A23B005C3ECF /* めっさげ.png */; };
+		4164D3392080B6B5005C3ECF /* HowToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4164D3382080B6B5005C3ECF /* HowToViewController.swift */; };
 		4182FD861F55728D000E750E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182FD851F55728D000E750E /* PlaceHolderTextView.swift */; };
 		418BA16A1F359D930084413F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418BA1691F359D930084413F /* GoogleService-Info.plist */; };
 		41A706CB1E91F18900F43E9F /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A706CA1E91F18900F43E9F /* Diary.swift */; };
@@ -108,10 +113,15 @@
 		412342E81FB1BF2700712D00 /* EditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditController.swift; path = ViewController/EditController.swift; sourceTree = "<group>"; };
 		412342EE1FB1BF9200712D00 /* SettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingController.swift; path = ViewController/SettingController.swift; sourceTree = "<group>"; };
 		412342F31FB1C24100712D00 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = Manager/DateManager.swift; sourceTree = "<group>"; };
+		41354FD22080F07300DE894F /* re3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = re3.png; path = images/re3.png; sourceTree = "<group>"; };
 		413A6A672032FB1F00238BD2 /* nil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nil.png; sourceTree = "<group>"; };
 		413A6A692032FBD700238BD2 /* にる.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "にる.png"; sourceTree = "<group>"; };
 		413A6A70203C1C9000238BD2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		413D7D2F2064C86C00F2158D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		4164D33220808C40005C3ECF /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConnectViewController.swift; path = ViewController/ConnectViewController.swift; sourceTree = "<group>"; };
+		4164D33420809EB9005C3ECF /* Twitter_Social_Icon_Rounded_Square_Color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Twitter_Social_Icon_Rounded_Square_Color.png; path = images/Twitter_Social_Icon_Rounded_Square_Color.png; sourceTree = "<group>"; };
+		4164D3362080A23B005C3ECF /* めっさげ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "めっさげ.png"; path = "images/めっさげ.png"; sourceTree = "<group>"; };
+		4164D3382080B6B5005C3ECF /* HowToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HowToViewController.swift; path = ViewController/HowToViewController.swift; sourceTree = "<group>"; };
 		4182FD851F55728D000E750E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		4182FD871F55760A000E750E /* Calender-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calender-Bridging-Header.h"; sourceTree = "<group>"; };
 		418BA1691F359D930084413F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -223,6 +233,9 @@
 		410081201EF92B1500DBCA05 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				41354FD22080F07300DE894F /* re3.png */,
+				4164D3362080A23B005C3ECF /* めっさげ.png */,
+				4164D33420809EB9005C3ECF /* Twitter_Social_Icon_Rounded_Square_Color.png */,
 				41A85AD2207FA4380067F13E /* 1.png */,
 				41A85AD1207FA4380067F13E /* 2.png */,
 				41A85AD4207FA43A0067F13E /* 3.png */,
@@ -286,6 +299,8 @@
 				AA3C7E1D2020853C004462CB /* FriendsController.swift */,
 				AA88F3A82054E0B000324971 /* FriendNameViewController.swift */,
 				AA88F3AA2054E1B200324971 /* FriendViewController.swift */,
+				4164D33220808C40005C3ECF /* ConnectViewController.swift */,
+				4164D3382080B6B5005C3ECF /* HowToViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -505,9 +520,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41354FD32080F07300DE894F /* re3.png in Resources */,
 				AA8BB527200DAB84006D8C29 /* green.png in Resources */,
 				41A706D01E95774000F43E9F /* Existence-Light.otf in Resources */,
 				AA8BB52B200DAB84006D8C29 /* yellow.png in Resources */,
+				4164D3372080A23B005C3ECF /* めっさげ.png in Resources */,
 				41A85AD7207FA43A0067F13E /* 4.png in Resources */,
 				AA58D453205299B9002AFC4A /* CustumSettingTableViewCell.xib in Resources */,
 				413A6A682032FB1F00238BD2 /* nil.png in Resources */,
@@ -536,6 +553,7 @@
 				41A85AD6207FA43A0067F13E /* 1.png in Resources */,
 				AA8BB53E200DC765006D8C29 /* CalendarCustomCell.xib in Resources */,
 				AA8BB526200DAB84006D8C29 /* 矢印.png in Resources */,
+				4164D33520809EBA005C3ECF /* Twitter_Social_Icon_Rounded_Square_Color.png in Resources */,
 				AA88F3A72054C88C00324971 /* check.png in Resources */,
 				AA8BB52C200DAB84006D8C29 /* blueのコピー.png in Resources */,
 				41050AE31FCD70AD00C0A051 /* CustumTableCell.xib in Resources */,
@@ -746,6 +764,7 @@
 				41050AE21FCD70AD00C0A051 /* CustumTableCell.swift in Sources */,
 				AA58D452205299B9002AFC4A /* CustumSettingTableViewCell.swift in Sources */,
 				AA8BB538200DAC1C006D8C29 /* Extention.swift in Sources */,
+				4164D33320808C40005C3ECF /* ConnectViewController.swift in Sources */,
 				41122CB01F557F9700DA3612 /* DeviceSize.swift in Sources */,
 				412342E91FB1BF2700712D00 /* EditController.swift in Sources */,
 				AA8BB536200DAC0A006D8C29 /* ColorManeger.swift in Sources */,
@@ -754,6 +773,7 @@
 				AA8BB53D200DC765006D8C29 /* CalendarCustomCell.swift in Sources */,
 				41D305EC1E40A07A004031DA /* AppDelegate.swift in Sources */,
 				413A6A71203C1C9000238BD2 /* User.swift in Sources */,
+				4164D3392080B6B5005C3ECF /* HowToViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

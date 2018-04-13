@@ -207,6 +207,10 @@
                 if indexPath.row == 0{
                     performSegue(withIdentifier: "howTo", sender: nil)
                 }
+                if indexPath.row == 1{
+                    performSegue(withIdentifier: "connect", sender: nil)
+                }
+                
             }
             
             
