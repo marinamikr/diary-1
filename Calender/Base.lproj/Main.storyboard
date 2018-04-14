@@ -654,7 +654,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaB-az-Uei" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="bn1-KJ-z2K"/>
             </objects>
-            <point key="canvasLocation" x="5165" y="355"/>
+            <point key="canvasLocation" x="5278" y="329"/>
         </scene>
         <!--LIST-->
         <scene sceneID="CRk-mC-F23">
@@ -961,6 +961,17 @@
                                 <state key="normal" title="Button" image="Twitter_Social_Icon_Rounded_Square_Color.png">
                                     <color key="titleColor" red="1" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="1" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="twitterButtonWithSender:" destination="Jvi-hv-laY" eventType="touchUpInside" id="k0D-bg-WIe"/>
                                 </connections>
@@ -973,6 +984,17 @@
                                 <state key="normal" title="Button" image="めっさげ.png">
                                     <color key="titleColor" red="0.26583984179999998" green="0.26847191949999999" blue="0.26847191949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="1" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="boxButtonWithSender:" destination="Jvi-hv-laY" eventType="touchUpInside" id="Wvr-X1-QRL"/>
                                 </connections>
@@ -989,26 +1011,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="質問箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmC-0B-Gth">
-                                <rect key="frame" x="169" y="562" width="76" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.15710263320000001" green="0.15710263320000001" blue="0.15710263320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2t-KL-K45">
-                                <rect key="frame" x="171.66666666666666" y="327.66666666666669" width="71" height="31.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" red="0.15710263320000001" green="0.15710263320000001" blue="0.15710263320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="twitterでお答えします" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ly5-06-RQf">
-                                <rect key="frame" x="121.66666666666669" y="592" width="171" height="21"/>
+                                <rect key="frame" x="121.66666666666669" y="604" width="171" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.15710263320000001" green="0.15710263320000001" blue="0.15710263320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DM･リプライにて" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGQ-ZG-aeD">
-                                <rect key="frame" x="137" y="359" width="140" height="21"/>
+                                <rect key="frame" x="137" y="372" width="140" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.15710263324873097" green="0.15710263324873097" blue="0.15710263324873097" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1027,6 +1037,26 @@
                                 <color key="textColor" red="0.15710263320000001" green="0.15710263320000001" blue="0.15710263320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnd-sL-7CA">
+                                <rect key="frame" x="172" y="328" width="71" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="twitter">
+                                    <color key="titleColor" red="0.086274509799999996" green="0.47843137250000001" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="twitterText" destination="Jvi-hv-laY" eventType="touchUpInside" id="HjW-9m-LHs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65d-DZ-2sQ">
+                                <rect key="frame" x="169.66666666666666" y="562" width="76" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="質問箱">
+                                    <color key="titleColor" red="0.086274509803921567" green="0.47843137254901957" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="boxText" destination="Jvi-hv-laY" eventType="touchUpInside" id="Occ-J6-Qew"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1037,25 +1067,25 @@
                             <constraint firstItem="xEK-Rq-yT3" firstAttribute="top" secondItem="3fH-BI-fXm" secondAttribute="bottom" id="GXX-g2-CHv"/>
                             <constraint firstItem="5eL-RX-fsT" firstAttribute="top" secondItem="OBm-nO-6Ei" secondAttribute="bottom" id="HEz-7m-VWF"/>
                             <constraint firstItem="JGQ-ZG-aeD" firstAttribute="centerX" secondItem="7aN-2I-Ddv" secondAttribute="centerX" id="Ipz-0F-4vY"/>
-                            <constraint firstItem="w2t-KL-K45" firstAttribute="top" secondItem="xKW-rN-bkg" secondAttribute="bottom" constant="10" id="J7q-t0-frf"/>
-                            <constraint firstItem="ly5-06-RQf" firstAttribute="top" secondItem="fmC-0B-Gth" secondAttribute="bottom" id="L9R-El-NfS"/>
+                            <constraint firstItem="nnd-sL-7CA" firstAttribute="centerX" secondItem="7aN-2I-Ddv" secondAttribute="centerX" id="LFZ-5h-T9L"/>
                             <constraint firstAttribute="trailing" secondItem="hPa-MA-YPN" secondAttribute="trailing" id="QY1-jT-dmL"/>
                             <constraint firstItem="xEK-Rq-yT3" firstAttribute="leading" secondItem="7aN-2I-Ddv" secondAttribute="leadingMargin" id="S6p-Tu-Zm2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xEK-Rq-yT3" secondAttribute="trailing" id="Vx9-Nh-0gH"/>
                             <constraint firstItem="xKW-rN-bkg" firstAttribute="centerX" secondItem="7aN-2I-Ddv" secondAttribute="centerX" id="YY6-jS-fhQ"/>
+                            <constraint firstItem="ly5-06-RQf" firstAttribute="top" secondItem="65d-DZ-2sQ" secondAttribute="bottom" id="Yww-HF-Xbr"/>
                             <constraint firstItem="hPa-MA-YPN" firstAttribute="leading" secondItem="7aN-2I-Ddv" secondAttribute="leading" id="ZXm-M4-MFt"/>
-                            <constraint firstItem="fmC-0B-Gth" firstAttribute="centerX" secondItem="7aN-2I-Ddv" secondAttribute="centerX" id="Zrs-LY-Xv6"/>
                             <constraint firstItem="hPa-MA-YPN" firstAttribute="top" secondItem="5eL-RX-fsT" secondAttribute="bottom" id="anw-cA-OIl"/>
+                            <constraint firstItem="65d-DZ-2sQ" firstAttribute="centerX" secondItem="7aN-2I-Ddv" secondAttribute="centerX" id="axV-6s-S5a"/>
                             <constraint firstAttribute="bottom" secondItem="hPa-MA-YPN" secondAttribute="bottom" id="bt5-34-vcm"/>
+                            <constraint firstItem="JGQ-ZG-aeD" firstAttribute="top" secondItem="nnd-sL-7CA" secondAttribute="bottom" id="fEO-B5-dwr"/>
+                            <constraint firstItem="nnd-sL-7CA" firstAttribute="top" secondItem="xKW-rN-bkg" secondAttribute="bottom" constant="10" id="fmC-ks-WcI"/>
                             <constraint firstItem="5eL-RX-fsT" firstAttribute="centerX" secondItem="7aN-2I-Ddv" secondAttribute="centerX" id="igQ-Mj-ycb"/>
                             <constraint firstItem="hPa-MA-YPN" firstAttribute="height" secondItem="7aN-2I-Ddv" secondAttribute="height" multiplier="0.25" id="kQ7-F1-ftv"/>
-                            <constraint firstItem="JGQ-ZG-aeD" firstAttribute="top" secondItem="w2t-KL-K45" secondAttribute="bottom" id="kff-LD-FTc"/>
                             <constraint firstItem="ly5-06-RQf" firstAttribute="centerX" secondItem="7aN-2I-Ddv" secondAttribute="centerX" id="kwT-Ov-R89"/>
                             <constraint firstItem="djD-xd-KDS" firstAttribute="centerX" secondItem="7aN-2I-Ddv" secondAttribute="centerX" id="oqE-fQ-9DW"/>
+                            <constraint firstItem="65d-DZ-2sQ" firstAttribute="top" secondItem="5eL-RX-fsT" secondAttribute="bottom" constant="10" id="owi-P2-UKi"/>
                             <constraint firstItem="OBm-nO-6Ei" firstAttribute="height" secondItem="7aN-2I-Ddv" secondAttribute="height" multiplier="0.15" id="qub-AD-kj5"/>
-                            <constraint firstItem="w2t-KL-K45" firstAttribute="centerX" secondItem="7aN-2I-Ddv" secondAttribute="centerX" id="x0R-BO-npQ"/>
                             <constraint firstItem="OBm-nO-6Ei" firstAttribute="leading" secondItem="7aN-2I-Ddv" secondAttribute="leading" id="xM6-oi-Zrb"/>
-                            <constraint firstItem="fmC-0B-Gth" firstAttribute="top" secondItem="5eL-RX-fsT" secondAttribute="bottom" constant="10" id="xco-9A-0QB"/>
                             <constraint firstItem="OBm-nO-6Ei" firstAttribute="top" secondItem="xKW-rN-bkg" secondAttribute="bottom" id="yId-4F-hE2"/>
                             <constraint firstItem="xEK-Rq-yT3" firstAttribute="height" secondItem="7aN-2I-Ddv" secondAttribute="height" multiplier="0.04" id="yZF-aA-MiI"/>
                         </constraints>
@@ -1140,7 +1170,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Hz9-xm-EOK"/>
-        <segue reference="6Yt-cT-uEB"/>
+        <segue reference="m6g-90-dn8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
