@@ -39,6 +39,8 @@ class ShowController: UIViewController {
     //選ばれた日付
     var selectedDate : Date = Date()
     
+    var selectedPicture:UIImage = UIImage()
+    
     //スクリーンショット
     var capturedImage : UIImage!
     
@@ -51,7 +53,8 @@ class ShowController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        //userDefaults.set(picture, forKey: "PICTURE")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +109,8 @@ class ShowController: UIViewController {
                 changeButton.isEnabled = false
             }
             if let photo = diary.photo {
-                picture.image = UIImage(data: photo)
+                selectedPicture = UIImage(data: photo)!
+                  picture.image = selectedPicture
             }
             
         }else{
@@ -133,18 +137,18 @@ class ShowController: UIViewController {
             editButton.setTitleColor(UIColor(hex: "DD3F4B"), for: UIControlState.normal)
             
         case 1:// pink
-           backButton.setTitleColor(UIColor(hex: "F3B3BB"), for: UIControlState.normal)
-        changeButton.backgroundColor = UIColor(hex:  "F3B3BB")
+            backButton.setTitleColor(UIColor(hex: "F3B3BB"), for: UIControlState.normal)
+            changeButton.backgroundColor = UIColor(hex:  "F3B3BB")
             editButton.setTitleColor(UIColor(hex: "F3B3BB"), for: UIControlState.normal)
             
         case 2:// orange
             backButton.setTitleColor(UIColor(hex: "F6BD60"), for: UIControlState.normal)
-             changeButton.backgroundColor = UIColor(hex: "F6BD60")
+            changeButton.backgroundColor = UIColor(hex: "F6BD60")
             editButton.setTitleColor(UIColor(hex: "F6BD60"), for: UIControlState.normal)
             
         case 3://  yellow
             backButton.setTitleColor(UIColor(hex: "F9DC5C"), for: UIControlState.normal)
-             changeButton.backgroundColor = UIColor(hex:  "F9DC5C")
+            changeButton.backgroundColor = UIColor(hex:  "F9DC5C")
             editButton.setTitleColor(UIColor(hex: "F9DC5C"), for: UIControlState.normal)
             
         case 4:// green
@@ -254,7 +258,7 @@ class ShowController: UIViewController {
     
     func addMyID(){
         
-      
+        
         let ref = Database.database().reference()
         let data : Dictionary = ["userName":"hazuki","userID":UIDevice.current.identifierForVendor!.uuidString,]
         
@@ -280,15 +284,26 @@ class ShowController: UIViewController {
         //画面遷移
         performSegue(withIdentifier: "toEditViewController", sender: self)
     }
+    @IBAction func pic() {
+         var selectedPicture = cellTryViewControllerImage
+        //画面遷移
+        performSegue(withIdentifier: "picture", sender: self)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toEditViewController" {
-            //画面遷移前に、選ばれたCellの日付の情報をShowControllerに渡しておく
+            //画面遷移前に、選ばれたCellの日付の情報をEditControllerに渡しておく
             let editController:EditController = segue.destination as! EditController
             editController.selectedDate = self.selectedDate
             editController.selectedDateString = self.selectedDateString
             editController.isCellTryViewController = self.isCellTryViewController
+        }else
+            if segue.identifier == "picture" {
+                //画面遷移前に、渡しておく
+                let pictureViewController:PictureViewController = segue.destination as! PictureViewController
+               pictureViewController.selectedPicture = self.selectedPicture
+                
         }
         
     }
@@ -323,6 +338,6 @@ class ShowController: UIViewController {
         resizedSize = dst?.size
         
         return dst!
-    }
+}
 
 }

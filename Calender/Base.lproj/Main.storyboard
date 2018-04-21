@@ -654,7 +654,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaB-az-Uei" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="bn1-KJ-z2K"/>
             </objects>
-            <point key="canvasLocation" x="5278" y="329"/>
+            <point key="canvasLocation" x="5207" y="355"/>
         </scene>
         <!--LIST-->
         <scene sceneID="CRk-mC-F23">
@@ -845,12 +845,20 @@
                                             <action selector="change" destination="jWm-TU-EP4" eventType="touchUpInside" id="ugK-oq-6uS"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2m-Qq-8fs">
+                                        <rect key="frame" x="14.000000000000014" y="166.33333333333337" width="248.33333333333337" height="248"/>
+                                        <state key="normal" title="pic"/>
+                                        <connections>
+                                            <action selector="pic" destination="jWm-TU-EP4" eventType="touchUpInside" id="eq3-Rl-TfM"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="6uO-CD-Ub9" secondAttribute="trailing" id="12j-oH-2iE"/>
                                     <constraint firstItem="6uO-CD-Ub9" firstAttribute="top" secondItem="chM-cg-DRV" secondAttribute="bottom" id="19n-qW-BBV"/>
                                     <constraint firstItem="6uO-CD-Ub9" firstAttribute="leading" secondItem="o9a-5F-pcA" secondAttribute="leading" id="1ba-cc-wSc"/>
+                                    <constraint firstItem="Q2m-Qq-8fs" firstAttribute="leading" secondItem="VRT-94-DP6" secondAttribute="leading" id="2td-FK-40S"/>
                                     <constraint firstItem="9bK-Ub-IVF" firstAttribute="top" secondItem="KO1-ji-zhX" secondAttribute="bottom" id="2zZ-9t-tNF"/>
                                     <constraint firstItem="VRT-94-DP6" firstAttribute="leading" secondItem="o9a-5F-pcA" secondAttribute="leading" constant="14" id="6pf-dc-gLf"/>
                                     <constraint firstItem="q2Q-aO-fEO" firstAttribute="leading" secondItem="o9a-5F-pcA" secondAttribute="leading" constant="12" id="7qe-Jf-dp8"/>
@@ -862,6 +870,7 @@
                                     <constraint firstItem="KO1-ji-zhX" firstAttribute="top" secondItem="mBJ-Af-NzA" secondAttribute="bottom" id="Ddl-W3-zzF"/>
                                     <constraint firstItem="q2Q-aO-fEO" firstAttribute="top" secondItem="9bK-Ub-IVF" secondAttribute="bottom" id="OD9-l8-QYj"/>
                                     <constraint firstItem="YUV-kE-V8L" firstAttribute="leading" secondItem="o9a-5F-pcA" secondAttribute="leading" constant="10" id="V7h-vR-pF1"/>
+                                    <constraint firstItem="Q2m-Qq-8fs" firstAttribute="top" secondItem="VRT-94-DP6" secondAttribute="top" id="WOg-2Q-45d"/>
                                     <constraint firstItem="RWd-bz-mnm" firstAttribute="leading" secondItem="o9a-5F-pcA" secondAttribute="leading" constant="8" id="Xcv-fd-utS"/>
                                     <constraint firstItem="mBJ-Af-NzA" firstAttribute="top" secondItem="o9a-5F-pcA" secondAttribute="top" id="Xe9-NT-A4u"/>
                                     <constraint firstAttribute="trailing" secondItem="q2Q-aO-fEO" secondAttribute="trailing" id="cBn-qC-OBL"/>
@@ -873,8 +882,10 @@
                                     <constraint firstAttribute="trailing" secondItem="YUV-kE-V8L" secondAttribute="trailing" id="j4f-BD-ndP"/>
                                     <constraint firstItem="mBJ-Af-NzA" firstAttribute="leading" secondItem="o9a-5F-pcA" secondAttribute="leading" id="jOH-5g-vAh"/>
                                     <constraint firstItem="VRT-94-DP6" firstAttribute="top" secondItem="YUV-kE-V8L" secondAttribute="bottom" constant="12" id="jxi-Gp-NrN"/>
+                                    <constraint firstItem="Q2m-Qq-8fs" firstAttribute="trailing" secondItem="VRT-94-DP6" secondAttribute="trailing" id="lTq-Ug-CNB"/>
                                     <constraint firstItem="g8a-TF-V1h" firstAttribute="top" secondItem="q2Q-aO-fEO" secondAttribute="bottom" id="m5a-dj-ef0"/>
                                     <constraint firstAttribute="trailing" secondItem="mBJ-Af-NzA" secondAttribute="trailing" id="mMW-gE-csr"/>
+                                    <constraint firstItem="Q2m-Qq-8fs" firstAttribute="bottom" secondItem="VRT-94-DP6" secondAttribute="bottom" id="npX-w2-DCc"/>
                                     <constraint firstItem="chM-cg-DRV" firstAttribute="height" secondItem="o9a-5F-pcA" secondAttribute="height" multiplier="0.075" constant="5.7833333333333385" id="pC4-LN-kEQ"/>
                                     <constraint firstItem="KO1-ji-zhX" firstAttribute="leading" secondItem="o9a-5F-pcA" secondAttribute="leading" constant="12" id="qZ2-Yx-njr"/>
                                     <constraint firstItem="9bK-Ub-IVF" firstAttribute="leading" secondItem="o9a-5F-pcA" secondAttribute="leading" constant="10" id="yBq-7X-lGR"/>
@@ -935,11 +946,56 @@
                         <outlet property="mainLabel" destination="RWd-bz-mnm" id="5Qb-C3-2sM"/>
                         <outlet property="picture" destination="VRT-94-DP6" id="aVf-PE-s2T"/>
                         <segue destination="bWZ-Ye-kVo" kind="show" identifier="toEditViewController" id="m6g-90-dn8"/>
+                        <segue destination="DUE-zC-oiU" kind="presentation" identifier="picture" modalTransitionStyle="crossDissolve" id="9Wo-fl-jxU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdn-wk-lJr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4434.7826086956529" y="1127.4456521739132"/>
+        </scene>
+        <!--Picture View Controller-->
+        <scene sceneID="HgL-4a-Ua9">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="DUE-zC-oiU" customClass="PictureViewController" customModule="Calender" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qPD-wD-rEg"/>
+                        <viewControllerLayoutGuide type="bottom" id="tCH-fv-kbG"/>
+                    </layoutGuides>
+                    <view key="view" tag="1" contentMode="scaleToFill" id="wZf-XG-Rkz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZS-ED-ShN">
+                                <rect key="frame" x="0.0" y="161" width="414" height="414"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AZS-ED-ShN" secondAttribute="height" multiplier="1:1" id="pG0-51-MJK"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hnQ-sG-ewK">
+                                <rect key="frame" x="0.0" y="161" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hnQ-sG-ewK" secondAttribute="height" multiplier="1:1" id="A5E-g4-AMG"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AZS-ED-ShN" firstAttribute="centerY" secondItem="wZf-XG-Rkz" secondAttribute="centerY" id="ATm-se-SD7"/>
+                            <constraint firstItem="hnQ-sG-ewK" firstAttribute="centerY" secondItem="wZf-XG-Rkz" secondAttribute="centerY" id="F9d-Qr-vmE"/>
+                            <constraint firstItem="hnQ-sG-ewK" firstAttribute="centerX" secondItem="wZf-XG-Rkz" secondAttribute="centerX" id="UN1-Jq-ulQ"/>
+                            <constraint firstItem="AZS-ED-ShN" firstAttribute="centerX" secondItem="wZf-XG-Rkz" secondAttribute="centerX" id="fs2-n2-IMR"/>
+                            <constraint firstItem="AZS-ED-ShN" firstAttribute="width" secondItem="wZf-XG-Rkz" secondAttribute="width" id="jaY-tw-b6x"/>
+                            <constraint firstItem="hnQ-sG-ewK" firstAttribute="width" secondItem="wZf-XG-Rkz" secondAttribute="width" id="pDe-6T-pm3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photo" destination="hnQ-sG-ewK" id="p5A-hR-ZI6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rk-zS-0kK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5205.7971014492759" y="1127.4456521739132"/>
         </scene>
         <!--Connect View Controller-->
         <scene sceneID="fvp-ba-Cgo">
@@ -1093,7 +1149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhH-ef-8Sb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5234.7826086956529" y="1889.6739130434785"/>
+            <point key="canvasLocation" x="5206" y="1889"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xzS-88-jov">
