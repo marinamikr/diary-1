@@ -31,10 +31,10 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
     var picArray: [UIImage] = Array()
     var changeCheckArray:[Bool] = Array()
     
-    var dateArrayFireBase: [String] = Array()
-    var titleArrayFireBase: [String] = Array()
-    var mainArrayFireBase: [String] = Array()
-    var picArrayFireBase: [UIImage] = Array()
+    var dateArrayChange: [String] = Array()
+    var titleArrayChange: [String] = Array()
+    var mainArrayChange: [String] = Array()
+    var picArrayChange: [UIImage] = Array()
     
     var isMyDiary = false
     
@@ -49,7 +49,7 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
+       // ref = Database.database().reference()
         tableView.estimatedRowHeight = 10//セルの高さの見積もり
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dataSource = self
@@ -58,36 +58,37 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         
         var allUserArray = Array<Dictionary<String,String>>()
         
-        let lef = Database.database().reference()
-        lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
-            print("hoge")
-            print(snapshot.key)
-            let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
-            print(id)
-            var user: Dictionary<String,String> = ["user":id]
-            allUserArray.append(user)
-            self?.userDefaults.set(allUserArray, forKey: "allUser")
-        })
-        
-        lef.child("UserIDArray").observe(.childRemoved, with: { [weak self](snapshot) -> Void in
-            print("hogehogehoge")
-            print(snapshot.key)
-            let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
-            print(id)
-            for i in 0 ..< allUserArray.count{
-                if allUserArray[i]["user"] == id {
-                    print("hogehoge")
-                    print(snapshot.key)
-                    print(i)
-                    allUserArray.remove(at: i)
-                    print(allUserArray)
-                    break
-                }
-            }
-            
-            self?.userDefaults.set(allUserArray, forKey: "allUser")
-        })
-        
+        changeAllUserDiary()
+//        let lef = Database.database().reference()
+//        lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
+//            print("hoge")
+//            print(snapshot.key)
+//            let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
+//            print(id)
+//            var user: Dictionary<String,String> = ["user":id]
+//            allUserArray.append(user)
+//            self?.userDefaults.set(allUserArray, forKey: "allUser")
+//        })
+//        
+//        lef.child("UserIDArray").observe(.childRemoved, with: { [weak self](snapshot) -> Void in
+//            print("hogehogehoge")
+//            print(snapshot.key)
+//            let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
+//            print(id)
+//            for i in 0 ..< allUserArray.count{
+//                if allUserArray[i]["user"] == id {
+//                    print("hogehoge")
+//                    print(snapshot.key)
+//                    print(i)
+//                    allUserArray.remove(at: i)
+//                    print(allUserArray)
+//                    break
+//                }
+//            }
+//            
+//            self?.userDefaults.set(allUserArray, forKey: "allUser")
+//        })
+//        
         changeAndMy.layer.cornerRadius = 5
        
     }
@@ -132,21 +133,23 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         let realm = try! Realm()
         //Realmに保存されている全ての情報を取得
         let results = Array(realm.objects(Diary.self))
+       //反転
+        let resultHanten = Array(results.reversed())
         //Realmに保存されている要素の数だけfor文を回して配列に追加
-        for i in 0 ..< results.count {
+        for i in 0 ..< resultHanten.count {
             
-            dateArray.append(results[i].date)
-            titleArray.append(results[i].title)
-            changeCheckArray.append(results[i].changeCheck)
+            dateArray.append(resultHanten[i].date)
+            titleArray.append(resultHanten[i].title)
+            changeCheckArray.append(resultHanten[i].changeCheck)
             
             
-            if results[i].photo != nil{
-                picArray.append(UIImage(data:results[i].photo! )!)
+            if resultHanten[i].photo != nil{
+                picArray.append(UIImage(data:resultHanten[i].photo! )!)
             }else{
                 picArray.append(UIImage())
             }
             
-            mainArray.append(results[i].main)
+            mainArray.append(resultHanten[i].main)
             
             //tableViewのリロード
             self.tableView.reloadData()
@@ -158,136 +161,48 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         
         self.util.printLog(viewC: self, tag: "取得条件", contents: "全ユーザー")
         //配列の要素を全て削除
-        dateArray.removeAll()
-        titleArray.removeAll()
-        mainArray.removeAll()
-        picArray.removeAll()
-        
-        dateArrayFireBase.removeAll()
-        titleArrayFireBase.removeAll()
-        mainArrayFireBase.removeAll()
-        picArrayFireBase.removeAll()
-        
-        self.tableView.reloadData()
-        
-        //ロード中のダイアログを表示する
-        SVProgressHUD.show()
-        
-        //全ユーザー情報を取得
-        userDefaults.register(defaults: ["allUser": Array<Dictionary<String,String>>()])
-        let allUserArray:Array<Dictionary<String,String>> = userDefaults.array(forKey: "allUser") as! Array<Dictionary<String,String>>
-        util.printLog(viewC: self, tag: "全ユーザー情報", contents: allUserArray)
-        
-        //自分の日記数を取得
-        let uuid = UIDevice.current.identifierForVendor!.uuidString
-        let lef = Database.database().reference()
-        lef.child(uuid).observe(.value, with:{ (snapshot)  in
-             var targetUserArray = Array<String>()
-            self.myDiaryCount = Int(snapshot.childrenCount)
-            self.util.printLog(viewC: self, tag: "自分の日記の数", contents: self.myDiaryCount)
+        dateArrayChange.removeAll()
+        titleArrayChange.removeAll()
+        mainArrayChange.removeAll()
+        picArrayChange.removeAll()
+        //Realmオブジェクトの取得
+        let realm = try! Realm()
+        //Realmに保存されている全ての情報を取得
+        let results = Array(realm.objects(ChangeDiary.self))
+        //反転
+        let resultHanten = Array(results.reversed())
+        //Realmに保存されている要素の数だけfor文を回して配列に追加
+        for i in 0 ..< resultHanten.count {
             
-            var userNumber:Int = 0
-            var otherUserArray:Array<Dictionary<String,String>> = allUserArray
+            dateArrayChange.append(resultHanten[i].date)
+            titleArrayChange.append(resultHanten[i].title)
+           
             
-            
-            var position = -1
-            
-            for i in 0 ..< otherUserArray.count{
-                print(i)
-                let dic = otherUserArray[i]
-                let ID = dic["user"]
-                if ID == uuid{
-                    position = i
-                }
-            }
-            if position != -1{
-            otherUserArray.remove(at: position)
-            }
-            self.util.printLog(viewC: self, tag: "自分以外の全ユーザー情報", contents: otherUserArray)
-            
-            
-            if self.myDiaryCount <= otherUserArray.count{
-                
-                userNumber = self.myDiaryCount
+            if resultHanten[i].photo != nil{
+                picArrayChange.append(UIImage(data:resultHanten[i].photo! )!)
             }else{
-                userNumber = otherUserArray.count
-            }
-            if userNumber == 0{
-                SVProgressHUD.dismiss()
-            }
-            self.util.printLog(viewC: self, tag: "取得する日記の数", contents: userNumber)
-            
-            
-            for i in 0 ..< userNumber{
-                
-                
-                let randomNumber:Int = Int(arc4random_uniform(UInt32(otherUserArray.count)))
-                let targetUser:Dictionary<String,String> = otherUserArray[randomNumber]
-                 targetUserArray.append(targetUser["user"]!)
-                self.util.printLog(viewC: self, tag: "randomNumber", contents: randomNumber)
-                self.util.printLog(viewC: self, tag: "取得予定の日記のユーザー情報", contents: targetUser)
-                
-                self.ref.child(targetUser["user"]!).observe(DataEventType.value, with: { snapshot in
-                    let randomDiaryNumber:Int = Int(arc4random_uniform(UInt32(snapshot.childrenCount)))
-                    self.util.printLog(viewC: self, tag: "randomDiaryNumber", contents: randomDiaryNumber)
-                    
-                    let targetSnapshot = snapshot.children.allObjects[randomDiaryNumber] as! DataSnapshot
-                    
-                    
-                    let targetDictionary = targetSnapshot.value as! [String : AnyObject]
-                    self.util.printLog(viewC: self, tag: "日記の情報", contents: targetDictionary)
-                    
-                    for (key, value) in targetDictionary {
-                        if (key == "date"){
-                            self.dateArray.append(value as! String)
-                            self.dateArrayFireBase.append(value as! String)
-                        }else if (key == "title"){
-                            self.titleArray.append(value as! String)
-                             self.titleArrayFireBase.append(value as! String)
-                        }else if (key == "downloadURL"){
-                            let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
-                            self.picArray.append(UIImage(data: loadedImageData as! Data)!)
-                             self.picArrayFireBase.append(UIImage(data: loadedImageData as! Data)!)
-                        }else if (key == "main"){
-                            self.mainArray.append(value as! String)
-                            self.mainArrayFireBase.append(value as! String)
-                        }
-                    }
-                    
-                    
-                    
-                    if i == userNumber-1 {
-                        self.tableView.reloadData()
-                        SVProgressHUD.dismiss()
-                        for i in 0 ..< targetUserArray.count{
-                            self.ref.child(targetUserArray[i]).removeAllObservers()
-                            self.util.printLog(viewC: self, tag: "targetUser", contents: targetUserArray[i])
-                        }
-                        lef.child(uuid).removeAllObservers()
-                    }
-                    
-                
-                })
-                
+                picArrayChange.append(UIImage())
             }
             
+            mainArrayChange.append(resultHanten[i].main)
             
-        })
-        
+            //tableViewのリロード
+            self.tableView.reloadData()
+        }
     }
     
     func changeFriendeDiary(){
         
-        //配列の要素を全て削除
+        //配列の要素
         dateArray.removeAll()
         titleArray.removeAll()
         mainArray.removeAll()
         picArray.removeAll()
         
-        dateArrayFireBase.removeAll()
-        titleArrayFireBase.removeAll()
-        mainArrayFireBase.removeAll()
-        picArrayFireBase.removeAll()
+        dateArrayChange.removeAll()
+        titleArrayChange.removeAll()
+        mainArrayChange.removeAll()
+        picArrayChange.removeAll()
         
         self.tableView.reloadData()
         
@@ -362,17 +277,17 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
                     for (key, value) in targetDictionary {
                         if (key == "date"){
                             self.dateArray.append(value as! String)
-                            self.dateArrayFireBase.append(value as! String)
+                            self.dateArrayChange.append(value as! String)
                         }else if (key == "title"){
                             self.titleArray.append(value as! String)
-                            self.titleArrayFireBase.append(value as! String)
+                            self.titleArrayChange.append(value as! String)
                         }else if (key == "downloadURL"){
                             let loadedImageData = NSData(contentsOf: NSURL(string:value as! String) as! URL)
                             self.picArray.append(UIImage(data: loadedImageData as! Data)!)
-                             self.picArrayFireBase.append(UIImage(data: loadedImageData as! Data)!)
+                             self.picArrayChange.append(UIImage(data: loadedImageData as! Data)!)
                         }else if (key == "main"){
                             self.mainArray.append(value as! String)
-                            self.mainArrayFireBase.append(value as! String)
+                            self.mainArrayChange.append(value as! String)
                         }
                     }
                     
@@ -410,12 +325,11 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             mainArray.removeAll()
             picArray.removeAll()
             
-            dateArray = dateArrayFireBase
-            titleArray = titleArrayFireBase
-            mainArray = mainArrayFireBase
-            picArray = picArrayFireBase
-            
-            
+            dateArray = dateArrayChange
+            titleArray = titleArrayChange
+            mainArray = mainArrayChange
+            picArray = picArrayChange
+           
             tableView.reloadData()
             
             isMyDiary = false
@@ -463,6 +377,9 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
         util.printLog(viewC: self, tag: "タッチされた場所", contents: indexPath.row)
         indexPathNumber = indexPath.row
         performSegue(withIdentifier: "toShowController", sender: nil)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -526,8 +443,4 @@ class CellTryViewController: UIViewController,UITableViewDataSource,UITableViewD
             return
         }
     }
-    
 }
-
-
-

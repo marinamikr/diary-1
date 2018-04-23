@@ -16,11 +16,45 @@ import Photos
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
    
-    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
+        
+        
+        var allUserArray = Array<Dictionary<String,String>>()
+         var userDefaults:UserDefaults = UserDefaults.standard
+        let lef = Database.database().reference()
+        lef.child("UserIDArray").observe(.childAdded, with: { [weak self](snapshot) -> Void in
+            print("hoge")
+            print(snapshot.key)
+            let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
+            print(id)
+            var user: Dictionary<String,String> = ["user":id]
+            allUserArray.append(user)
+            userDefaults.set(allUserArray, forKey: "allUser")
+        })
+        
+        lef.child("UserIDArray").observe(.childRemoved, with: { [weak self](snapshot) -> Void in
+            print("hogehogehoge")
+            print(snapshot.key)
+            let id = String(describing: snapshot.childSnapshot(forPath: "userID").value!)
+            print(id)
+            for i in 0 ..< allUserArray.count{
+                if allUserArray[i]["user"] == id {
+                    print("hogehoge")
+                    print(snapshot.key)
+                    print(i)
+                    allUserArray.remove(at: i)
+                    print(allUserArray)
+                    break
+                }
+            }
+            
+            userDefaults.set(allUserArray, forKey: "allUser")
+        })
+        
         return true
     }
 
@@ -45,6 +79,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }

@@ -28,6 +28,8 @@ class ShowController: UIViewController {
     
     var util = Util()
     
+    let lef = Database.database().reference()
+    
     var isCellTryViewController:Bool = false
     var isMyDiary:Bool = false
     var cellTryViewControllerTitle:String = ""
@@ -40,6 +42,8 @@ class ShowController: UIViewController {
     var selectedDate : Date = Date()
     
     var selectedPicture:UIImage = UIImage()
+    
+    var selectedBool:Bool = true
     
     //スクリーンショット
     var capturedImage : UIImage!
@@ -110,7 +114,7 @@ class ShowController: UIViewController {
             }
             if let photo = diary.photo {
                 selectedPicture = UIImage(data: photo)!
-                  picture.image = selectedPicture
+                picture.image = selectedPicture
             }
             
         }else{
@@ -175,18 +179,14 @@ class ShowController: UIViewController {
     
     
     @IBAction func change() {
+        changeAllUserDiary(count: 1)
+        
         // 無効化
         self.changeButton.isEnabled = false
         print("mukou")
-        //Realmオブジェクトの取得
-        let realm = try! Realm()
         
-        if let diary = realm.objects(Diary.self).filter("date == %@", self.selectedDateString).last{
-            try! realm.write {
-                diary.changeCheck = true
-            }
-        }
-        
+        changeButton.isHidden = true
+        changeCheck = true
         // 端末の固有IDを取得
         
         let uuid = UIDevice.current.identifierForVendor!.uuidString
@@ -194,7 +194,8 @@ class ShowController: UIViewController {
         
         // strageの一番トップのReferenceを指定
         let storage = Storage.storage()
-        let storageRef = storage.reference(forURL: "gs://calender-4a2d3.appspot.com")
+        // let storageRef = storage.reference(forURL: "gs://calender-4a2d3.appspot.com")
+        let storageRef = storage.reference(forURL: "gs://test-1c7b1.appspot.com")
         
         //変数picに画像を設定
         if let pic = resizeImage(src:picture.image!){
@@ -285,7 +286,7 @@ class ShowController: UIViewController {
         performSegue(withIdentifier: "toEditViewController", sender: self)
     }
     @IBAction func pic() {
-         var selectedPicture = cellTryViewControllerImage
+        var selectedPicture = cellTryViewControllerImage
         //画面遷移
         performSegue(withIdentifier: "picture", sender: self)
     }
@@ -298,11 +299,12 @@ class ShowController: UIViewController {
             editController.selectedDate = self.selectedDate
             editController.selectedDateString = self.selectedDateString
             editController.isCellTryViewController = self.isCellTryViewController
+            editController.selectedBool = self.changeCheck
         }else
             if segue.identifier == "picture" {
                 //画面遷移前に、渡しておく
                 let pictureViewController:PictureViewController = segue.destination as! PictureViewController
-               pictureViewController.selectedPicture = self.selectedPicture
+                pictureViewController.selectedPicture = self.selectedPicture
                 
         }
         
@@ -338,6 +340,110 @@ class ShowController: UIViewController {
         resizedSize = dst?.size
         
         return dst!
-}
-
+    }
+    
+    //サーバー上の日記を取得する処理
+    func changeAllUserDiary(count:Int){
+        if count >= 100{
+            return
+        }
+        self.util.printLog(viewC: self, tag: "取得条件", contents: "全ユーザー")
+        
+        //全ユーザー情報を取得
+        userDefaults.register(defaults: ["allUser": Array<Dictionary<String,String>>()])
+        let allUserArray:Array<Dictionary<String,String>> = userDefaults.array(forKey: "allUser") as! Array<Dictionary<String,String>>
+        util.printLog(viewC: self, tag: "全ユーザー情報", contents: allUserArray)
+        
+        //自分の日記数を取得
+        let uuid = UIDevice.current.identifierForVendor!.uuidString
+        var otherUserArray:Array<Dictionary<String,String>> = allUserArray
+        
+        var position = -1
+        
+        for i in 0 ..< otherUserArray.count{
+            print(i)
+            let dic = otherUserArray[i]
+            let ID = dic["user"]
+            if ID == uuid{
+                position = i
+            }
+        }
+        if position != -1{
+            otherUserArray.remove(at: position)
+        }
+        self.util.printLog(viewC: self, tag: "自分以外の全ユーザー情報", contents: otherUserArray)
+        
+        if otherUserArray.count == 0{
+            return
+        }
+        
+        let randomNumber:Int = Int(arc4random_uniform(UInt32(otherUserArray.count)))
+        let targetUser:Dictionary<String,String> = otherUserArray[randomNumber]
+        
+        
+        self.util.printLog(viewC: self, tag: "randomNumber", contents: randomNumber)
+        self.util.printLog(viewC: self, tag: "取得予定の日記のユーザー情報", contents: targetUser)
+        
+        self.lef.child(targetUser["user"]!).observeSingleEvent(of: DataEventType.value, with: { snapshot in
+        //一回だけfirebaseを読み込む
+            let randomDiaryNumber:Int = Int(arc4random_uniform(UInt32(snapshot.childrenCount)))
+            self.util.printLog(viewC: self, tag: "randomDiaryNumber", contents: randomDiaryNumber)
+            
+            let targetSnapshot = snapshot.children.allObjects[randomDiaryNumber] as! DataSnapshot
+            
+            self.util.printLog(viewC: self, tag: "Key", contents: targetSnapshot.key)
+            
+            let targetDictionary = targetSnapshot.value as! [String : AnyObject]
+            self.util.printLog(viewC: self, tag: "日記の情報", contents: targetDictionary)
+            
+            var date :String!
+            var main :String!
+            var title :String!
+            var photo: Data!
+            
+            let diary = ChangeDiary()
+            
+            for (key, value) in targetDictionary {
+                if (key == "date"){
+                    date = value as! String
+                    self.util.printLog(viewC: self, tag: "日付情報", contents: value as! String)
+                }else if (key == "title"){
+                    title = value as! String
+                    self.util.printLog(viewC: self, tag: "タイトル情報", contents: value as! String)
+                }else if (key == "downloadURL"){
+                    photo = NSData(contentsOf: NSURL(string:value as! String)! as URL)! as Data
+                }else if (key == "main"){
+                    main = value as! String
+                    self.util.printLog(viewC: self, tag: "メイン情報", contents: value as! String)
+                }
+            }
+            
+            
+            //Realmに保存
+            // STEP.1 Realmを初期化
+            let realm = try! Realm()
+            
+            //STEP.2 保存する要素を書く
+            diary.date = date
+            diary.title = title
+            diary.photo = photo
+            diary.main = main
+            diary.ID = targetSnapshot.key
+            
+            // Realmに保存されてるDog型のオブジェクトを全て取得
+            if let diary = realm.objects(ChangeDiary.self).filter("ID == %@", diary.ID).last {
+                defer { self.changeAllUserDiary(count: count + 1) }
+                //defer:メソッドを抜けた後に呼ばれる
+                return
+            }
+            
+            
+            //STEP.3 Realmに書き込み
+            try! realm.write {
+                realm.add(diary, update: true)
+            }
+            self.self.util.printLog(viewC: self, tag: "保存した情報", contents: diary)
+        })
+        
+    }
 }

@@ -196,7 +196,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cWw-WT-xgv" id="kR6-c0-XJR">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -336,7 +336,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AH8-P3-GSg" id="kt3-zy-RjC">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -676,7 +676,7 @@
                                 </segments>
                                 <color key="tintColor" red="1" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="segumentControllTap:" destination="GFY-rD-uw8" eventType="valueChanged" id="M5p-fd-oYv"/>
+                                    <action selector="segumentControllTap:" destination="GFY-rD-uw8" eventType="valueChanged" id="KKJ-IP-FNQ"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a41-xJ-bcU">
@@ -763,7 +763,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9a-5F-pcA">
-                                <rect key="frame" x="0.0" y="76" width="414" height="611"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="660"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBJ-Af-NzA">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
@@ -832,13 +832,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uO-CD-Ub9">
-                                        <rect key="frame" x="0.0" y="574.33333333333337" width="414" height="36.666666666666629"/>
+                                        <rect key="frame" x="0.0" y="623.33333333333337" width="414" height="36.666666666666629"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chM-cg-DRV">
-                                        <rect key="frame" x="138.66666666666669" y="522.66666666666663" width="136.66666666666669" height="51.666666666666629"/>
+                                        <rect key="frame" x="138.66666666666669" y="568" width="136.66666666666669" height="55.333333333333371"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="change"/>
                                         <connections>
@@ -847,7 +847,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2m-Qq-8fs">
                                         <rect key="frame" x="14.000000000000014" y="166.33333333333337" width="248.33333333333337" height="248"/>
-                                        <state key="normal" title="pic"/>
                                         <connections>
                                             <action selector="pic" destination="jWm-TU-EP4" eventType="touchUpInside" id="eq3-Rl-TfM"/>
                                         </connections>
@@ -1225,7 +1224,7 @@
         <image name="矢印i.png" width="380" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hz9-xm-EOK"/>
+        <segue reference="tIt-9a-Rpz"/>
         <segue reference="m6g-90-dn8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

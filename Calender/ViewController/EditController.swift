@@ -25,6 +25,8 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     //選ばれた日付。ViewControllerから直接画面遷移した場合はnil
     var selectedDate : Date!
     
+    var selectedBool:Bool = false
+    
     var isCellTryViewController:Bool = false
     var util = Util()
     
@@ -281,6 +283,7 @@ class EditController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         diary.date = self.datepicker.date.toString()
         diary.main = self.textView.text
         diary.title = self.textField.text!
+        diary.changeCheck = self.selectedBool
         
         if self.haikei.image != nil{
             diary.photo = NSData(data: UIImageJPEGRepresentation(self.haikei.image!,1)!) as Data

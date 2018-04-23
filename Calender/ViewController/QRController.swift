@@ -10,8 +10,12 @@ import UIKit
 
 class QRController: UIViewController {
 
+    var userDefaults:UserDefaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setLayoutColor()
         
         qr.image = makeQRCodeImage(text: UIDevice.current.identifierForVendor!.uuidString)
         
@@ -59,7 +63,47 @@ class QRController: UIViewController {
         
         return nil
     }
-
+    //レイアウトの色を指定する
+    func  setLayoutColor() {
+        
+        let colorManager = ColorManeger()
+        var userDefaults:UserDefaults = UserDefaults.standard
+        var colorNum:Int = 0
+        
+        //NSUserDefaultsから、ユーザーの指定している色の情報を取得
+        if userDefaults.object(forKey: "COLOR") != nil {
+            colorNum = userDefaults.object(forKey: "COLOR") as! Int
+        }
+        
+        switch colorNum {
+        case 0://  red
+            self.navigationController?.navigationBar.tintColor = UIColor(hex: "DD3F4B")
+            
+        case 1:// pink
+            self.navigationController?.navigationBar.tintColor = UIColor(hex: "F3B3BB")
+            
+        case 2:// orange
+            self.navigationController?.navigationBar.tintColor = UIColor(hex: "F6BD60")
+            
+        case 3://  yellow
+            self.navigationController?.navigationBar.tintColor = UIColor(hex: "F9DC5C")
+            
+            
+        case 4:// green
+            self.navigationController?.navigationBar.tintColor = UIColor(hex: "4BA7A6")
+            
+        case 5:// blue
+            self.navigationController?.navigationBar.tintColor = UIColor(hex: "A8DADC")
+            
+            
+        case 6://purple
+            self.navigationController?.navigationBar.tintColor = UIColor(hex: "C2BBF0")
+            
+        default:
+            return
+        }
+    }
+}
     /*
     // MARK: - Navigation
 
@@ -70,4 +114,4 @@ class QRController: UIViewController {
     }
     */
 
-}
+

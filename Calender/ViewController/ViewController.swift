@@ -9,9 +9,7 @@
 import UIKit
 import RealmSwift
 import Firebase
-
-
-
+import BetterSegmentedControl
 
 class ViewController: UIViewController{
     

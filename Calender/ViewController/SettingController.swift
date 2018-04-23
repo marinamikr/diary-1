@@ -127,7 +127,7 @@
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
-            
+            tableView.deselectRow(at: indexPath, animated: true)
             
             if indexPath.section == 0{
                 colorNumber = indexPath.row
@@ -224,7 +224,6 @@
             tableView.deselectRow(at: indexPath, animated: true)
             checkArr[indexPath.row] = !checkArr[indexPath.row]
             tableView.reloadData()
-            
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
